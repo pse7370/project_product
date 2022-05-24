@@ -17,7 +17,54 @@
 			 * Created at 2022. 5. 23. 오후 10:41:02.
 			 *
 			 * @author PSE
-			 ************************************************/;
+			 ************************************************/
+			
+			/*
+			 * 루트 컨테이너에서 load 이벤트 발생 시 호출.
+			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
+			 */
+			function onBodyLoad(/* cpr.events.CEvent */ e){
+				// 제품명 inputBox에 커서 위치
+				app.lookup("input_productName").focus();
+				
+				// 통신 방식 그리드 1행 추가
+				app.lookup("communication").insertRow(1, true);
+				
+			}
+			
+			
+			/*
+			 * 담당 개발자 "+" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick(/* cpr.events.CMouseEvent */ e){
+				/** 
+				 * @type cpr.controls.Button
+				 */
+				var button = e.control;
+				var grid_developer = app.lookup("grid_developer");
+				var insertRow = grid_developer.insertRow(1, true);
+				// + 버튼 클릭시 그리드 행 추가
+				
+			}
+			
+			
+			/*
+			 * "등록" 버튼에서 click 이벤트 발생 시 호출.
+			 * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+			 */
+			function onButtonClick2(/* cpr.events.CMouseEvent */ e){
+				/** 
+				 * @type cpr.controls.Button
+				 */
+				var button = e.control;
+				
+				var product_image = app.lookup("product_image");
+				console.log("출입통제기 이미지 파일명 :" + product_image.file);
+				console.log("출입통제기 파일 타입" + product_image.file.type);
+				
+				
+			};
 			// End - User Script
 			
 			// Header
@@ -51,19 +98,8 @@
 			});
 			app.register(dataSet_1);
 			
-			var dataSet_2 = new cpr.data.DataSet("communication");
+			var dataSet_2 = new cpr.data.DataSet("developerList");
 			dataSet_2.parseData({
-				"columns": [
-					{"name": "server"},
-					{"name": "wi_fi"},
-					{"name": "other"}
-				],
-				"rows": [{"server": "", "wi_fi": "", "other": ""}]
-			});
-			app.register(dataSet_2);
-			
-			var dataSet_3 = new cpr.data.DataSet("developerList");
-			dataSet_3.parseData({
 				"columns" : [
 					{"name": "department"},
 					{"name": "employees_number"},
@@ -72,8 +108,8 @@
 					{"name": "end_date"}
 				]
 			});
-			app.register(dataSet_3);
-			var dataMap_1 = new cpr.data.DataMap("product_size");
+			app.register(dataSet_2);
+			var dataMap_1 = new cpr.data.DataMap("product_device");
 			dataMap_1.parseData({
 				"columns" : [
 					{
@@ -87,20 +123,54 @@
 					{
 						"name": "depth",
 						"dataType": "number"
-					}
+					},
+					{"name": "ip_ratings"},
+					{"name": "server"},
+					{"name": "wi_fi"},
+					{"name": "other"}
 				]
 			});
 			app.register(dataMap_1);
 			
+			var dataMap_2 = new cpr.data.DataMap("product");
+			dataMap_2.parseData({
+				"columns" : [
+					{"name": "product_type"},
+					{"name": "product_name"},
+					{"name": "product_version"},
+					{"name": "real_image_name"},
+					{"name": "save_image_name"},
+					{"name": "save_path"},
+					{"name": "explanation"}
+				]
+			});
+			app.register(dataMap_2);
+			
+			var dataMap_3 = new cpr.data.DataMap("result");
+			dataMap_3.parseData({
+				"columns" : [{"name": "resultCode"}]
+			});
+			app.register(dataMap_3);
+			var submission_1 = new cpr.protocols.Submission("addDevice");
+			submission_1.action = "/productMangement/addDevice";
+			submission_1.mediaType = "multipart/form-data";
+			submission_1.addRequestData(dataMap_2);
+			submission_1.addRequestData(dataSet_1);
+			submission_1.addRequestData(dataMap_1);
+			submission_1.addRequestData(dataSet_2);
+			submission_1.addResponseData(dataMap_3, false);
+			app.register(submission_1);
+			
 			app.supportMedia("all and (min-width: 1024px)", "default");
-			app.supportMedia("all and (min-width: 750px) and (max-width: 1023px)", "pop-up");
-			app.supportMedia("all and (min-width: 750px) and (max-width: 749px)", "dialog");
-			app.supportMedia("all and (min-width: 500px) and (max-width: 749px)", "tablet");
+			app.supportMedia("all and (min-width: 740px) and (max-width: 1023px)", "pop-up");
+			app.supportMedia("all and (min-width: 740px) and (max-width: 739px)", "dialog");
+			app.supportMedia("all and (min-width: 500px) and (max-width: 739px)", "tablet");
 			app.supportMedia("all and (max-width: 499px)", "mobile");
 			
 			// Configure root container
 			var container = app.getContainer();
 			container.style.css({
+				"font-family" : "'\\B9D1\\C740  \\ACE0\\B515' , 'Malgun Gothic' , sans-serif",
 				"width" : "100%",
 				"top" : "0px",
 				"height" : "100%",
@@ -114,57 +184,20 @@
 			// UI Configuration
 			var group_1 = new cpr.controls.Container();
 			group_1.style.css({
-				"background-color" : "#008000",
-				"border-radius" : "8px 8px 0 0"
+				"border-radius" : "0 0 8px 8px",
+				"vertical-align" : "middle"
 			});
 			// Layout
 			var xYLayout_2 = new cpr.controls.layouts.XYLayout();
 			group_1.setLayout(xYLayout_2);
 			(function(container){
-				var button_1 = new cpr.controls.Button();
-				button_1.value = "X";
-				button_1.style.css({
-					"border-right-style" : "none",
-					"background-color" : "#008000",
-					"background-repeat" : "no-repeat",
-					"color" : "white",
-					"font-weight" : "bold",
-					"border-left-style" : "none",
-					"font-size" : "16px",
-					"border-bottom-style" : "none",
-					"background-image" : "none",
-					"border-top-style" : "none"
-				});
-				container.addChild(button_1, {
-					"top": "2px",
-					"left": "714px",
-					"width": "32px",
-					"height": "32px"
-				});
-			})(group_1);
-			container.addChild(group_1, {
-				"top": "1px",
-				"left": "0px",
-				"width": "752px",
-				"height": "38px"
-			});
-			
-			var group_2 = new cpr.controls.Container();
-			group_2.style.css({
-				"border-radius" : "0 0 8px 8px",
-				"vertical-align" : "middle"
-			});
-			// Layout
-			var xYLayout_3 = new cpr.controls.layouts.XYLayout();
-			group_2.setLayout(xYLayout_3);
-			(function(container){
-				var group_3 = new cpr.controls.Container();
+				var group_2 = new cpr.controls.Container();
 				// Layout
-				var xYLayout_4 = new cpr.controls.layouts.XYLayout();
-				group_3.setLayout(xYLayout_4);
+				var xYLayout_3 = new cpr.controls.layouts.XYLayout();
+				group_2.setLayout(xYLayout_3);
 				(function(container){
-					var radioButton_1 = new cpr.controls.RadioButton("rdb1");
-					radioButton_1.value = "SW";
+					var radioButton_1 = new cpr.controls.RadioButton("radio_productType");
+					radioButton_1.value = "출입통제기";
 					radioButton_1.style.css({
 						"white-space" : "nowrap",
 						"text-align" : "center"
@@ -183,14 +216,14 @@
 						"width": "214px",
 						"height": "30px"
 					});
-				})(group_3);
-				container.addChild(group_3, {
+				})(group_2);
+				container.addChild(group_2, {
 					"top": "18px",
 					"left": "20px",
 					"width": "249px",
 					"height": "34px"
 				});
-				var group_4 = new cpr.controls.Container();
+				var group_3 = new cpr.controls.Container();
 				// Layout
 				var formLayout_1 = new cpr.controls.layouts.FormLayout();
 				formLayout_1.topMargin = "0px";
@@ -201,12 +234,12 @@
 				formLayout_1.verticalSpacing = "0px";
 				formLayout_1.setColumns(["227px", "238px", "209px"]);
 				formLayout_1.setRows(["25px"]);
-				group_4.setLayout(formLayout_1);
+				group_3.setLayout(formLayout_1);
 				(function(container){
-					var group_5 = new cpr.controls.Container();
+					var group_4 = new cpr.controls.Container();
 					// Layout
-					var xYLayout_5 = new cpr.controls.layouts.XYLayout();
-					group_5.setLayout(xYLayout_5);
+					var xYLayout_4 = new cpr.controls.layouts.XYLayout();
+					group_4.setLayout(xYLayout_4);
 					(function(container){
 						var output_1 = new cpr.controls.Output();
 						output_1.value = "제품명";
@@ -220,26 +253,27 @@
 							"width": "73px",
 							"height": "25px"
 						});
-						var inputBox_1 = new cpr.controls.InputBox("ipb1");
+						var inputBox_1 = new cpr.controls.InputBox("input_productName");
+						inputBox_1.bind("value").toDataMap(app.lookup("product"), "product_name");
 						container.addChild(inputBox_1, {
 							"top": "0px",
 							"left": "79px",
 							"width": "159px",
 							"height": "25px"
 						});
-					})(group_5);
-					container.addChild(group_5, {
+					})(group_4);
+					container.addChild(group_4, {
 						"colIndex": 1,
 						"rowIndex": 0
 					});
-				})(group_4);
-				container.addChild(group_4, {
+				})(group_3);
+				container.addChild(group_3, {
 					"top": "65px",
 					"left": "20px",
 					"width": "704px",
 					"height": "27px"
 				});
-				var grid_1 = new cpr.controls.Grid("grd1");
+				var grid_1 = new cpr.controls.Grid("authentication");
 				grid_1.init({
 					"dataSet": app.lookup("authenticationList"),
 					"columns": [
@@ -448,7 +482,7 @@
 					"width": "704px",
 					"height": "146px"
 				});
-				var group_6 = new cpr.controls.Container();
+				var group_5 = new cpr.controls.Container();
 				// Layout
 				var formLayout_2 = new cpr.controls.layouts.FormLayout();
 				formLayout_2.topMargin = "0px";
@@ -459,7 +493,7 @@
 				formLayout_2.verticalSpacing = "0px";
 				formLayout_2.setColumns(["2fr", "2fr", "42px", "2fr", "42px", "2fr", "52px"]);
 				formLayout_2.setRows(["22px", "25px"]);
-				group_6.setLayout(formLayout_2);
+				group_5.setLayout(formLayout_2);
 				(function(container){
 					var output_2 = new cpr.controls.Output();
 					output_2.value = "제품 사이즈";
@@ -507,14 +541,14 @@
 					});
 					var inputBox_2 = new cpr.controls.InputBox("ipb4");
 					inputBox_2.inputFilter = "[\\d,\\.]";
-					inputBox_2.bind("value").toDataMap(app.lookup("product_size"), "height");
+					inputBox_2.bind("value").toDataMap(app.lookup("product_device"), "height");
 					container.addChild(inputBox_2, {
 						"colIndex": 3,
 						"rowIndex": 1
 					});
 					var inputBox_3 = new cpr.controls.InputBox("ipb5");
 					inputBox_3.inputFilter = "[\\d,\\.]";
-					inputBox_3.bind("value").toDataMap(app.lookup("product_size"), "depth");
+					inputBox_3.bind("value").toDataMap(app.lookup("product_device"), "depth");
 					container.addChild(inputBox_3, {
 						"colIndex": 5,
 						"rowIndex": 1
@@ -524,32 +558,35 @@
 					inputBox_4.style.css({
 						"background-color" : "#ffffff"
 					});
-					inputBox_4.bind("value").toDataMap(app.lookup("product_size"), "width");
+					inputBox_4.bind("value").toDataMap(app.lookup("product_device"), "width");
 					container.addChild(inputBox_4, {
 						"colIndex": 1,
 						"rowIndex": 1
 					});
-				})(group_6);
-				container.addChild(group_6, {
+				})(group_5);
+				container.addChild(group_5, {
 					"top": "266px",
 					"left": "20px",
 					"width": "522px",
 					"height": "54px"
 				});
-				var fileInput_1 = new cpr.controls.FileInput("fi1");
+				var fileInput_1 = new cpr.controls.FileInput("product_image");
+				fileInput_1.showClearButton = true;
 				fileInput_1.placeholder = "제품 이미지 선택";
+				fileInput_1.acceptFile = "image/*";
 				container.addChild(fileInput_1, {
 					"top": "66px",
 					"left": "21px",
 					"width": "227px",
 					"height": "25px"
 				});
-				var group_7 = new cpr.controls.Container();
+				var group_6 = new cpr.controls.Container();
 				// Layout
-				var xYLayout_6 = new cpr.controls.layouts.XYLayout();
-				group_7.setLayout(xYLayout_6);
+				var xYLayout_5 = new cpr.controls.layouts.XYLayout();
+				group_6.setLayout(xYLayout_5);
 				(function(container){
 					var inputBox_5 = new cpr.controls.InputBox("ipb2");
+					inputBox_5.bind("value").toDataMap(app.lookup("product"), "product_version");
 					container.addChild(inputBox_5, {
 						"top": "0px",
 						"left": "68px",
@@ -568,8 +605,8 @@
 						"width": "62px",
 						"height": "25px"
 					});
-				})(group_7);
-				container.addChild(group_7, {
+				})(group_6);
+				container.addChild(group_6, {
 					"top": "66px",
 					"left": "518px",
 					"width": "209px",
@@ -590,16 +627,15 @@
 					"width": "522px",
 					"height": "23px"
 				});
-				var group_8 = new cpr.controls.Container();
+				var group_7 = new cpr.controls.Container();
 				// Layout
 				var flowLayout_1 = new cpr.controls.layouts.FlowLayout();
 				flowLayout_1.scrollable = false;
 				flowLayout_1.lineWrap = true;
-				group_8.setLayout(flowLayout_1);
+				group_7.setLayout(flowLayout_1);
 				(function(container){
-					var grid_2 = new cpr.controls.Grid("grd2");
+					var grid_2 = new cpr.controls.Grid("communication");
 					grid_2.init({
-						"dataSet": app.lookup("communication"),
 						"columns": [
 							{"width": "92px"},
 							{"width": "128px"},
@@ -614,7 +650,6 @@
 								{
 									"constraint": {"rowIndex": 1, "colIndex": 0},
 									"configurator": function(cell){
-										cell.targetColumnName = "server";
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.text = "Server";
@@ -626,7 +661,6 @@
 								{
 									"constraint": {"rowIndex": 1, "colIndex": 1},
 									"configurator": function(cell){
-										cell.targetColumnName = "wi_fi";
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.text = "Wireless LAN(Wi-Fi)";
@@ -638,7 +672,6 @@
 								{
 									"constraint": {"rowIndex": 1, "colIndex": 2},
 									"configurator": function(cell){
-										cell.targetColumnName = "other";
 										cell.filterable = false;
 										cell.sortable = false;
 										cell.text = "Other";
@@ -664,10 +697,9 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 0},
 									"configurator": function(cell){
-										cell.columnName = "server";
 										cell.control = (function(){
 											var inputBox_6 = new cpr.controls.InputBox("ipb6");
-											inputBox_6.bind("value").toDataColumn("server");
+											inputBox_6.bind("value").toDataMap(app.lookup("product_device"), "server");
 											return inputBox_6;
 										})();
 									}
@@ -675,18 +707,18 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 1},
 									"configurator": function(cell){
-										cell.columnName = "wi_fi";
 										cell.style.css({
 											"vertical-align" : "middle",
 											"text-align" : "center"
 										});
 										cell.control = (function(){
 											var comboBox_1 = new cpr.controls.ComboBox("cmb1");
+											comboBox_1.preventInput = false;
+											comboBox_1.bind("value").toDataMap(app.lookup("product_device"), "wi_fi");
 											(function(comboBox_1){
 												comboBox_1.addItem(new cpr.controls.Item("O", "O"));
 												comboBox_1.addItem(new cpr.controls.Item("X", "X"));
 											})(comboBox_1);
-											comboBox_1.bind("value").toDataColumn("wi_fi");
 											return comboBox_1;
 										})();
 									}
@@ -694,10 +726,9 @@
 								{
 									"constraint": {"rowIndex": 0, "colIndex": 2},
 									"configurator": function(cell){
-										cell.columnName = "other";
 										cell.control = (function(){
 											var inputBox_7 = new cpr.controls.InputBox("ipb7");
-											inputBox_7.bind("value").toDataColumn("other");
+											inputBox_7.bind("value").toDataMap(app.lookup("product_device"), "other");
 											return inputBox_7;
 										})();
 									}
@@ -707,19 +738,19 @@
 					});
 					container.addChild(grid_2, {
 						"width": "400px",
-						"height": "70px"
+						"height": "74px"
 					});
-				})(group_8);
-				container.addChild(group_8, {
+				})(group_7);
+				container.addChild(group_7, {
 					"top": "330px",
 					"left": "20px",
 					"width": "404px",
 					"height": "73px"
 				});
-				var group_9 = new cpr.controls.Container();
+				var group_8 = new cpr.controls.Container();
 				// Layout
 				var verticalLayout_1 = new cpr.controls.layouts.VerticalLayout();
-				group_9.setLayout(verticalLayout_1);
+				group_8.setLayout(verticalLayout_1);
 				(function(container){
 					var output_8 = new cpr.controls.Output();
 					output_8.value = "설명";
@@ -731,21 +762,22 @@
 						"height": "20px"
 					});
 					var textArea_1 = new cpr.controls.TextArea("txa1");
+					textArea_1.bind("value").toDataMap(app.lookup("product"), "explanation");
 					container.addChild(textArea_1, {
 						"width": "100px",
 						"height": "139px"
 					});
-				})(group_9);
-				container.addChild(group_9, {
+				})(group_8);
+				container.addChild(group_8, {
 					"top": "413px",
 					"left": "20px",
 					"width": "704px",
 					"height": "172px"
 				});
-				var group_10 = new cpr.controls.Container();
+				var group_9 = new cpr.controls.Container();
 				// Layout
-				var xYLayout_7 = new cpr.controls.layouts.XYLayout();
-				group_10.setLayout(xYLayout_7);
+				var xYLayout_6 = new cpr.controls.layouts.XYLayout();
+				group_9.setLayout(xYLayout_6);
 				(function(container){
 					var output_9 = new cpr.controls.Output();
 					output_9.value = "방수/방진";
@@ -760,14 +792,15 @@
 						"height": "25px"
 					});
 					var inputBox_8 = new cpr.controls.InputBox("ipb8");
+					inputBox_8.bind("value").toDataMap(app.lookup("product_device"), "ip_ratings");
 					container.addChild(inputBox_8, {
 						"top": "41px",
 						"left": "101px",
 						"width": "150px",
 						"height": "25px"
 					});
-				})(group_10);
-				container.addChild(group_10, {
+				})(group_9);
+				container.addChild(group_9, {
 					"top": "330px",
 					"left": "434px",
 					"width": "290px",
@@ -788,7 +821,7 @@
 					"width": "275px",
 					"height": "38px"
 				});
-				var group_11 = new cpr.controls.Container();
+				var group_10 = new cpr.controls.Container();
 				// Layout
 				var formLayout_3 = new cpr.controls.layouts.FormLayout();
 				formLayout_3.topMargin = "0px";
@@ -799,7 +832,7 @@
 				formLayout_3.verticalSpacing = "8px";
 				formLayout_3.setColumns(["16fr", "34px"]);
 				formLayout_3.setRows(["25px", "1fr"]);
-				group_11.setLayout(formLayout_3);
+				group_10.setLayout(formLayout_3);
 				(function(container){
 					var output_11 = new cpr.controls.Output();
 					output_11.value = "담당 개발자";
@@ -810,9 +843,9 @@
 						"colIndex": 0,
 						"rowIndex": 0
 					});
-					var button_2 = new cpr.controls.Button();
-					button_2.value = "+";
-					button_2.style.css({
+					var button_1 = new cpr.controls.Button();
+					button_1.value = "+";
+					button_1.style.css({
 						"background-color" : "#eaf0ea",
 						"border-bottom-color" : "#c2c2c2",
 						"border-left-color" : "#c2c2c2",
@@ -820,17 +853,20 @@
 						"border-right-color" : "#c2c2c2",
 						"background-image" : "none"
 					});
-					container.addChild(button_2, {
+					if(typeof onButtonClick == "function") {
+						button_1.addEventListener("click", onButtonClick);
+					}
+					container.addChild(button_1, {
 						"colIndex": 1,
 						"rowIndex": 0,
 						"colSpan": 1,
 						"rowSpan": 1
 					});
-					var grid_3 = new cpr.controls.Grid("grd3");
+					var grid_3 = new cpr.controls.Grid("grid_developer");
 					grid_3.init({
 						"dataSet": app.lookup("developerList"),
 						"columns": [
-							{"width": "25px"},
+							{"width": "33px"},
 							{"width": "100px"},
 							{"width": "100px"},
 							{"width": "100px"},
@@ -951,6 +987,7 @@
 										cell.columnName = "employees_number";
 										cell.control = (function(){
 											var maskEditor_1 = new cpr.controls.MaskEditor("mse1");
+											maskEditor_1.mask = "000000000";
 											maskEditor_1.bind("value").toDataColumn("employees_number");
 											return maskEditor_1;
 										})();
@@ -998,16 +1035,16 @@
 						"colSpan": 2,
 						"rowSpan": 1
 					});
-				})(group_11);
-				container.addChild(group_11, {
-					"top": "612px",
+				})(group_10);
+				container.addChild(group_10, {
+					"top": "600px",
 					"left": "20px",
 					"width": "704px",
-					"height": "200px"
+					"height": "225px"
 				});
-				var button_3 = new cpr.controls.Button();
-				button_3.value = "등록";
-				button_3.style.css({
+				var button_2 = new cpr.controls.Button();
+				button_2.value = "등록";
+				button_2.style.css({
 					"background-color" : "#DAF2DA",
 					"border-right-style" : "none",
 					"border-radius" : "10px",
@@ -1016,32 +1053,25 @@
 					"background-image" : "none",
 					"border-top-style" : "none"
 				});
-				container.addChild(button_3, {
-					"top": "825px",
+				if(typeof onButtonClick2 == "function") {
+					button_2.addEventListener("click", onButtonClick2);
+				}
+				container.addChild(button_2, {
+					"top": "840px",
 					"left": "644px",
 					"width": "80px",
 					"height": "25px"
 				});
-			})(group_2);
-			container.addChild(group_2, {
-				"top": "38px",
+			})(group_1);
+			container.addChild(group_1, {
+				"top": "0px",
 				"left": "0px",
-				"width": "752px",
-				"height": "863px"
+				"width": "740px",
+				"height": "880px"
 			});
-			
-			var output_12 = new cpr.controls.Output();
-			output_12.value = "제품 등록";
-			output_12.style.css({
-				"color" : "white",
-				"font-size" : "12pt"
-			});
-			container.addChild(output_12, {
-				"top": "5px",
-				"left": "20px",
-				"width": "87px",
-				"height": "29px"
-			});
+			if(typeof onBodyLoad == "function"){
+				app.addEventListener("load", onBodyLoad);
+			}
 		}
 	});
 	app.title = "addProduct";

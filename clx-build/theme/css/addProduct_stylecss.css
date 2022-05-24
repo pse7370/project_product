@@ -29,13 +29,21 @@
 	
 	/* 추가된 로우 */
 	&.cl-inserted {
+		color: black;
+		font-weight: normal;
+		
 		.cl-default-cell, .cl-inputbox, .cl-output, .cl-maskeditor, .cl-numbereditor, .cl-dateinput, .cl-button, .cl-textarea, .cl-combobox, .cl-treecell, .cl-fileinput, .cl-searchinput {
+			
 		}
 	}
 
 	/* 수정된 로우 */
 	&.cl-modified {
+		color: black;
+		font-weight: normal;
+			
 		.cl-default-cell, .cl-inputbox, .cl-output, .cl-maskeditor, .cl-numbereditor, .cl-dateinput, .cl-button, .cl-textarea, .cl-combobox, .cl-treecell, .cl-fileinput, .cl-searchinput {
+			
 		}
 	}
 
@@ -65,6 +73,8 @@
 
 	/* 편집중인 로우 */
 	&.cl-editing {
+		color: black;
+		font-weight: normal;
 	}
 
 	/* 행 그룹시 그룹의 헤더 */

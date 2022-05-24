@@ -41,6 +41,7 @@
       <cl:xylayout std:sid="xylayout-4d76a768"/>
     </cl:group>
     <cl:button std:sid="button-a513aef2" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; color:black; border-left-style:none; font-size:11pt; border-bottom-style:none; background-image:none; border-top-style:none;" value="제품 등록">
+      <cl:listener std:sid="listener-2cef1417" name="click" handler="onButtonClick"/>
       <cl:xylayoutdata std:sid="xyl-data-4b186e5f" top="104px" left="893px" width="95px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:output std:sid="output-93b94d21" style="font-size:30pt;" value="제품관리">
