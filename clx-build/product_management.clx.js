@@ -186,17 +186,17 @@
 			(function(container){
 			})(group_2);
 			container.addChild(group_2, {
-				"top": "133px",
+				"top": "144px",
 				"left": "255px",
 				"width": "748px",
-				"height": "614px"
+				"height": "603px"
 			});
 			
 			var button_1 = new cpr.controls.Button();
 			button_1.value = "제품 등록";
 			button_1.style.css({
 				"border-right-style" : "none",
-				"background-color" : "#B8E6B8",
+				"background-color" : "#DAF2DA",
 				"border-radius" : "10px",
 				"color" : "black",
 				"border-left-style" : "none",
@@ -206,7 +206,7 @@
 				"border-top-style" : "none"
 			});
 			container.addChild(button_1, {
-				"top": "91px",
+				"top": "104px",
 				"left": "893px",
 				"width": "95px",
 				"height": "30px"
