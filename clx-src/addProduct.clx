@@ -19,32 +19,32 @@
         </cl:datacolumnlist>
         <cl:datarowlist>
           <cl:datarow>
-            <cl:datavalue columnname="auth_type"><![CDATA[카드]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_template"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_template"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="auth_type">카드</cl:datavalue>
+            <cl:datavalue columnname="one_to_one_max_user"/>
+            <cl:datavalue columnname="one_to_many_max_user"/>
+            <cl:datavalue columnname="one_to_one_max_template"/>
+            <cl:datavalue columnname="one_to_many_max_template"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="auth_type"><![CDATA[지문]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_template"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_template"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="auth_type">지문</cl:datavalue>
+            <cl:datavalue columnname="one_to_one_max_user"/>
+            <cl:datavalue columnname="one_to_many_max_user"/>
+            <cl:datavalue columnname="one_to_one_max_template"/>
+            <cl:datavalue columnname="one_to_many_max_template"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="auth_type"><![CDATA[얼굴]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_template"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_template"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="auth_type">얼굴</cl:datavalue>
+            <cl:datavalue columnname="one_to_one_max_user"/>
+            <cl:datavalue columnname="one_to_many_max_user"/>
+            <cl:datavalue columnname="one_to_one_max_template"/>
+            <cl:datavalue columnname="one_to_many_max_template"/>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="auth_type"><![CDATA[홍채]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_user"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_one_max_template"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="one_to_many_max_template"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="auth_type">홍채</cl:datavalue>
+            <cl:datavalue columnname="one_to_one_max_user"/>
+            <cl:datavalue columnname="one_to_many_max_user"/>
+            <cl:datavalue columnname="one_to_one_max_template"/>
+            <cl:datavalue columnname="one_to_many_max_template"/>
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
@@ -73,9 +73,6 @@
           <cl:datacolumn std:sid="d-column-d2f151ae" name="product_type"/>
           <cl:datacolumn std:sid="d-column-32e50aa5" name="product_name"/>
           <cl:datacolumn std:sid="d-column-36ff3d32" name="product_version"/>
-          <cl:datacolumn std:sid="d-column-ec808ffb" name="real_image_name"/>
-          <cl:datacolumn std:sid="d-column-49c4800d" name="save_image_name"/>
-          <cl:datacolumn std:sid="d-column-6b425777" name="save_path"/>
           <cl:datacolumn std:sid="d-column-361511eb" name="explanation"/>
         </cl:datacolumnlist>
       </cl:datamap>

@@ -49,5 +49,9 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	console.log("출입통제기 이미지 파일명 :" + product_image.file);
 	console.log("출입통제기 파일 타입" + product_image.file.type);
 	
+	var addDevice = app.lookup("addDevice");
+	addDevice.addFileParameter("deviceImage", product_image.file);
+	
+	addDevice.send();
 	
 }

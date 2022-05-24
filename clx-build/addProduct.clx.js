@@ -63,6 +63,10 @@
 				console.log("출입통제기 이미지 파일명 :" + product_image.file);
 				console.log("출입통제기 파일 타입" + product_image.file.type);
 				
+				var addDevice = app.lookup("addDevice");
+				addDevice.addFileParameter("deviceImage", product_image.file);
+				
+				addDevice.send();
 				
 			};
 			// End - User Script
@@ -138,9 +142,6 @@
 					{"name": "product_type"},
 					{"name": "product_name"},
 					{"name": "product_version"},
-					{"name": "real_image_name"},
-					{"name": "save_image_name"},
-					{"name": "save_path"},
 					{"name": "explanation"}
 				]
 			});
