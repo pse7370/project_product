@@ -52,15 +52,58 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 		console.log("출입통제기 파일 타입" + product_image.file.type);
 	}
 	
+	var product = app.lookup("product");
 	
+	product.setValue("product_type", "출입통제기");
 	
+	var authenticationList = app.lookup("authenticationList")
+	var authenticationDetailList = app.lookup("authenticationDetailList")
 	
+	console.log(authenticationList.getRowCount());
+	console.log(authenticationList.getRowData(0));
 	
+	/*
+	for(i = 0; i < authenticationList.getRowCount(); i++){
+		authenticationDetailList.clear();
+		authenticationDetailList.addRowData({
+												 "auth_type": authenticationList.getValue(i, "auth_type"), 
+												 "auth_method": "1:1",
+												 "max_users": authenticationList.getValue(i, "one_to_one_max_user"),
+												 "max_templates": authenticationList.getValue(i, "one_to_one_max_template")	
+											},
+											{
+												"auth_type": authenticationList.getValue(i+1, "auth_type"), 
+												 "auth_method": "1:N",
+												 "max_users": authenticationList.getValue(i+1, "one_to_many_max_user"),
+												 "max_templates": authenticationList.getValue(i+1, "one_to_many_max_template"),
+											});
+			console.log(authenticationDetailList.getRowData(i));	
+			console.log(authenticationDetailList.getRowData(i+1));							
+	}
+	* 	*/
 	
 	
 	addDevice.send();
 }
 
 
-
-
+/* 출입통제기 제품 등록 성공 후
+ * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onAddDeviceSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var addDevice = e.control;
+	
+	var resultCode = app.lookup("result").getOriginalValue("resultCode");
+	
+	var returnValue; 
+	if(resultCode == "ok"){
+		returnValue = 1;
+		app.close(returnValue);
+		
+	}
+	
+}

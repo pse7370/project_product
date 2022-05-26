@@ -27,6 +27,8 @@
   <body std:sid="body-592f463f" style="background-repeat:no-repeat; top:0px; left:0px; width:800px; font-size:11pt; font-family:IBMPlexSansKR-Regular; height:600px;">
     <cl:listener std:sid="listener-1866097f" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-e030f8d4" name="load" handler="onBodyLoad"/>
+    <cl:listener std:sid="listener-66dc716a" name="screen-change" handler="onBodyScreenChange"/>
+    <cl:listener std:sid="listener-cdd73094" name="property-change" handler="onBodyPropertyChange"/>
     <cl:group std:sid="group-09f68200">
       <cl:xylayoutdata std:sid="xyl-data-69e6bd09" top="20px" left="19px" width="227px" height="727px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:tree std:sid="tree-7201149e" id="sideTree" style="border-radius:15px;" indent="20">

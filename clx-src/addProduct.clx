@@ -17,9 +17,12 @@
     <cl:embeddedapp std:sid="e-app-d8d5605a" id="detailLayout">
       <cl:xylayoutdata std:sid="xyl-data-12eb83b5" top="62px" left="20px" width="713px" height="818px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:embeddedapp>
-    <cl:udc std:sid="ud-control-ea64389d" type="udc.product_type_radio">
-      <cl:xylayoutdata std:sid="xyl-data-af50fea3" top="20px" left="20px" width="241px" height="32px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-    </cl:udc>
+    <cl:radiobutton std:sid="r-button-cdca7d02" id="radio_productType" style="white-space:nowrap; text-align:center;">
+      <cl:xylayoutdata std:sid="xyl-data-949df70b" top="20px" left="20px" width="214px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:item std:sid="item-4a03b225" label="출입통제기" value="출입통제기"/>
+      <cl:item std:sid="item-6f58e689" label="SW" value="SW"/>
+      <cl:itemstyle style="padding-left:0px; padding-right:0px;"/>
+    </cl:radiobutton>
     <cl:xylayout std:sid="xylayout-973b0281"/>
   </body>
   <std:studiosetting>

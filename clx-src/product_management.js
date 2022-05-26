@@ -67,7 +67,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	 */
 	var button = e.control;
 	
-	app.getRootAppInstance().openDialog("addProduct", {width : 760, height : 700}, function(dialog){
+	app.dialogManager.openDialog("addProduct", "addProduct", {width : 760, height : 700}, function(dialog){
 		dialog.ready(function(dialogApp){
 			// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
 			dialog.headerTitle = "상품 관리";
@@ -82,6 +82,17 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 			*/
 			
 		});
-	});
+	}).then(function(returnValue){
+			if (returnValue == 1){
+				window.location.reload();
+			}
+		});
+	
+
+	
+	
 	
 }
+
+
+

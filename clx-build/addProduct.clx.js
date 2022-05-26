@@ -32,6 +32,7 @@
 			 * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
 			 */
 			function onBodyLoad(/* cpr.events.CEvent */ e){
+				app.lookup("radio_productType").value = "출입통제기"
 				var embeddedApp = app.lookup("detailLayout");
 				cpr.core.App.load("addDevice", function(loadedApp){
 					if(loadedApp){
@@ -85,12 +86,24 @@
 				"height": "818px"
 			});
 			
-			var userDefinedControl_1 = new udc.product_type_radio();
-			container.addChild(userDefinedControl_1, {
+			var radioButton_1 = new cpr.controls.RadioButton("radio_productType");
+			radioButton_1.style.css({
+				"white-space" : "nowrap",
+				"text-align" : "center"
+			});
+			radioButton_1.style.item.css({
+				"padding-left" : "0px",
+				"padding-right" : "0px"
+			});
+			(function(radioButton_1){
+				radioButton_1.addItem(new cpr.controls.Item("출입통제기", "출입통제기"));
+				radioButton_1.addItem(new cpr.controls.Item("SW", "SW"));
+			})(radioButton_1);
+			container.addChild(radioButton_1, {
 				"top": "20px",
 				"left": "20px",
-				"width": "241px",
-				"height": "32px"
+				"width": "214px",
+				"height": "30px"
 			});
 			if(typeof onBodyLoad == "function"){
 				app.addEventListener("load", onBodyLoad);

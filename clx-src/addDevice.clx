@@ -55,6 +55,14 @@
           <cl:datacolumn std:sid="d-column-14ff71be" name="end_date"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-36eb2cab" id="authenticationDetailList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-f71cce38" name="auth_type"/>
+          <cl:datacolumn std:sid="d-column-15933b1f" name="auth_method"/>
+          <cl:datacolumn std:sid="d-column-eabdfcdc" name="max_users" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-b461c1c9" name="max_templates" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-3fa2152d" id="product_device">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-3bef5b45" name="width" datatype="number"/>
@@ -68,6 +76,7 @@
       </cl:datamap>
       <cl:datamap std:sid="d-map-e187d816" id="product">
         <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-9df4b354" name="product_type"/>
           <cl:datacolumn std:sid="d-column-32e50aa5" name="product_name"/>
           <cl:datacolumn std:sid="d-column-36ff3d32" name="product_version"/>
           <cl:datacolumn std:sid="d-column-361511eb" name="explanation"/>
@@ -79,6 +88,7 @@
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-3c37e95f" id="addDevice" action="/productMangement/addDevice" mediatype="multipart/form-data">
+        <cl:listener std:sid="listener-f3bf878f" name="submit-done" handler="onAddDeviceSubmitDone"/>
         <cl:requestdata dataid="product"/>
         <cl:requestdata dataid="authenticationList"/>
         <cl:requestdata dataid="product_device"/>

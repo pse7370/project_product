@@ -18,6 +18,7 @@ function onBodyInit(/* cpr.events.CEvent */ e){
  * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
  */
 function onBodyLoad(/* cpr.events.CEvent */ e){
+	app.lookup("radio_productType").value = "출입통제기"
 	var embeddedApp = app.lookup("detailLayout");
 	cpr.core.App.load("addDevice", function(loadedApp){
 		if(loadedApp){
@@ -38,6 +39,4 @@ function onRadio_productTypeSelectionChange(/* cpr.events.CSelectionEvent */ e){
 	var radio_productType = e.control;
 	
 }
-
-
 
