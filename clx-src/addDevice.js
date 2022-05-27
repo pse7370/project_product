@@ -60,29 +60,30 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	var authenticationDetailList = app.lookup("authenticationDetailList")
 	
 	console.log(authenticationList.getRowCount());
-	console.log(authenticationList.getRowData(0));
 	
-	/*
-	for(i = 0; i < authenticationList.getRowCount(); i++){
-		authenticationDetailList.clear();
+	var authenGrid = app.lookup("authentication");
+	console.log("checkedRow : " + authenGrid.getCheckRowIndices());
+	
+	var checkedRow = authenGrid.getCheckRowIndices();
+	var count
+	authenticationDetailList.clear();
+	for(count = 0; count < checkedRow.length; count++){	
 		authenticationDetailList.addRowData({
-												 "auth_type": authenticationList.getValue(i, "auth_type"), 
+												 "auth_type": authenticationList.getValue(checkedRow[count], "auth_type"), 
 												 "auth_method": "1:1",
-												 "max_users": authenticationList.getValue(i, "one_to_one_max_user"),
-												 "max_templates": authenticationList.getValue(i, "one_to_one_max_template")	
-											},
-											{
-												"auth_type": authenticationList.getValue(i+1, "auth_type"), 
+												 "max_users": authenticationList.getValue(checkedRow[count], "one_to_one_max_user"),
+												 "max_templates": authenticationList.getValue(checkedRow[count], "one_to_one_max_template")	
+											}),
+		authenticationDetailList.addRowData({
+												"auth_type": authenticationList.getValue(checkedRow[count], "auth_type"), 
 												 "auth_method": "1:N",
-												 "max_users": authenticationList.getValue(i+1, "one_to_many_max_user"),
-												 "max_templates": authenticationList.getValue(i+1, "one_to_many_max_template"),
+												 "max_users": authenticationList.getValue(checkedRow[count], "one_to_many_max_user"),
+												 "max_templates": authenticationList.getValue(checkedRow[count], "one_to_many_max_template"),
 											});
-			console.log(authenticationDetailList.getRowData(i));	
-			console.log(authenticationDetailList.getRowData(i+1));							
+			console.log(authenticationDetailList.getRowData(checkedRow[count]));	
 	}
-	* 	*/
-	
-	
+
+	addDevice.addRequestData(authenticationDetailList);
 	addDevice.send();
 }
 
