@@ -39,4 +39,10 @@ function onRadio_productTypeSelectionChange(/* cpr.events.CSelectionEvent */ e){
 	var radio_productType = e.control;
 	
 }
-
+/*
+var embeddedApp = app.lookup("detailLayout");
+var resultCode = embeddedApp.getAppProperty("resultCode")
+if (resultCode == 1) {
+	app.close();
+}
+*/

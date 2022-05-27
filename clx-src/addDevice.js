@@ -100,11 +100,8 @@ function onAddDeviceSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	
 	var resultCode = app.lookup("result").getOriginalValue("resultCode");
 	
-	var returnValue; 
-	if(resultCode == "ok"){
-		returnValue = 1;
-		app.close(returnValue);
-		
-	}
+	app.setAppProperty("resultCode", resultCode);
+	
+	app.getRootAppInstance().close();
 	
 }
