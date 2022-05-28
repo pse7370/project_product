@@ -65,6 +65,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	console.log("checkedRow : " + authenGrid.getCheckRowIndices());
 	
 	var checkedRow = authenGrid.getCheckRowIndices();
+	/*
 	var count
 	authenticationDetailList.clear();
 	for(count = 0; count < checkedRow.length; count++){	
@@ -84,6 +85,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	}
 
 	addDevice.addRequestData(authenticationDetailList);
+	*/
 	addDevice.send();
 }
 
@@ -102,6 +104,7 @@ function onAddDeviceSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	
 	app.setAppProperty("resultCode", resultCode);
 	
-	app.getRootAppInstance().close();
+	app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close();
+	//app.getRootAppInstance().close();
 	
 }

@@ -225,7 +225,7 @@
 				"top": "144px",
 				"left": "255px",
 				"width": "748px",
-				"height": "603px"
+				"height": "598px"
 			});
 			
 			var button_1 = new cpr.controls.Button();

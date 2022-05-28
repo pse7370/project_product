@@ -92,7 +92,7 @@
         <cl:requestdata dataid="product"/>
         <cl:requestdata dataid="product_device"/>
         <cl:requestdata dataid="developerList"/>
-        <cl:requestdata dataid="authenticationDetailList"/>
+        <cl:requestdata dataid="authenticationList"/>
         <cl:responsedata dataid="result"/>
       </cl:submission>
     </cl:model>
@@ -134,32 +134,32 @@
         <cl:gridheader std:sid="gh-band-afdafd3c">
           <cl:gridrow std:sid="g-row-a906f3e3"/>
           <cl:gridrow std:sid="g-row-dcc82976"/>
-          <cl:gridcell std:sid="gh-cell-1cafcea7" rowindex="0" colindex="0" rowspan="2" colspan="2" sortable="false" filterable="false" columntype="checkbox"/>
-          <cl:gridcell std:sid="gh-cell-121365ab" rowindex="0" colindex="2" rowspan="2" colspan="1" targetcolumnname="auth_type" sortable="false" filterable="false" text="인증 방식"/>
-          <cl:gridcell std:sid="gh-cell-59803d48" rowindex="1" colindex="3" targetcolumnname="one_to_one_max_user" sortable="false" filterable="false" text="1 : 1"/>
-          <cl:gridcell std:sid="gh-cell-009104f1" rowindex="1" colindex="4" targetcolumnname="one_to_many_max_user" sortable="false" filterable="false" text="1 : N"/>
-          <cl:gridcell std:sid="gh-cell-bf874bbb" rowindex="1" colindex="5" targetcolumnname="one_to_one_max_template" sortable="false" filterable="false" text="1 : 1"/>
-          <cl:gridcell std:sid="gh-cell-25d81536" rowindex="1" colindex="6" targetcolumnname="one_to_many_max_template" sortable="false" filterable="false" text="1 : N"/>
-          <cl:gridcell rowindex="0" colindex="3" rowspan="1" colspan="2" text="최대 등록 가능 사용자 수"/>
-          <cl:gridcell rowindex="0" colindex="5" rowspan="1" colspan="2" text="최대 등록 가능 템플릿 수"/>
+          <cl:gridcell std:sid="gh-cell-1cafcea7" rowindex="0" colindex="0" rowspan="2" colspan="2" style="background-color:#eaf0ea;" sortable="false" filterable="false" columntype="checkbox"/>
+          <cl:gridcell std:sid="gh-cell-121365ab" rowindex="0" colindex="2" rowspan="2" colspan="1" style="background-color:#eaf0ea;" targetcolumnname="auth_type" sortable="false" filterable="false" text="인증 방식"/>
+          <cl:gridcell std:sid="gh-cell-59803d48" rowindex="1" colindex="3" style="background-color:#eaf0ea;" targetcolumnname="one_to_one_max_user" sortable="false" filterable="false" text="1 : 1"/>
+          <cl:gridcell std:sid="gh-cell-009104f1" rowindex="1" colindex="4" style="background-color:#eaf0ea;" targetcolumnname="one_to_many_max_user" sortable="false" filterable="false" text="1 : N"/>
+          <cl:gridcell std:sid="gh-cell-bf874bbb" rowindex="1" colindex="5" style="background-color:#eaf0ea;" targetcolumnname="one_to_one_max_template" sortable="false" filterable="false" text="1 : 1"/>
+          <cl:gridcell std:sid="gh-cell-25d81536" rowindex="1" colindex="6" style="background-color:#eaf0ea;" targetcolumnname="one_to_many_max_template" sortable="false" filterable="false" text="1 : N"/>
+          <cl:gridcell std:sid="gh-cell-dc5af14a" rowindex="0" colindex="3" rowspan="1" colspan="2" style="background-color:#eaf0ea;" text="최대 등록 가능 사용자 수"/>
+          <cl:gridcell std:sid="gh-cell-468e4498" rowindex="0" colindex="5" rowspan="1" colspan="2" style="background-color:#eaf0ea;" text="최대 등록 가능 템플릿 수"/>
         </cl:gridheader>
         <cl:griddetail std:sid="gd-band-1cab18aa">
           <cl:gridrow std:sid="g-row-8965dc79"/>
           <cl:gridcell std:sid="gd-cell-9ad251e6" rowindex="0" colindex="0" rowspan="1" colspan="2" columntype="checkbox"/>
           <cl:gridcell std:sid="gd-cell-421d16d0" rowindex="0" colindex="2" columnname="auth_type">
-            <cl:inputbox std:sid="i-box-94b2b793" id="ipb1"/>
+            <cl:inputbox std:sid="i-box-94b2b793" id="ipb1" readonly="true"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-88923672" rowindex="0" colindex="3" columnname="one_to_one_max_user">
-            <cl:numbereditor std:sid="n-editor-64588cb1" id="nbe1"/>
+            <cl:numbereditor std:sid="n-editor-64588cb1" id="nbe1" style="text-align:right; padding-right:5px;"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-15a6c24d" rowindex="0" colindex="4" columnname="one_to_many_max_user">
-            <cl:numbereditor std:sid="n-editor-44148479" id="nbe2"/>
+            <cl:numbereditor std:sid="n-editor-44148479" id="nbe2" style="text-align:right; padding-right:5px;"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-b6811e16" rowindex="0" colindex="5" columnname="one_to_one_max_template">
-            <cl:numbereditor std:sid="n-editor-66aee899" id="nbe3"/>
+            <cl:numbereditor std:sid="n-editor-66aee899" id="nbe3" style="text-align:right; padding-right:5px;"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-c1e3e1ed" rowindex="0" colindex="6" columnname="one_to_many_max_template">
-            <cl:numbereditor std:sid="n-editor-1c5fab94" id="nbe4"/>
+            <cl:numbereditor std:sid="n-editor-1c5fab94" id="nbe4" style="text-align:right; padding-right:5px;"/>
           </cl:gridcell>
         </cl:griddetail>
       </cl:grid>
@@ -259,7 +259,7 @@
       <cl:group std:sid="group-b94a4103">
         <cl:xylayoutdata std:sid="xyl-data-0138fa3a" top="348px" left="0px" width="704px" height="172px"/>
         <cl:output std:sid="output-520cd5b8" style="padding-left:10px;" value="설명">
-          <cl:verticaldata std:sid="v-data-6e568300" width="100px" height="20px"/>
+          <cl:verticaldata std:sid="v-data-6e568300" width="100px" height="25px"/>
         </cl:output>
         <cl:textarea std:sid="t-area-fa88e352" id="txa1">
           <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>

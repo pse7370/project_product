@@ -18,6 +18,8 @@
       <cl:xylayoutdata std:sid="xyl-data-12eb83b5" top="62px" left="20px" width="713px" height="818px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:embeddedapp>
     <cl:radiobutton std:sid="r-button-cdca7d02" id="radio_productType" style="white-space:nowrap; text-align:center;">
+      <cl:listener std:sid="listener-50bc8e1c" name="selection-change" handler="onRadio_productTypeSelectionChange2"/>
+      <cl:listener std:sid="listener-25a14f97" name="item-click" handler="onRadio_productTypeItemClick"/>
       <cl:xylayoutdata std:sid="xyl-data-949df70b" top="20px" left="20px" width="214px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:item std:sid="item-4a03b225" label="출입통제기" value="출입통제기"/>
       <cl:item std:sid="item-6f58e689" label="SW" value="SW"/>
