@@ -2,12 +2,32 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-7c4cce2b" version="1.0.0.0">
   <head std:sid="head-f40c7c50">
     <title>deviceDetailView</title>
-    <screen std:sid="screen-9823caef" id="default" name="default" minwidth="1024px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
-    <screen std:sid="screen-1b412428" id="layout" name="layout" minwidth="748px" maxwidth="1023px" width="748px" height="700px" active="true"/>
-    <screen std:sid="screen-0b7d0847" id="tablet" name="tablet" minwidth="500px" maxwidth="747px" width="500px" height="667px"/>
-    <screen std:sid="screen-73af5ce4" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <link std:sid="link-4c38a03a" href="theme/css/main.css" rel="stylesheet" type="text/css"/>
+    <screen std:sid="screen-aa887fe5" id="default" name="default" minwidth="1024px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
+    <screen std:sid="screen-786f1f07" id="layout" name="layout" minwidth="748px" maxwidth="1023px" width="748px" height="970px" active="true"/>
+    <screen std:sid="screen-062eb76e" id="deatilView" name="deatilView" minwidth="748px" maxwidth="747px" width="748px" height="850px" active="false"/>
+    <screen std:sid="screen-6e3aba2a" id="tablet" name="tablet" minwidth="500px" maxwidth="747px" width="500px" height="667px"/>
+    <screen std:sid="screen-2e0fecfc" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-023636d6">
+      <cl:dataset std:sid="d-set-3c10020e" id="authenticationList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-bfaafd07" name="auth_type"/>
+          <cl:datacolumn std:sid="d-column-55da37ed" name="one_to_one_max_user" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-d633f23c" name="one_to_many_max_user" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-ab07fdab" name="one_to_one_max_template" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-cbdc6ba9" name="one_to_many_max_template" datatype="number"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-a8ea51b9" id="developerList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a012fb5e" name="department"/>
+          <cl:datacolumn std:sid="d-column-f8a4fe66" name="employees_number"/>
+          <cl:datacolumn std:sid="d-column-3d4b9619" name="employees_name"/>
+          <cl:datacolumn std:sid="d-column-8faa7d97" name="start_date"/>
+          <cl:datacolumn std:sid="d-column-14ff71be" name="end_date"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-3fa2152d" id="product_device">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-3bef5b45" name="width" datatype="number"/>
@@ -24,6 +44,7 @@
           <cl:datacolumn std:sid="d-column-9df4b354" name="product_type"/>
           <cl:datacolumn std:sid="d-column-32e50aa5" name="product_name"/>
           <cl:datacolumn std:sid="d-column-36ff3d32" name="product_version"/>
+          <cl:datacolumn std:sid="d-column-824f11b9" name="save_path"/>
           <cl:datacolumn std:sid="d-column-361511eb" name="explanation"/>
         </cl:datacolumnlist>
       </cl:datamap>
@@ -32,10 +53,10 @@
   </head>
   <body std:sid="body-673e29fa" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:img std:sid="image-ae054298">
-      <cl:xylayoutdata std:sid="xyl-data-24cebc89" top="20px" left="20px" width="165px" height="165px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-24cebc89" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>
     <cl:group std:sid="group-a6db7d0e">
-      <cl:xylayoutdata std:sid="xyl-data-b6806a9c" top="41px" left="205px" width="523px" height="127px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-b6806a9c" top="35px" left="222px" width="494px" height="146px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:output std:sid="output-e0df33aa" style="border-right-style:solid; border-top-width:1px; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; background-color:#eaf0ea; border-left-style:solid; border-top-color:#b4b4b4; text-align:center;" value="제품명">
         <cl:formdata std:sid="f-data-8df6b057" row="0" col="0"/>
       </cl:output>
@@ -64,14 +85,124 @@
         <cl:formdata std:sid="f-data-8c26920c" row="3" col="1"/>
       </cl:output>
       <cl:formlayout std:sid="f-layout-24237a96" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
-        <cl:rows length="30" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
-        <cl:rows length="30" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
-        <cl:rows length="30" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
-        <cl:rows length="30" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="35" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="35" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="35" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+        <cl:rows length="35" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
         <cl:columns length="150" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
         <cl:columns length="1" unit="FRACTION"/>
       </cl:formlayout>
     </cl:group>
+    <cl:group std:sid="group-47fbaced">
+      <cl:xylayoutdata std:sid="xyl-data-8748173c" top="218px" left="20px" width="696px" height="187px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:grid std:sid="grid-a9c2c586" id="authentication" readonly="true" datasetid="authenticationList" autorowheight="all">
+        <cl:verticaldata std:sid="v-data-bc522b9c" width="400px" height="177px" autosize="height"/>
+        <cl:gridcolumn std:sid="g-column-0612c3ff" width="83px"/>
+        <cl:gridcolumn std:sid="g-column-6337ef45"/>
+        <cl:gridcolumn std:sid="g-column-e9d3f23d"/>
+        <cl:gridcolumn std:sid="g-column-990a7c67"/>
+        <cl:gridcolumn std:sid="g-column-d5e3e502"/>
+        <cl:gridheader std:sid="gh-band-433b024f">
+          <cl:gridrow std:sid="g-row-5c4808e3" height="27px"/>
+          <cl:gridrow std:sid="g-row-4f7c59aa" height="27px"/>
+          <cl:gridcell std:sid="gh-cell-31b4fa9b" rowindex="0" colindex="0" rowspan="2" colspan="1" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="auth_type" sortable="false" filterable="false" text="인증 방식"/>
+          <cl:gridcell std:sid="gh-cell-1c5100ec" rowindex="1" colindex="1" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="one_to_one_max_user" sortable="false" filterable="false" text="1 : 1"/>
+          <cl:gridcell std:sid="gh-cell-9450224e" rowindex="1" colindex="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="one_to_many_max_user" sortable="false" filterable="false" text="1 : N"/>
+          <cl:gridcell std:sid="gh-cell-4ac17d84" rowindex="1" colindex="3" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="one_to_one_max_template" sortable="false" filterable="false" text="1 : 1"/>
+          <cl:gridcell std:sid="gh-cell-05654da8" rowindex="1" colindex="4" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="one_to_many_max_template" sortable="false" filterable="false" text="1 : N"/>
+          <cl:gridcell rowindex="0" colindex="1" rowspan="1" colspan="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" text="최대 등록 가능 사용자 수"/>
+          <cl:gridcell rowindex="0" colindex="3" rowspan="1" colspan="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" text="최대 등록 가능 템플릿 수"/>
+        </cl:gridheader>
+        <cl:griddetail std:sid="gd-band-c08943f2">
+          <cl:gridrow std:sid="g-row-18abbd0b" height="27px"/>
+          <cl:gridcell std:sid="gd-cell-7e3c1ace" rowindex="0" colindex="0" style="vertical-align:middle; text-align:center;" columnname="auth_type"/>
+          <cl:gridcell std:sid="gd-cell-89bde237" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;" columnname="one_to_one_max_user"/>
+          <cl:gridcell std:sid="gd-cell-9055cd44" rowindex="0" colindex="2" style="vertical-align:middle; text-align:center;" columnname="one_to_many_max_user"/>
+          <cl:gridcell std:sid="gd-cell-548e8a5f" rowindex="0" colindex="3" style="vertical-align:middle; text-align:center;" columnname="one_to_one_max_template"/>
+          <cl:gridcell std:sid="gd-cell-37ff5daf" rowindex="0" colindex="4" style="vertical-align:middle; text-align:center;" columnname="one_to_many_max_template"/>
+        </cl:griddetail>
+      </cl:grid>
+      <cl:verticallayout std:sid="v-layout-3834af36"/>
+    </cl:group>
+    <cl:group std:sid="group-a1a6bc70">
+      <cl:xylayoutdata std:sid="xyl-data-e18c17c0" top="418px" left="20px" width="586px" height="102px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:grid std:sid="grid-ee193108" id="communication">
+        <cl:verticaldata std:sid="v-data-a53cbc0c" width="591px" height="94px" autosize="height"/>
+        <cl:gridcolumn std:sid="g-column-ed75f91e"/>
+        <cl:gridcolumn std:sid="g-column-49e4f0dd" width="129px"/>
+        <cl:gridcolumn std:sid="g-column-5be73819" width="109px"/>
+        <cl:gridheader std:sid="gh-band-49282c91">
+          <cl:gridrow std:sid="g-row-43d0e827" height="27px"/>
+          <cl:gridrow std:sid="g-row-51af3317" height="27px"/>
+          <cl:gridcell std:sid="gh-cell-c7bc265e" rowindex="1" colindex="0" style="background-color:#eaf0ea;" text="Server"/>
+          <cl:gridcell std:sid="gh-cell-82b4b188" rowindex="1" colindex="1" style="background-color:#eaf0ea;" text="Wireless LAN(Wi-Fi)"/>
+          <cl:gridcell std:sid="gh-cell-568a4df1" rowindex="1" colindex="2" style="background-color:#eaf0ea;" text="Other"/>
+          <cl:gridcell std:sid="gh-cell-0b9643a1" rowindex="0" colindex="0" rowspan="1" colspan="3" style="background-color:#eaf0ea;" text="통신 방식"/>
+        </cl:gridheader>
+        <cl:griddetail std:sid="gd-band-76aee1af">
+          <cl:gridrow std:sid="g-row-7f4a1815" height="27px"/>
+          <cl:gridcell std:sid="gd-cell-b0186de4" rowindex="0" colindex="0" columnname="server"/>
+          <cl:gridcell std:sid="gd-cell-443f3a10" rowindex="0" colindex="1" columnname="wi_fi"/>
+          <cl:gridcell std:sid="gd-cell-e019be6d" rowindex="0" colindex="2" columnname="other"/>
+        </cl:griddetail>
+      </cl:grid>
+      <cl:verticallayout std:sid="v-layout-9356fde8"/>
+    </cl:group>
+    <cl:group std:sid="group-676e98ef">
+      <cl:xylayoutdata std:sid="xyl-data-845b682d" top="530px" left="20px" width="696px" height="181px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-325b626b" style="padding-left:10px;" value="설명">
+        <cl:verticaldata std:sid="v-data-9ce4e239" width="100px" height="25px"/>
+      </cl:output>
+      <cl:textarea std:sid="t-area-f4d72d50" id="txa1" readonly="true">
+        <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
+        <cl:verticaldata std:sid="v-data-fa59da00" width="100px" height="143px" autosize="none"/>
+      </cl:textarea>
+      <cl:verticallayout std:sid="v-layout-404ee950"/>
+    </cl:group>
+    <cl:group std:sid="group-12eb8b93">
+      <cl:xylayoutdata std:sid="xyl-data-82c05228" top="0px" left="5px" width="730px" height="970px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayout std:sid="xylayout-2fe0eccd"/>
+    </cl:group>
+    <cl:group std:sid="group-bde0edcb">
+      <cl:xylayoutdata std:sid="xyl-data-3fcfcbac" top="721px" left="20px" width="696px" height="200px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:output std:sid="output-e5013cf8" style="padding-left:10px;" value="담당 개발자">
+        <cl:verticaldata std:sid="v-data-da8e3a3e" width="100px" height="25px"/>
+      </cl:output>
+      <cl:grid std:sid="grid-cacf20a8" id="grid_developer" readonly="true" datasetid="developerList">
+        <cl:verticaldata std:sid="v-data-4391ab79" width="400px" height="164px"/>
+        <cl:gridcolumn std:sid="g-column-d1533828" width="36px"/>
+        <cl:gridcolumn std:sid="g-column-0557f4f2" width="109px"/>
+        <cl:gridcolumn std:sid="g-column-2f85436c" width="98px"/>
+        <cl:gridcolumn std:sid="g-column-534df9de"/>
+        <cl:gridcolumn std:sid="g-column-cbe4a914"/>
+        <cl:gridcolumn std:sid="g-column-7529ae12"/>
+        <cl:gridheader std:sid="gh-band-39fadfd6">
+          <cl:gridrow std:sid="g-row-8082c7de" height="25px"/>
+          <cl:gridcell std:sid="gh-cell-204c58d1" rowindex="0" colindex="0" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" sortable="false" filterable="false" text="번호"/>
+          <cl:gridcell std:sid="gh-cell-e030211a" rowindex="0" colindex="1" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="department" sortable="false" filterable="false" text="부서명"/>
+          <cl:gridcell std:sid="gh-cell-8cd5dcd3" rowindex="0" colindex="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="employees_number" sortable="false" filterable="false" text="사원 번호"/>
+          <cl:gridcell std:sid="gh-cell-5bdaeebf" rowindex="0" colindex="3" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
+          <cl:gridcell std:sid="gh-cell-cae88b5d" rowindex="0" colindex="4" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="start_date" sortable="false" filterable="false" text="시작일"/>
+          <cl:gridcell std:sid="gh-cell-3a68a400" rowindex="0" colindex="5" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="end_date" sortable="false" filterable="false" text="종료일"/>
+        </cl:gridheader>
+        <cl:griddetail std:sid="gd-band-8607922e">
+          <cl:gridrow std:sid="g-row-2a83e3fb" height="25px"/>
+          <cl:gridcell std:sid="gd-cell-498fc551" rowindex="0" colindex="0" style="vertical-align:middle; text-align:center;" columntype="rowindex"/>
+          <cl:gridcell std:sid="gd-cell-54d4bd7d" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;" columnname="department"/>
+          <cl:gridcell std:sid="gd-cell-4ad1d30f" rowindex="0" colindex="2" style="vertical-align:middle; text-align:center;" columnname="employees_number"/>
+          <cl:gridcell std:sid="gd-cell-77629e6a" rowindex="0" colindex="3" style="vertical-align:middle; text-align:center;" columnname="employees_name"/>
+          <cl:gridcell std:sid="gd-cell-6a24b431" rowindex="0" colindex="4" style="vertical-align:middle; text-align:center;" columnname="start_date"/>
+          <cl:gridcell std:sid="gd-cell-ba9f88ce" rowindex="0" colindex="5" style="vertical-align:middle; text-align:center;" columnname="end_date"/>
+        </cl:griddetail>
+      </cl:grid>
+      <cl:verticallayout std:sid="v-layout-d4ecb437"/>
+    </cl:group>
+    <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
+      <cl:xylayoutdata std:sid="xyl-data-7904806f" top="931px" left="539px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:button>
+    <cl:button std:sid="button-76cf29a0" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
+      <cl:xylayoutdata std:sid="xyl-data-e00fc805" top="931px" left="636px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+    </cl:button>
     <cl:xylayout std:sid="xylayout-6322b8f4"/>
   </body>
   <std:studiosetting>

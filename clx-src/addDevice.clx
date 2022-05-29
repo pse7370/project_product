@@ -221,7 +221,7 @@
       <cl:group std:sid="group-31cad8dd">
         <cl:xylayoutdata std:sid="xyl-data-b322d44f" top="265px" left="0px" width="404px" height="73px"/>
         <cl:grid std:sid="grid-28e855d3" id="communication">
-          <cl:flowlayoutdata std:sid="f-data-7b056804" width="400px" height="74px"/>
+          <cl:flowlayoutdata std:sid="f-data-7b056804" width="400px" height="74px" autosize="height"/>
           <cl:gridcolumn std:sid="g-column-42df0543" width="92px"/>
           <cl:gridcolumn std:sid="g-column-9a2ad900" width="128px"/>
           <cl:gridcolumn std:sid="g-column-2a9d8857" width="89px"/>
@@ -241,7 +241,7 @@
               </cl:inputbox>
             </cl:gridcell>
             <cl:gridcell std:sid="gd-cell-a87f4a48" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;">
-              <cl:combobox std:sid="c-box-f5d1d136" id="cmb1" preventinput="false">
+              <cl:combobox std:sid="c-box-f5d1d136" id="cmb1" tabindex="0" preventinput="true">
                 <cl:datamapbind property="value" datacontrolid="product_device" columnname="wi_fi"/>
                 <cl:item std:sid="item-68e07d82" label="O" value="O"/>
                 <cl:item std:sid="item-ff976484" label="X" value="X"/>

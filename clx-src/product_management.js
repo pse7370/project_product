@@ -27,7 +27,6 @@ function onBodyLoad(/* cpr.events.CEvent */ e){
 }
 
 
-
 /*
  * 서브미션(getSideMenu)에서 submit-done 이벤트 발생 시 호출.
  * 응답처리가 모두 종료되면 발생합니다.
@@ -80,19 +79,72 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 			dialog.style.header.css("color", "white");
 			dialog.style.header.css("font-size", "12pt");			
 			*/
-			
+			dialog.addEventListener("close", function(e){
+				// 이곳에서 원하는 동작 처리
+				window.location.reload();
+			});
 		});
 	}).then(function(returnValue){
 			if (returnValue == 1){
-				window.location.reload();
+				//window.location.reload();
+				app.lookup("getSideMenu").send();
+				console.log("getSideMenu 서브 미션 실행");
 			}
 		});
 	
 
 	
-	
-	
 }
 
 
+/*
+ * 트리에서 item-click 이벤트 발생 시 호출.
+ * 아이템 클릭시 발생하는 이벤트.
+ */
+function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
+	/** 
+	 * @type cpr.controls.Tree
+	 */
+	var sideTree = e.control;
+	var clickValue = sideTree.value;
+	var clickLable = sideTree.text;
+	var clickRow = sideTree.getIndexByValue(clickValue);
+
+	console.log("클릭한 값 : " + clickValue);
+	console.log("클릭한 라벨 : " + clickLable);
+	console.log("클락한 rowIndex : " + clickRow);
+
+	
+	var sideMenu = app.lookup("sideTree");
+	var sideMenuDataSet = sideTree.dataSet;
+	var clickParent = sideMenuDataSet.getValue(clickRow, "parent");
+	console.log("parent 컬럼 값 : " + clickParent);
+	
+	
+	if(clickParent == "출입통제기"){
+		var embeddedApp = app.lookup("content_view");
+		cpr.core.App.load("deviceDetailView", function(loadedApp){
+			if(loadedApp){
+	    		embeddedApp.app = loadedApp;
+	  		}
+		});
+	}
+	
+	if(clickParent == "SW"){
+		var embeddedApp = app.lookup("content_view");
+		cpr.core.App.load("swDetailView", function(loadedApp){
+			if(loadedApp){
+	    		embeddedApp.app = loadedApp;
+	  		}
+		});
+	}
+	
+	
+}
+	
+	
+	
+	
+	
+	
 

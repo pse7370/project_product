@@ -15,7 +15,44 @@
           <cl:datacolumn std:sid="d-column-a3d6f89c" name="parent"/>
           <cl:datacolumn std:sid="d-column-2f8a4ac7" name="product_id" datatype="number"/>
         </cl:datacolumnlist>
-        <cl:datarowlist/>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[출입통제기]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[출입통제기]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[face]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[face]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[출입통제기]]></cl:datavalue>
+            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[커스터마이징]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[커스터마이징1]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[face]]></cl:datavalue>
+            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[산출물]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[산출물1]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[face]]></cl:datavalue>
+            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[SW]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[SW]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="product_id">5</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="label"><![CDATA[alpeta]]></cl:datavalue>
+            <cl:datavalue columnname="value"><![CDATA[alpeta]]></cl:datavalue>
+            <cl:datavalue columnname="parent"><![CDATA[SW]]></cl:datavalue>
+            <cl:datavalue columnname="product_id">6</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
       </cl:dataset>
       <cl:submission std:sid="submission-13f743d4" id="getSideMenu" async="true" method="get" action="/productMangement/sideMenu">
         <cl:listener std:sid="listener-0c4bdd54" name="submit-done" handler="onGetSideMenuSubmitDone"/>
@@ -30,18 +67,22 @@
     <cl:listener std:sid="listener-66dc716a" name="screen-change" handler="onBodyScreenChange"/>
     <cl:listener std:sid="listener-cdd73094" name="property-change" handler="onBodyPropertyChange"/>
     <cl:group std:sid="group-09f68200">
-      <cl:xylayoutdata std:sid="xyl-data-69e6bd09" top="20px" left="19px" width="227px" height="727px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-69e6bd09" top="20px" left="19px" width="216px" height="727px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:tree std:sid="tree-7201149e" id="sideTree" style="border-radius:15px;" indent="20">
         <cl:listener std:sid="listener-09b48ca9" name="selection-change" handler="onTre1SelectionChange"/>
         <cl:listener std:sid="listener-8d86f378" name="selection-change" handler="onSideTreeSelectionChange"/>
-        <cl:xylayoutdata std:sid="xyl-data-89629eb2" top="7px" left="1px" width="225px" height="714px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:listener std:sid="listener-80e73877" name="item-click" handler="onSideTreeItemClick"/>
+        <cl:xylayoutdata std:sid="xyl-data-89629eb2" top="7px" left="1px" width="213px" height="714px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:treeitemset datasetid="sideMenuList" label="label" value="value" parent="parent"/>
       </cl:tree>
       <cl:xylayout std:sid="xylayout-983cf732"/>
     </cl:group>
     <cl:group std:sid="group-baead445" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#8d8d8d; border-right-width:1px; border-left-color:#8d8d8d; border-right-color:#8d8d8d; border-left-width:1px; border-top-style:solid; border-radius:15px; border-left-style:solid; border-bottom-width:1px; border-top-color:#8d8d8d; font-family:'\B9D1\C740  \ACE0\B515' , 'Malgun Gothic' , sans-serif; border-bottom-style:solid;">
-      <cl:xylayoutdata std:sid="xyl-data-66519a11" top="144px" left="255px" width="748px" height="598px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:xylayout std:sid="xylayout-4d76a768"/>
+      <cl:xylayoutdata std:sid="xyl-data-66519a11" top="144px" left="245px" width="760px" height="598px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:embeddedapp std:sid="e-app-e6a30ea3" id="content_view" style="border-radius:10px;">
+        <cl:verticaldata std:sid="v-data-a6962dd3" width="753px" height="595px"/>
+      </cl:embeddedapp>
+      <cl:verticallayout std:sid="v-layout-5dc73c80"/>
     </cl:group>
     <cl:button std:sid="button-a513aef2" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; color:black; border-left-style:none; font-size:11pt; border-bottom-style:none; background-image:none; border-top-style:none;" value="제품 등록">
       <cl:listener std:sid="listener-2cef1417" name="click" handler="onButtonClick"/>
