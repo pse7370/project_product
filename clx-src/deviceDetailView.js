@@ -40,16 +40,24 @@ function onGetDeviceContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	var product_device = app.lookup("product_device");
 	
 	app.lookup("productName").value = product.getValue("product_name");
+	
 	app.lookup("productVersion").value = product.getValue("product_version");
-	app.lookup("productSize").value = product.getValue("width") + '(W) x' 
-									+ product.getValue("height") + '(H) x'
-									+ product.getValue("depth") + '(D)';
 	
-	app.lookup("communication").redraw();								
+	app.lookup("productSize").value = product_device.getValue("width") + '(W) x ' 
+									+ product_device.getValue("height") + '(H) x '
+									+ product_device.getValue("depth") + '(D)';
 	
+	app.lookup("server").value = product_device.getValue("server");
+	app.lookup("wi_fi").value = product_device.getValue("wi_fi");
+	app.lookup("other").value = product_device.getValue("other");								
+									
+	app.lookup("ipRatings").value = product_device.getValue("ip_ratings");	
+	
+	app.lookup("explanation").value = product.getValue("explanation");							
+								
+	app.lookup("authentication").redraw();
+	app.lookup("grid_developer").redraw();
 	
 	
 }
-
-
 

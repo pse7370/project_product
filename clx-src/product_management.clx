@@ -15,44 +15,7 @@
           <cl:datacolumn std:sid="d-column-a3d6f89c" name="parent"/>
           <cl:datacolumn std:sid="d-column-2f8a4ac7" name="product_id" datatype="number"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[출입통제기]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[출입통제기]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[face]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[face]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[출입통제기]]></cl:datavalue>
-            <cl:datavalue columnname="product_id"><![CDATA[1]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[커스터마이징]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[커스터마이징1]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[face]]></cl:datavalue>
-            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[산출물]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[산출물1]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[face]]></cl:datavalue>
-            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[SW]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[SW]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[]]></cl:datavalue>
-            <cl:datavalue columnname="product_id">5</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="label"><![CDATA[alpeta]]></cl:datavalue>
-            <cl:datavalue columnname="value"><![CDATA[alpeta]]></cl:datavalue>
-            <cl:datavalue columnname="parent"><![CDATA[SW]]></cl:datavalue>
-            <cl:datavalue columnname="product_id">6</cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
       <cl:submission std:sid="submission-13f743d4" id="getSideMenu" async="true" method="get" action="/productMangement/sideMenu">
         <cl:listener std:sid="listener-0c4bdd54" name="submit-done" handler="onGetSideMenuSubmitDone"/>
@@ -65,7 +28,7 @@
     <cl:listener std:sid="listener-1866097f" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-e030f8d4" name="load" handler="onBodyLoad"/>
     <cl:listener std:sid="listener-66dc716a" name="screen-change" handler="onBodyScreenChange"/>
-    <cl:listener std:sid="listener-cdd73094" name="property-change" handler="onBodyPropertyChange"/>
+    <cl:listener std:sid="listener-d1a67f03" name="property-change" handler="onBodyPropertyChange"/>
     <cl:group std:sid="group-09f68200">
       <cl:xylayoutdata std:sid="xyl-data-69e6bd09" top="20px" left="19px" width="216px" height="727px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:tree std:sid="tree-7201149e" id="sideTree" style="border-radius:15px;" indent="20">

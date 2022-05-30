@@ -123,9 +123,13 @@ function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
 	console.log("clickProduct_id : " + clickProduct_id);
 	
 	app.setAppProperty("product_id", clickProduct_id);
+	app.setAppProperty("product_type", clickParent);
 	
+	var embeddedApp = app.lookup("content_view");
+	
+	/*
 	if(clickParent == "출입통제기"){
-		var embeddedApp = app.lookup("content_view");
+		
 		cpr.core.App.load("deviceDetailView", function(loadedApp){
 			if(loadedApp){
 	    		embeddedApp.app = loadedApp;
@@ -134,20 +138,47 @@ function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
 	}
 	
 	if(clickParent == "SW"){
-		var embeddedApp = app.lookup("content_view");
+		embeddedApp.redraw();
 		cpr.core.App.load("swDetailView", function(loadedApp){
 			if(loadedApp){
 	    		embeddedApp.app = loadedApp;
 	  		}
 		});
 	}
-	
+	*/
 
+}	
+
+
+/*
+ * 루트 컨테이너에서 property-change 이벤트 발생 시 호출.
+ * 앱의 속성이 변경될 때 발생하는 이벤트 입니다.
+ */
+function onBodyPropertyChange(/* cpr.events.CPropertyChangeEvent */ e){
+	var product_id = app.getAppProperty("product_id");
+	var product_type = app.getAppProperty("product_type");
+	
+	var embeddedApp = app.lookup("content_view");
+	
+	if(product_type == "출입통제기"){
+		
+		cpr.core.App.load("deviceDetailView", function(loadedApp){
+			if(loadedApp){
+	    		embeddedApp.app = loadedApp;
+	  		}
+	  		if(loadedApp == embeddedApp.app){
+	  			app.getHostAppInstance()
+	  		}
+		});
+		
+	}
+	
+	if(product_type == "SW"){
+		embeddedApp.redraw();
+		cpr.core.App.load("swDetailView", function(loadedApp){
+			if(loadedApp){
+	    		embeddedApp.app = loadedApp;
+	  		}
+		});
+	}
 }
-	
-	
-	
-	
-	
-	
-

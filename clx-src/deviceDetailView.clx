@@ -67,6 +67,7 @@
   <body std:sid="body-673e29fa" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-e774c05d" name="load" handler="onBodyLoad"/>
     <cl:listener std:sid="listener-1f57acd9" name="init" handler="onBodyInit"/>
+    <cl:listener std:sid="listener-797c31c0" name="property-change" handler="onBodyPropertyChange"/>
     <cl:img std:sid="image-ae054298">
       <cl:xylayoutdata std:sid="xyl-data-24cebc89" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>
@@ -141,27 +142,38 @@
     </cl:group>
     <cl:group std:sid="group-a1a6bc70">
       <cl:xylayoutdata std:sid="xyl-data-e18c17c0" top="418px" left="20px" width="586px" height="102px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:grid std:sid="grid-ee193108" id="communication">
-        <cl:verticaldata std:sid="v-data-a53cbc0c" width="591px" height="94px" autosize="height"/>
-        <cl:gridcolumn std:sid="g-column-ed75f91e"/>
-        <cl:gridcolumn std:sid="g-column-49e4f0dd" width="129px"/>
-        <cl:gridcolumn std:sid="g-column-5be73819" width="109px"/>
-        <cl:gridheader std:sid="gh-band-49282c91">
-          <cl:gridrow std:sid="g-row-43d0e827" height="27px"/>
-          <cl:gridrow std:sid="g-row-51af3317" height="27px"/>
-          <cl:gridcell std:sid="gh-cell-c7bc265e" rowindex="1" colindex="0" style="background-color:#eaf0ea;" text="Server"/>
-          <cl:gridcell std:sid="gh-cell-82b4b188" rowindex="1" colindex="1" style="background-color:#eaf0ea;" text="Wireless LAN(Wi-Fi)"/>
-          <cl:gridcell std:sid="gh-cell-568a4df1" rowindex="1" colindex="2" style="background-color:#eaf0ea;" text="Other"/>
-          <cl:gridcell std:sid="gh-cell-0b9643a1" rowindex="0" colindex="0" rowspan="1" colspan="3" style="background-color:#eaf0ea;" text="통신 방식"/>
-        </cl:gridheader>
-        <cl:griddetail std:sid="gd-band-76aee1af">
-          <cl:gridrow std:sid="g-row-7f4a1815" height="27px"/>
-          <cl:gridcell std:sid="gd-cell-b0186de4" rowindex="0" colindex="0" columnname="server"/>
-          <cl:gridcell std:sid="gd-cell-443f3a10" rowindex="0" colindex="1" columnname="wi_fi"/>
-          <cl:gridcell std:sid="gd-cell-e019be6d" rowindex="0" colindex="2" columnname="other"/>
-        </cl:griddetail>
-      </cl:grid>
-      <cl:verticallayout std:sid="v-layout-9356fde8"/>
+      <cl:output std:sid="output-ed1db504" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; vertical-align:middle; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; background-color:#eaf0ea; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="통신방식">
+        <cl:formdata std:sid="f-data-16e520ec" row="0" col="0" rowspan="1" colspan="3"/>
+      </cl:output>
+      <cl:output std:sid="output-f3a7f644" style="border-right-style:solid; background-color:#eaf0ea; border-right-width:1px; border-left-style:solid; vertical-align:middle; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; text-align:center;" value="Server">
+        <cl:formdata std:sid="f-data-ad5ef4cf" row="1" col="0"/>
+      </cl:output>
+      <cl:output std:sid="output-24add179" id="server" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; vertical-align:middle; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;">
+        <cl:datamapbind property="value" datacontrolid="product_device" columnname="server"/>
+        <cl:formdata std:sid="f-data-3df883dc" row="2" col="0"/>
+      </cl:output>
+      <cl:output std:sid="output-484336e0" id="wi_fi" style="border-top-width:1px; border-bottom-color:#b4b4b4; vertical-align:middle; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; border-top-style:solid; text-align:center;">
+        <cl:datamapbind property="value" datacontrolid="product_device" columnname="wi_fi"/>
+        <cl:formdata std:sid="f-data-9dde9a09" row="2" col="1"/>
+      </cl:output>
+      <cl:output std:sid="output-2485e23a" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" value="Wireless LAN(Wi-Fi)">
+        <cl:formdata std:sid="f-data-6609d7d5" row="1" col="1"/>
+      </cl:output>
+      <cl:output std:sid="output-9b94d047" id="other" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; vertical-align:middle; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;">
+        <cl:datamapbind property="value" datacontrolid="product_device" columnname="other"/>
+        <cl:formdata std:sid="f-data-e67edcd8" row="2" col="2"/>
+      </cl:output>
+      <cl:output std:sid="output-30821b39" style="border-right-style:solid; background-color:#eaf0ea; border-right-width:1px; border-left-style:solid; vertical-align:middle; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; text-align:center;" value="Other">
+        <cl:formdata std:sid="f-data-4a314b72" row="1" col="2"/>
+      </cl:output>
+      <cl:formlayout std:sid="f-layout-60454e10" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:rows length="1" unit="FRACTION"/>
+        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="1" unit="FRACTION"/>
+        <cl:columns length="1" unit="FRACTION"/>
+      </cl:formlayout>
     </cl:group>
     <cl:group std:sid="group-676e98ef">
       <cl:xylayoutdata std:sid="xyl-data-845b682d" top="530px" left="20px" width="696px" height="181px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
