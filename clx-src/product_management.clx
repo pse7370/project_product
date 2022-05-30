@@ -26,7 +26,7 @@
             <cl:datavalue columnname="label"><![CDATA[face]]></cl:datavalue>
             <cl:datavalue columnname="value"><![CDATA[face]]></cl:datavalue>
             <cl:datavalue columnname="parent"><![CDATA[출입통제기]]></cl:datavalue>
-            <cl:datavalue columnname="product_id"><![CDATA[]]></cl:datavalue>
+            <cl:datavalue columnname="product_id"><![CDATA[1]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
             <cl:datavalue columnname="label"><![CDATA[커스터마이징]]></cl:datavalue>

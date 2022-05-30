@@ -48,10 +48,25 @@
           <cl:datacolumn std:sid="d-column-361511eb" name="explanation"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-b9f20244" id="product_id">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-2aa68b7a" id="getDeviceContent" action="/productMangement/deviceContent">
+        <cl:listener std:sid="listener-271f9f6c" name="submit-done" handler="onGetDeviceContentSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:responsedata dataid="product"/>
+        <cl:responsedata dataid="authenticationList"/>
+        <cl:responsedata dataid="product_device"/>
+        <cl:responsedata dataid="developerList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-673e29fa" style="top:0px; left:0px; width:800px; height:600px;">
+    <cl:listener std:sid="listener-e774c05d" name="load" handler="onBodyLoad"/>
+    <cl:listener std:sid="listener-1f57acd9" name="init" handler="onBodyInit"/>
     <cl:img std:sid="image-ae054298">
       <cl:xylayoutdata std:sid="xyl-data-24cebc89" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>
@@ -69,18 +84,18 @@
       <cl:output std:sid="output-0af8be54" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; background-color:#eaf0ea; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="방수/방진">
         <cl:formdata std:sid="f-data-1cc1eaed" row="3" col="0"/>
       </cl:output>
-      <cl:output std:sid="output-1d8be8dd" style="border-right-style:solid; border-top-width:1px; border-right-width:1px; padding-left:10px; border-top-color:#b4b4b4; border-right-color:#b4b4b4; border-top-style:solid;">
+      <cl:output std:sid="output-1d8be8dd" id="productName" style="border-right-style:solid; border-top-width:1px; border-right-width:1px; padding-left:10px; border-top-color:#b4b4b4; border-right-color:#b4b4b4; border-top-style:solid;">
         <cl:datamapbind property="value" datacontrolid="product" columnname="product_name"/>
         <cl:formdata std:sid="f-data-b8931c4d" row="0" col="1"/>
       </cl:output>
-      <cl:output std:sid="output-e2fefaf7" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
+      <cl:output std:sid="output-e2fefaf7" id="productVersion" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
         <cl:datamapbind property="value" datacontrolid="product" columnname="product_version"/>
         <cl:formdata std:sid="f-data-66fb5776" row="1" col="1"/>
       </cl:output>
-      <cl:output std:sid="output-36718b82" style="border-right-style:solid; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4;" value="Output">
+      <cl:output std:sid="output-36718b82" id="productSize" style="border-right-style:solid; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4;" value="">
         <cl:formdata std:sid="f-data-df223341" row="2" col="1"/>
       </cl:output>
-      <cl:output std:sid="output-fe3192ed" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
+      <cl:output std:sid="output-fe3192ed" id="ipRatings" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
         <cl:datamapbind property="value" datacontrolid="product_device" columnname="ip_ratings"/>
         <cl:formdata std:sid="f-data-8c26920c" row="3" col="1"/>
       </cl:output>
@@ -110,8 +125,8 @@
           <cl:gridcell std:sid="gh-cell-9450224e" rowindex="1" colindex="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="one_to_many_max_user" sortable="false" filterable="false" text="1 : N"/>
           <cl:gridcell std:sid="gh-cell-4ac17d84" rowindex="1" colindex="3" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="one_to_one_max_template" sortable="false" filterable="false" text="1 : 1"/>
           <cl:gridcell std:sid="gh-cell-05654da8" rowindex="1" colindex="4" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="one_to_many_max_template" sortable="false" filterable="false" text="1 : N"/>
-          <cl:gridcell rowindex="0" colindex="1" rowspan="1" colspan="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" text="최대 등록 가능 사용자 수"/>
-          <cl:gridcell rowindex="0" colindex="3" rowspan="1" colspan="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" text="최대 등록 가능 템플릿 수"/>
+          <cl:gridcell std:sid="gh-cell-d2599d88" rowindex="0" colindex="1" rowspan="1" colspan="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" text="최대 등록 가능 사용자 수"/>
+          <cl:gridcell std:sid="gh-cell-b8c2e6be" rowindex="0" colindex="3" rowspan="1" colspan="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" text="최대 등록 가능 템플릿 수"/>
         </cl:gridheader>
         <cl:griddetail std:sid="gd-band-c08943f2">
           <cl:gridrow std:sid="g-row-18abbd0b" height="27px"/>
@@ -153,7 +168,7 @@
       <cl:output std:sid="output-325b626b" style="padding-left:10px;" value="설명">
         <cl:verticaldata std:sid="v-data-9ce4e239" width="100px" height="25px"/>
       </cl:output>
-      <cl:textarea std:sid="t-area-f4d72d50" id="txa1" readonly="true">
+      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" readonly="true">
         <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
         <cl:verticaldata std:sid="v-data-fa59da00" width="100px" height="143px" autosize="none"/>
       </cl:textarea>

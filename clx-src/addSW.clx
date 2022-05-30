@@ -87,6 +87,7 @@
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-3c37e95f" id="addSW" action="/productMangement/addSW" mediatype="multipart/form-data">
+        <cl:listener std:sid="listener-cddd9c6a" name="submit-done" handler="onAddSWSubmitDone"/>
         <cl:requestdata dataid="product"/>
         <cl:requestdata dataid="product_sw"/>
         <cl:requestdata dataid="developerList"/>
@@ -104,6 +105,7 @@
           <cl:xylayoutdata std:sid="xyl-data-1d02d5d7" top="0px" left="7px" width="73px" height="25px"/>
         </cl:output>
         <cl:inputbox std:sid="i-box-87074147" id="input_productName">
+          <cl:datamapbind property="value" datacontrolid="product" columnname="product_name"/>
           <cl:xylayoutdata std:sid="xyl-data-6a56b9a3" top="0px" left="79px" width="159px" height="25px"/>
         </cl:inputbox>
         <cl:xylayout std:sid="xylayout-b07f4632"/>
@@ -122,6 +124,7 @@
       <cl:xylayoutdata std:sid="xyl-data-f3d04d0f" top="0px" left="505px" width="62px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
     <cl:inputbox std:sid="i-box-adbaadbd" id="ipb2">
+      <cl:datamapbind property="value" datacontrolid="product" columnname="product_version"/>
       <cl:xylayoutdata std:sid="xyl-data-55bc8b72" top="0px" left="566px" width="131px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:inputbox>
     <cl:group std:sid="group-b92b5b43">
@@ -130,6 +133,7 @@
         <cl:formdata std:sid="f-data-f53f1c16" row="0" col="0"/>
       </cl:output>
       <cl:numbereditor std:sid="n-editor-72ba2133" id="nbe1" style="text-align:right; padding-right:5px;">
+        <cl:datamapbind property="value" datacontrolid="product_sw" columnname="simultaneous_connection"/>
         <cl:formdata std:sid="f-data-80525775" row="0" col="1"/>
       </cl:numbereditor>
       <cl:formlayout std:sid="f-layout-f605e0cf" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
@@ -143,7 +147,7 @@
       <cl:output std:sid="output-791a98e4" style="padding-left:10px;" value="지원 OS">
         <cl:verticaldata std:sid="v-data-ca60a7c7" width="100px" height="27px"/>
       </cl:output>
-      <cl:checkboxgroup std:sid="cb-group-5b483016" id="checkBox_os" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b8b8b8; border-right-width:1px; border-left-color:#b8b8b8; vertical-align:middle; border-right-color:#b8b8b8; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b8b8b8; border-bottom-style:solid;">
+      <cl:checkboxgroup std:sid="cb-group-5b483016" id="checkBox_os" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b8b8b8; border-right-width:1px; border-left-color:#b8b8b8; vertical-align:middle; border-right-color:#b8b8b8; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b8b8b8; border-bottom-style:solid; text-align:center;">
         <cl:verticaldata std:sid="v-data-77148607" width="200px" height="40px"/>
         <cl:itemset datasetid="available_osList" label="available_os" value="os_binary_numbers"/>
       </cl:checkboxgroup>
@@ -177,6 +181,7 @@
         <cl:verticaldata std:sid="v-data-6e568300" width="100px" height="25px"/>
       </cl:output>
       <cl:textarea std:sid="t-area-fa88e352" id="txa1">
+        <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
         <cl:verticaldata std:sid="v-data-344751c0" width="100px" height="176px"/>
       </cl:textarea>
       <cl:verticallayout std:sid="v-layout-89215b4f"/>
@@ -226,6 +231,7 @@
         </cl:griddetail>
       </cl:grid>
       <cl:button std:sid="button-b6d61eeb" style="background-color:#eaf0ea; border-bottom-color:#c2c2c2; border-left-color:#c2c2c2; border-top-color:#c2c2c2; border-right-color:#c2c2c2; background-image:none;" value="+">
+        <cl:listener std:sid="listener-16752019" name="click" handler="onButtonClick"/>
         <cl:formdata std:sid="f-data-498b054f" row="0" col="1"/>
       </cl:button>
       <cl:formlayout std:sid="f-layout-c1d5f357" hspace="0px" vspace="8px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">

@@ -34,7 +34,7 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	var addSW = app.lookup("addSW");
 	// 업로드한 파일 정보 서브미션에 저장
 	if (product_image.file != null){
-		addSW.addFileParameter("SWImage", product_image.file);
+		addSW.addFileParameter("SWimage", product_image.file);
 		console.log("출입통제기 이미지 파일명 :" + product_image.file);
 		console.log("출입통제기 파일 타입" + product_image.file.type);
 	}
@@ -45,14 +45,72 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	
 	var product_sw = app.lookup("product_sw");
 	
-	var selectDBVaules = app.lookup("checkBox_os").values;
-	console.log("selectDBVaules : " + selectDBVaules);
+	// 선택한 DB 값의 행 인덱스 값들 가져오기
+	var selectDBindices = app.lookup("grid_DB").getCheckRowIndices();
+	console.log("selectDBindices : " + selectDBindices);
 	
 	var i;
-	for(i = 0; i < selectDBVaules.length; i++){
-		
+	var selectDBVaules = 0;
+	var dbDateSet = app.lookup("available_dbList");
+	for(i = 0; i < selectDBindices.length; i++) {
+		// 가져온 인덱스 값으로 선택한 DB의 설정된 2진수 값을 모두 더한다. (available_dbList 데이터셋 확인)
+		selectDBVaules += dbDateSet.getValue(selectDBindices[i], "db_binary_numbers");
+	}
+	console.log("selectDBVaules : " + selectDBVaules);
+	
+	// 더한 2진수 값을 10진수로 변환, prodect_sw 데이터 맵에 넣기
+	var decimalDBvalue = parseInt(selectDBVaules, 2);
+	console.log("decimalDBvalue : " + decimalDBvalue);
+	
+	product_sw.setValue("available_db", decimalDBvalue);
+	
+	// 선택한 OS 값들 가져오기
+	var selectOSvalues = app.lookup("checkBox_os").values;
+	console.log("selectOSvalues : " + selectOSvalues);
+	
+	var osValue = 0;
+	for(i = 0; i < selectOSvalues.length; i++){
+		// 선택한 os의 설정된 2진수 값을 모두 더한다. (available_osList 데이터셋 확인)
+		osValue += Number(selectOSvalues[i]);
 	}
 	
+	console.log("osValue : " + osValue);
+	// 더한 2진수 값을 10진수로 변환, prodect_sw 데이터 맵에 넣기
+	var decimalOSvalue = parseInt(osValue, 2);
+	console.log("decimalOSvalue : " + decimalOSvalue);
 	
+	product_sw.setValue("available_os", decimalOSvalue);
+	
+	app.lookup("addSW").send();
+	console.log("addSW 서브미션 실행");
+	
+}
+
+/*
+ * addSW 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onAddSWSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var addSW = e.control;
+	
+	var resultCode = app.lookup("result").getValue("resultCode");
+	console.log(resultCode);
+	app.setAppProperty("resultCode", resultCode);
+	
+	app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close();
+	
+	/*
+	if(resultCode == 1){
+		app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close();
+	}else {
+		alert("상품 등록 실패");
+	}
+	*/
+	
+	//app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close();
+	//app.getRootAppInstance()는 최상위 앱 호출
 	
 }

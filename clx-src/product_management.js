@@ -118,8 +118,11 @@ function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
 	var sideMenu = app.lookup("sideTree");
 	var sideMenuDataSet = sideTree.dataSet;
 	var clickParent = sideMenuDataSet.getValue(clickRow, "parent");
+	var clickProduct_id = sideMenuDataSet.getValue(clickRow, "product_id");
 	console.log("parent 컬럼 값 : " + clickParent);
+	console.log("clickProduct_id : " + clickProduct_id);
 	
+	app.setAppProperty("product_id", clickProduct_id);
 	
 	if(clickParent == "출입통제기"){
 		var embeddedApp = app.lookup("content_view");
@@ -139,7 +142,7 @@ function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
 		});
 	}
 	
-	
+
 }
 	
 	
