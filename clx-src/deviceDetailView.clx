@@ -53,6 +53,11 @@
           <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-49419a4b" id="result">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a4631325" name="resultCode" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-2aa68b7a" id="getDeviceContent" action="/productMangement/deviceContent">
         <cl:listener std:sid="listener-271f9f6c" name="submit-done" handler="onGetDeviceContentSubmitDone"/>
         <cl:requestdata dataid="product_id"/>
@@ -61,14 +66,17 @@
         <cl:responsedata dataid="product_device"/>
         <cl:responsedata dataid="developerList"/>
       </cl:submission>
+      <cl:submission std:sid="submission-c1f76ae0" id="deleteDevice" action="/productMangement/deleteDevice">
+        <cl:listener std:sid="listener-792ea646" name="submit-done" handler="onDeleteDeviceSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:responsedata dataid="result"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-673e29fa" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-e774c05d" name="load" handler="onBodyLoad"/>
-    <cl:listener std:sid="listener-1f57acd9" name="init" handler="onBodyInit"/>
-    <cl:listener std:sid="listener-797c31c0" name="property-change" handler="onBodyPropertyChange"/>
-    <cl:img std:sid="image-ae054298">
+    <cl:img std:sid="image-ae054298" id="productImage" alt="&quot;제품 이미지&quot;">
       <cl:xylayoutdata std:sid="xyl-data-24cebc89" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>
     <cl:group std:sid="group-a6db7d0e">
@@ -112,7 +120,7 @@
     <cl:group std:sid="group-47fbaced">
       <cl:xylayoutdata std:sid="xyl-data-8748173c" top="218px" left="20px" width="696px" height="187px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:grid std:sid="grid-a9c2c586" id="authentication" readonly="true" datasetid="authenticationList" autorowheight="all">
-        <cl:verticaldata std:sid="v-data-bc522b9c" width="400px" height="177px" autosize="height"/>
+        <cl:verticaldata std:sid="v-data-bc522b9c" width="400px" height="84px" autosize="height"/>
         <cl:gridcolumn std:sid="g-column-0612c3ff" width="83px"/>
         <cl:gridcolumn std:sid="g-column-6337ef45"/>
         <cl:gridcolumn std:sid="g-column-e9d3f23d"/>
@@ -180,15 +188,11 @@
       <cl:output std:sid="output-325b626b" style="padding-left:10px;" value="설명">
         <cl:verticaldata std:sid="v-data-9ce4e239" width="100px" height="25px"/>
       </cl:output>
-      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" readonly="true">
+      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" style="padding-top:5px; padding-left:10px; padding-bottom:5px; padding-right:10px;" readonly="true">
         <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
         <cl:verticaldata std:sid="v-data-fa59da00" width="100px" height="143px" autosize="none"/>
       </cl:textarea>
       <cl:verticallayout std:sid="v-layout-404ee950"/>
-    </cl:group>
-    <cl:group std:sid="group-12eb8b93">
-      <cl:xylayoutdata std:sid="xyl-data-82c05228" top="0px" left="5px" width="730px" height="970px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:xylayout std:sid="xylayout-2fe0eccd"/>
     </cl:group>
     <cl:group std:sid="group-bde0edcb">
       <cl:xylayoutdata std:sid="xyl-data-3fcfcbac" top="721px" left="20px" width="696px" height="200px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
@@ -224,10 +228,12 @@
       </cl:grid>
       <cl:verticallayout std:sid="v-layout-d4ecb437"/>
     </cl:group>
-    <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
+    <cl:button std:sid="button-ef4ef762" id="modifyButton" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
+      <cl:listener std:sid="listener-1342f4e4" name="click" handler="onModifyButtonClick"/>
       <cl:xylayoutdata std:sid="xyl-data-7904806f" top="931px" left="539px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
-    <cl:button std:sid="button-76cf29a0" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
+    <cl:button std:sid="button-76cf29a0" id="deleteButton" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
+      <cl:listener std:sid="listener-2b359f14" name="click" handler="onDeleteButtonClick"/>
       <cl:xylayoutdata std:sid="xyl-data-e00fc805" top="931px" left="636px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:xylayout std:sid="xylayout-6322b8f4"/>

@@ -24,7 +24,7 @@
             <cl:datavalue columnname="db_binary_numbers"><![CDATA[10]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>
-            <cl:datavalue columnname="available_db"><![CDATA[MS Server]]></cl:datavalue>
+            <cl:datavalue columnname="available_db"><![CDATA[MS-SQL]]></cl:datavalue>
             <cl:datavalue columnname="db_binary_numbers"><![CDATA[100]]></cl:datavalue>
           </cl:datarow>
           <cl:datarow>

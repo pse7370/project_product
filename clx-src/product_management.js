@@ -6,17 +6,6 @@
  ************************************************/
 
 /*
- * 루트 컨테이너에서 init 이벤트 발생 시 호출.
- * 앱이 최초 구성될 때 발생하는 이벤트 입니다.
- */
-
-function onBodyInit(/* cpr.events.CEvent */ e){
-	
-	
-}
-
-
-/*
  * 루트 컨테이너에서 load 이벤트 발생 시 호출.
  * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
  */
@@ -69,7 +58,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	app.dialogManager.openDialog("addProduct", "addProduct", {width : 760, height : 700}, function(dialog){
 		dialog.ready(function(dialogApp){
 			// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
-			dialog.headerTitle = "상품 관리";
+			dialog.headerTitle = "제품 등록";
 			console.log(dialog.app.id);
 			/*
 			dialog.style.css("border","solid 1px #555555");
@@ -123,29 +112,30 @@ function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
 	console.log("clickProduct_id : " + clickProduct_id);
 	
 	app.setAppProperty("product_id", clickProduct_id);
-	app.setAppProperty("product_type", clickParent);
+	//app.setAppProperty("product_type", clickParent);
 	
 	var embeddedApp = app.lookup("content_view");
 	
-	/*
-	if(clickParent == "출입통제기"){
-		
+	//embeddedApp.setAppProperty("product_id", clickProduct_id);
+	
+	
+	if(clickParent == "출입통제기"){		
 		cpr.core.App.load("deviceDetailView", function(loadedApp){
 			if(loadedApp){
-	    		embeddedApp.app = loadedApp;
+				
+	    		embeddedApp.app = loadedApp;	    		
 	  		}
 		});
 	}
 	
 	if(clickParent == "SW"){
-		embeddedApp.redraw();
 		cpr.core.App.load("swDetailView", function(loadedApp){
 			if(loadedApp){
 	    		embeddedApp.app = loadedApp;
 	  		}
 		});
 	}
-	*/
+	
 
 }	
 
@@ -155,30 +145,29 @@ function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
  * 앱의 속성이 변경될 때 발생하는 이벤트 입니다.
  */
 function onBodyPropertyChange(/* cpr.events.CPropertyChangeEvent */ e){
+	
+	//var product_type = app.getAppProperty("product_type");
 	var product_id = app.getAppProperty("product_id");
-	var product_type = app.getAppProperty("product_type");
 	
-	var embeddedApp = app.lookup("content_view");
+	//console.log("앱 인스턴스 product type / " + product_type);
+	console.log("앱 인스턴스  product id / " + product_id);
 	
-	if(product_type == "출입통제기"){
+	var vaRunningAppInstances =  cpr.core.Platform.INSTANCE.getAllRunningAppInstances();
+	
+	vaRunningAppInstances.forEach(function(appInstance){
+
+		if (appInstance.app.id == "deviceDetailView"){
+			appInstance.close();
+			appInstance.run();	
+		}
 		
-		cpr.core.App.load("deviceDetailView", function(loadedApp){
-			if(loadedApp){
-	    		embeddedApp.app = loadedApp;
-	  		}
-	  		if(loadedApp == embeddedApp.app){
-	  			app.getHostAppInstance()
-	  		}
-		});
-		
-	}
+		if (appInstance.app.id == "swDetailView"){
+			appInstance.close();
+			appInstance.run();	
+		}
 	
-	if(product_type == "SW"){
-		embeddedApp.redraw();
-		cpr.core.App.load("swDetailView", function(loadedApp){
-			if(loadedApp){
-	    		embeddedApp.app = loadedApp;
-	  		}
-		});
-	}
+	});
+	
+	
+	
 }

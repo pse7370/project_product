@@ -28,7 +28,7 @@
     <cl:listener std:sid="listener-1866097f" name="init" handler="onBodyInit"/>
     <cl:listener std:sid="listener-e030f8d4" name="load" handler="onBodyLoad"/>
     <cl:listener std:sid="listener-66dc716a" name="screen-change" handler="onBodyScreenChange"/>
-    <cl:listener std:sid="listener-d1a67f03" name="property-change" handler="onBodyPropertyChange"/>
+    <cl:listener std:sid="listener-a8b71957" name="property-change" handler="onBodyPropertyChange"/>
     <cl:group std:sid="group-09f68200">
       <cl:xylayoutdata std:sid="xyl-data-69e6bd09" top="20px" left="19px" width="216px" height="727px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:tree std:sid="tree-7201149e" id="sideTree" style="border-radius:15px;" indent="20">
@@ -42,8 +42,8 @@
     </cl:group>
     <cl:group std:sid="group-baead445" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#8d8d8d; border-right-width:1px; border-left-color:#8d8d8d; border-right-color:#8d8d8d; border-left-width:1px; border-top-style:solid; border-radius:15px; border-left-style:solid; border-bottom-width:1px; border-top-color:#8d8d8d; font-family:'\B9D1\C740  \ACE0\B515' , 'Malgun Gothic' , sans-serif; border-bottom-style:solid;">
       <cl:xylayoutdata std:sid="xyl-data-66519a11" top="144px" left="245px" width="760px" height="598px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:embeddedapp std:sid="e-app-e6a30ea3" id="content_view" style="border-radius:10px;">
-        <cl:verticaldata std:sid="v-data-a6962dd3" width="753px" height="595px"/>
+      <cl:embeddedapp std:sid="e-app-e6a30ea3" id="content_view" style="border-radius:10px; padding-bottom:0px;">
+        <cl:verticaldata std:sid="v-data-a6962dd3" width="753px" height="573px"/>
       </cl:embeddedapp>
       <cl:verticallayout std:sid="v-layout-5dc73c80"/>
     </cl:group>

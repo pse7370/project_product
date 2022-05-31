@@ -28,16 +28,39 @@
       </cl:datamap>
       <cl:datamap std:sid="d-map-b9b13e94" id="product_sw">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-174d3c36" name="simultaneous_connection" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-174d3c36" name="simultaneous" datatype="number"/>
           <cl:datacolumn std:sid="d-column-81c18668" name="available_db" datatype="number"/>
           <cl:datacolumn std:sid="d-column-1728dd1f" name="available_os" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-b9f20244" id="product_id">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-49419a4b" id="result">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-a4631325" name="resultCode" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-a2c680d7" id="getSWcontent" action="/productMangement/SWcontent">
+        <cl:listener std:sid="listener-a7263bfb" name="submit-done" handler="onGetSWcontentSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:responsedata dataid="product"/>
+        <cl:responsedata dataid="product_sw"/>
+        <cl:responsedata dataid="developerList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-dda9fc1c" id="deleteSW" action="/productMangement/deleteSW">
+        <cl:listener std:sid="listener-49d7d24a" name="submit-done" handler="onDeleteSWSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:responsedata dataid="result"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-76788267" style="top:0px; left:0px; width:800px; height:600px;">
-    <cl:img std:sid="image-ae054298">
+    <cl:listener std:sid="listener-ab72970f" name="load" handler="onBodyLoad"/>
+    <cl:img std:sid="image-ae054298" id="productImage" alt="&quot;제품 이미지&quot;">
       <cl:xylayoutdata std:sid="xyl-data-e349acd2" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>
     <cl:group std:sid="group-701f2f65">
@@ -57,21 +80,21 @@
       <cl:output std:sid="output-92cebfef" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; vertical-align:middle; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; background-color:#eaf0ea; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="사용가능 DB">
         <cl:formdata std:sid="f-data-f8505494" row="4" col="0"/>
       </cl:output>
-      <cl:output std:sid="output-5d27b1d4" style="border-right-style:solid; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4;">
+      <cl:output std:sid="output-5d27b1d4" id="productVersion" style="border-right-style:solid; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4;">
         <cl:datamapbind property="value" datacontrolid="product" columnname="product_version"/>
         <cl:formdata std:sid="f-data-8d9b6629" row="1" col="1"/>
       </cl:output>
-      <cl:output std:sid="output-9c24d8fe" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
-        <cl:datamapbind property="value" datacontrolid="product_sw" columnname="simultaneous_connection"/>
+      <cl:output std:sid="output-9c24d8fe" id="simultaneous" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
+        <cl:datamapbind property="value" datacontrolid="product_sw" columnname="simultaneous"/>
         <cl:formdata std:sid="f-data-59d83be7" row="2" col="1"/>
       </cl:output>
-      <cl:output std:sid="output-7b891ac3" style="border-right-style:solid; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4;" value="Output">
+      <cl:output std:sid="output-7b891ac3" id="availableOS" style="border-right-style:solid; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4;">
         <cl:formdata std:sid="f-data-ccea50d4" row="3" col="1"/>
       </cl:output>
-      <cl:output std:sid="output-52c7929f" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;" value="Output">
+      <cl:output std:sid="output-52c7929f" id="availableDB" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;" value="">
         <cl:formdata std:sid="f-data-4e1af9e5" row="4" col="1" rowspan="1" colspan="1"/>
       </cl:output>
-      <cl:output std:sid="output-61542e3b" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
+      <cl:output std:sid="output-61542e3b" id="productName" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:10px; border-right-color:#b4b4b4; border-top-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid;">
         <cl:datamapbind property="value" datacontrolid="product" columnname="product_name"/>
         <cl:formdata std:sid="f-data-55559177" row="0" col="1"/>
       </cl:output>
@@ -90,7 +113,7 @@
       <cl:output std:sid="output-325b626b" style="padding-left:10px;" value="설명">
         <cl:verticaldata std:sid="v-data-9ce4e239" width="100px" height="25px"/>
       </cl:output>
-      <cl:textarea std:sid="t-area-f4d72d50" id="txa1" readonly="true">
+      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" style="padding-top:5px; padding-left:10px; padding-bottom:5px; padding-right:10px;" readonly="true">
         <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
         <cl:verticaldata std:sid="v-data-fa59da00" width="100px" height="182px" autosize="none"/>
       </cl:textarea>
@@ -103,29 +126,29 @@
       </cl:output>
       <cl:grid std:sid="grid-cacf20a8" id="grid_developer" readonly="true" datasetid="developerList">
         <cl:verticaldata std:sid="v-data-4391ab79" width="400px" height="178px"/>
-        <cl:gridcolumn std:sid="g-column-d1533828" width="36px"/>
-        <cl:gridcolumn std:sid="g-column-0557f4f2" width="109px"/>
-        <cl:gridcolumn std:sid="g-column-2f85436c" width="98px"/>
-        <cl:gridcolumn std:sid="g-column-534df9de"/>
-        <cl:gridcolumn std:sid="g-column-cbe4a914"/>
-        <cl:gridcolumn std:sid="g-column-7529ae12"/>
-        <cl:gridheader std:sid="gh-band-39fadfd6">
-          <cl:gridrow std:sid="g-row-8082c7de" height="25px"/>
-          <cl:gridcell std:sid="gh-cell-204c58d1" rowindex="0" colindex="0" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" sortable="false" filterable="false" text="번호"/>
-          <cl:gridcell std:sid="gh-cell-e030211a" rowindex="0" colindex="1" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="department" sortable="false" filterable="false" text="부서명"/>
-          <cl:gridcell std:sid="gh-cell-8cd5dcd3" rowindex="0" colindex="2" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="employees_number" sortable="false" filterable="false" text="사원 번호"/>
-          <cl:gridcell std:sid="gh-cell-5bdaeebf" rowindex="0" colindex="3" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
-          <cl:gridcell std:sid="gh-cell-cae88b5d" rowindex="0" colindex="4" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="start_date" sortable="false" filterable="false" text="시작일"/>
-          <cl:gridcell std:sid="gh-cell-3a68a400" rowindex="0" colindex="5" style="background-color:#eaf0ea; vertical-align:middle; text-align:center;" targetcolumnname="end_date" sortable="false" filterable="false" text="종료일"/>
+        <cl:gridcolumn std:sid="g-column-e4ab03cb" width="36px"/>
+        <cl:gridcolumn std:sid="g-column-029c77e2" width="108px"/>
+        <cl:gridcolumn std:sid="g-column-0a46f6f6"/>
+        <cl:gridcolumn std:sid="g-column-2a99273f" width="104px"/>
+        <cl:gridcolumn std:sid="g-column-4a85920b" width="101px"/>
+        <cl:gridcolumn std:sid="g-column-64b9a6a1" width="95px"/>
+        <cl:gridheader std:sid="gh-band-b56f216d">
+          <cl:gridrow std:sid="g-row-5d780772"/>
+          <cl:gridcell std:sid="gh-cell-c3b38b7b" rowindex="0" colindex="0" style="background-color:#eaf0ea;" sortable="false" filterable="false" text="번호"/>
+          <cl:gridcell std:sid="gh-cell-085a7bc5" rowindex="0" colindex="1" style="background-color:#eaf0ea;" targetcolumnname="department" sortable="false" filterable="false" text="부서명"/>
+          <cl:gridcell std:sid="gh-cell-d4cc2822" rowindex="0" colindex="2" style="background-color:#eaf0ea;" targetcolumnname="employees_number" sortable="false" filterable="false" text="사원 번호"/>
+          <cl:gridcell std:sid="gh-cell-8c58b526" rowindex="0" colindex="3" style="background-color:#eaf0ea;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
+          <cl:gridcell std:sid="gh-cell-3b54f5dd" rowindex="0" colindex="4" style="background-color:#eaf0ea;" targetcolumnname="start_date" sortable="false" filterable="false" text="시작일"/>
+          <cl:gridcell std:sid="gh-cell-223ff8d9" rowindex="0" colindex="5" style="background-color:#eaf0ea;" targetcolumnname="end_date" sortable="false" filterable="false" text="종료일"/>
         </cl:gridheader>
-        <cl:griddetail std:sid="gd-band-8607922e">
-          <cl:gridrow std:sid="g-row-2a83e3fb" height="25px"/>
-          <cl:gridcell std:sid="gd-cell-498fc551" rowindex="0" colindex="0" style="vertical-align:middle; text-align:center;" columntype="rowindex"/>
-          <cl:gridcell std:sid="gd-cell-54d4bd7d" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;" columnname="department"/>
-          <cl:gridcell std:sid="gd-cell-4ad1d30f" rowindex="0" colindex="2" style="vertical-align:middle; text-align:center;" columnname="employees_number"/>
-          <cl:gridcell std:sid="gd-cell-77629e6a" rowindex="0" colindex="3" style="vertical-align:middle; text-align:center;" columnname="employees_name"/>
-          <cl:gridcell std:sid="gd-cell-6a24b431" rowindex="0" colindex="4" style="vertical-align:middle; text-align:center;" columnname="start_date"/>
-          <cl:gridcell std:sid="gd-cell-ba9f88ce" rowindex="0" colindex="5" style="vertical-align:middle; text-align:center;" columnname="end_date"/>
+        <cl:griddetail std:sid="gd-band-74a1626f">
+          <cl:gridrow std:sid="g-row-0305b61f"/>
+          <cl:gridcell std:sid="gd-cell-1765bad4" rowindex="0" colindex="0" columntype="rowindex"/>
+          <cl:gridcell std:sid="gd-cell-ea621f82" rowindex="0" colindex="1" columnname="department"/>
+          <cl:gridcell std:sid="gd-cell-43419539" rowindex="0" colindex="2" columnname="employees_number"/>
+          <cl:gridcell std:sid="gd-cell-6c71b635" rowindex="0" colindex="3" columnname="employees_name"/>
+          <cl:gridcell std:sid="gd-cell-fc34f900" rowindex="0" colindex="4" columnname="start_date"/>
+          <cl:gridcell std:sid="gd-cell-1f056f07" rowindex="0" colindex="5" columnname="end_date"/>
         </cl:griddetail>
       </cl:grid>
       <cl:verticallayout std:sid="v-layout-d4ecb437"/>
@@ -133,11 +156,8 @@
     <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
       <cl:xylayoutdata std:sid="xyl-data-ed401fa6" top="681px" left="534px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
-    <cl:group std:sid="group-12eb8b93">
-      <cl:xylayoutdata std:sid="xyl-data-2451ff50" top="0px" left="0px" width="730px" height="730px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-      <cl:xylayout std:sid="xylayout-2fe0eccd"/>
-    </cl:group>
     <cl:button std:sid="button-76cf29a0" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
+      <cl:listener std:sid="listener-4eef2a7e" name="click" handler="onButtonClick"/>
       <cl:xylayoutdata std:sid="xyl-data-fbcf61fb" top="681px" left="631px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:xylayout std:sid="xylayout-07360624"/>
