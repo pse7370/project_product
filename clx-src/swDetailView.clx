@@ -60,6 +60,10 @@
   </head>
   <body std:sid="body-76788267" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-ab72970f" name="load" handler="onBodyLoad"/>
+    <cl:group std:sid="group-c889245f">
+      <cl:xylayoutdata std:sid="xyl-data-a958175f" top="669px" left="510px" width="201px" height="49px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayout std:sid="xylayout-6763584e"/>
+    </cl:group>
     <cl:img std:sid="image-ae054298" id="productImage" alt="&quot;제품 이미지&quot;">
       <cl:xylayoutdata std:sid="xyl-data-e349acd2" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>

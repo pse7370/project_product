@@ -100,7 +100,7 @@ function onAddSWSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	console.log(resultCode);
 	app.setAppProperty("resultCode", resultCode);
 	
-	app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close();
+	app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close(1);
 	
 	/*
 	if(resultCode == 1){

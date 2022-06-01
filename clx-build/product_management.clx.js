@@ -85,7 +85,7 @@
 						*/
 						dialog.addEventListener("close", function(e){
 							// 이곳에서 원하는 동작 처리
-							window.location.reload();
+							//window.location.reload();
 						});
 					});
 				}).then(function(returnValue){
@@ -308,7 +308,7 @@
 				});
 				container.addChild(embeddedApp_1, {
 					"width": "753px",
-					"height": "573px"
+					"height": "596px"
 				});
 			})(group_2);
 			container.addChild(group_2, {

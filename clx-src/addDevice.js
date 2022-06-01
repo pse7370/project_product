@@ -57,7 +57,6 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	product.setValue("product_type", "출입통제기");
 	
 	var authenticationList = app.lookup("authenticationList")
-	var authenticationDetailList = app.lookup("authenticationDetailList")
 	
 	console.log(authenticationList.getRowCount());
 	
@@ -65,27 +64,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	console.log("checkedRow : " + authenGrid.getCheckRowIndices());
 	
 	var checkedRow = authenGrid.getCheckRowIndices();
-	/*
-	var count
-	authenticationDetailList.clear();
-	for(count = 0; count < checkedRow.length; count++){	
-		authenticationDetailList.addRowData({
-												 "auth_type": authenticationList.getValue(checkedRow[count], "auth_type"), 
-												 "auth_method": "1:1",
-												 "max_users": authenticationList.getValue(checkedRow[count], "one_to_one_max_user"),
-												 "max_templates": authenticationList.getValue(checkedRow[count], "one_to_one_max_template")	
-											}),
-		authenticationDetailList.addRowData({
-												"auth_type": authenticationList.getValue(checkedRow[count], "auth_type"), 
-												 "auth_method": "1:N",
-												 "max_users": authenticationList.getValue(checkedRow[count], "one_to_many_max_user"),
-												 "max_templates": authenticationList.getValue(checkedRow[count], "one_to_many_max_template"),
-											});
-			console.log(authenticationDetailList.getRowData(checkedRow[count]));	
-	}
-
-	addDevice.addRequestData(authenticationDetailList);
-	*/
+	
 	addDevice.send();
 }
 
@@ -105,7 +84,7 @@ function onAddDeviceSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	console.log(resultCode);
 	app.setAppProperty("resultCode", resultCode);
 	
-	app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close();
+	app.getRootAppInstance().dialogManager.getDialogByName("addProduct").close(1);
 	
 	/*
 	if(resultCode == 1){

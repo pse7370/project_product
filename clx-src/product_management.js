@@ -70,7 +70,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 			*/
 			dialog.addEventListener("close", function(e){
 				// 이곳에서 원하는 동작 처리
-				window.location.reload();
+				//window.location.reload();
 			});
 		});
 	}).then(function(returnValue){
