@@ -11,6 +11,13 @@
  * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
  */
 function onBodyLoad(/* cpr.events.CEvent */ e){
+	console.log(app.getHost().initValue);
+	
+	var initValue = app.getHost().initValue;
+	app.lookup("product") = initValue.product;
+	app.lookup("product_device") = initValue.product_device;
+	app.lookup("authenticationList") = initValue.authenticationList;
+	app.lookup("developerList") = initValue.developerList;
 	
 }
 
