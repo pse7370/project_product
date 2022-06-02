@@ -171,8 +171,11 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	 */
 	var button = e.control;
 	
+	var product_id = app.lookup("product_id").getValue("product_id");
+	
 	var confirmText = "제품 삭제시 등록한 커스터마이징 이력과 산출물들이 같이 삭제 됩니다.\n삭제하시겠습니까?";
 	if(confirm(confirmText)){
+		app.lookup("deleteSW").action = "/productMangement/deleteSW?" + product_id;
 		app.lookup("deleteSW").send();
 		console.log("deleteSW 서브미션 실행");
 	}
@@ -191,7 +194,10 @@ function onDeleteSWSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	var deleteSW = e.control;
 	
 	alert("제품을 삭제했습니다.");
-	window.location.reload();
+	//window.location.reload();
+	app.getRootAppInstance().lookup("getSideMenu").send();
+	app.close();
+	
 	
 	var resultCode = app.lookup("result").getValue("resultCode");
 	console.log(resultCode);

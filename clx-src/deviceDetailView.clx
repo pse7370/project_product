@@ -2,12 +2,13 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:cl="http://tomatosystem.co.kr/cleopatra" xmlns:std="http://tomatosystem.co.kr/cleopatra/studio" std:sid="html-7c4cce2b" version="1.0.0.0">
   <head std:sid="head-f40c7c50">
     <title>deviceDetailView</title>
-    <link std:sid="link-4c38a03a" href="theme/css/main.css" rel="stylesheet" type="text/css"/>
     <screen std:sid="screen-aa887fe5" id="default" name="default" minwidth="1024px" width="1024px" height="768px" customHeight="600" customWidth="800" active="false"/>
     <screen std:sid="screen-786f1f07" id="layout" name="layout" minwidth="748px" maxwidth="1023px" width="748px" height="970px" active="true"/>
     <screen std:sid="screen-062eb76e" id="deatilView" name="deatilView" minwidth="748px" maxwidth="747px" width="748px" height="850px" active="false"/>
     <screen std:sid="screen-6e3aba2a" id="tablet" name="tablet" minwidth="500px" maxwidth="747px" width="500px" height="667px"/>
     <screen std:sid="screen-2e0fecfc" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
+    <link std:sid="link-050a8ffc" href="theme/css/addProduct_style.css" rel="stylesheet" type="text/css"/>
+    <link std:sid="link-0d7d96c3" href="theme/css/main.css" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-023636d6">
       <cl:dataset std:sid="d-set-3c10020e" id="authenticationList">
         <cl:datacolumnlist>
@@ -44,7 +45,8 @@
           <cl:datacolumn std:sid="d-column-9df4b354" name="product_type"/>
           <cl:datacolumn std:sid="d-column-32e50aa5" name="product_name"/>
           <cl:datacolumn std:sid="d-column-36ff3d32" name="product_version"/>
-          <cl:datacolumn std:sid="d-column-824f11b9" name="save_path"/>
+          <cl:datacolumn std:sid="d-column-824f11b9" name="save_image_name"/>
+          <cl:datacolumn std:sid="d-column-75c46b74" name="save_path"/>
           <cl:datacolumn std:sid="d-column-361511eb" name="explanation"/>
         </cl:datacolumnlist>
       </cl:datamap>
@@ -66,9 +68,8 @@
         <cl:responsedata dataid="product_device"/>
         <cl:responsedata dataid="developerList"/>
       </cl:submission>
-      <cl:submission std:sid="submission-c1f76ae0" id="deleteDevice" action="/productMangement/deleteDevice">
+      <cl:submission std:sid="submission-c1f76ae0" id="deleteDevice" method="delete" action="/productMangement/deleteDevice">
         <cl:listener std:sid="listener-792ea646" name="submit-done" handler="onDeleteDeviceSubmitDone"/>
-        <cl:requestdata dataid="product_id"/>
         <cl:responsedata dataid="result"/>
       </cl:submission>
     </cl:model>
