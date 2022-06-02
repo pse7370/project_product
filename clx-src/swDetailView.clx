@@ -159,6 +159,7 @@
       <cl:verticallayout std:sid="v-layout-d4ecb437"/>
     </cl:group>
     <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
+      <cl:listener std:sid="listener-eb08b24e" name="click" handler="onButtonClick2"/>
       <cl:xylayoutdata std:sid="xyl-data-ed401fa6" top="681px" left="534px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:button std:sid="button-76cf29a0" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">

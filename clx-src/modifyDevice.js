@@ -113,10 +113,8 @@ function onGetDeviceContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 					break;
 			}			
 			
-		}			
-	}
-	
-	
+		} // end if			
+	} // end for	
 	
 	
 }
