@@ -74,7 +74,7 @@
       </cl:datamap>
       <cl:datamap std:sid="d-map-b9b13e94" id="product_sw">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-174d3c36" name="simultaneous_connection" datatype="number"/>
+          <cl:datacolumn std:sid="d-column-174d3c36" name="simultaneous" datatype="number"/>
           <cl:datacolumn std:sid="d-column-81c18668" name="available_db" datatype="number"/>
           <cl:datacolumn std:sid="d-column-1728dd1f" name="available_os" datatype="number"/>
         </cl:datacolumnlist>
@@ -84,10 +84,31 @@
           <cl:datacolumn std:sid="d-column-a4631325" name="resultCode"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-b9f20244" id="product_id">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-a2c680d7" id="getSWcontent" action="/productMangement/SWcontent">
+        <cl:listener std:sid="listener-f925b38b" name="submit-done" handler="onGetSWcontentSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:responsedata dataid="product"/>
+        <cl:responsedata dataid="product_sw"/>
+        <cl:responsedata dataid="developerList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-4bf79b57" id="modifySW" method="put" action="/productMangement/modifySW" mediatype="multipart/form-data">
+        <cl:listener std:sid="listener-4ab911bf" name="submit-done" handler="onModifySWSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:requestdata dataid="product"/>
+        <cl:requestdata dataid="product_sw"/>
+        <cl:requestdata dataid="developerList"/>
+        <cl:responsedata dataid="result"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-11a90abf" style="top:0px; left:0px; width:800px; height:600px;">
+    <cl:listener std:sid="listener-d396bd89" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-c9b0b798">
       <cl:xylayoutdata std:sid="xyl-data-d690edd0" top="0px" left="0px" width="740px" height="800px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-62bd09ef">
@@ -125,8 +146,8 @@
         <cl:output std:sid="output-1d7df186" style="text-align:center;" value="동시 접속 단말기 수">
           <cl:formdata std:sid="f-data-f53f1c16" row="0" col="0"/>
         </cl:output>
-        <cl:numbereditor std:sid="n-editor-72ba2133" id="nbe1" style="text-align:right; padding-right:5px;">
-          <cl:datamapbind property="value" datacontrolid="product_sw" columnname="simultaneous_connection"/>
+        <cl:numbereditor std:sid="n-editor-72ba2133" id="input_simultaneous" style="text-align:right; padding-right:5px;">
+          <cl:datamapbind property="value" datacontrolid="product_sw" columnname="simultaneous"/>
           <cl:formdata std:sid="f-data-80525775" row="0" col="1"/>
         </cl:numbereditor>
         <cl:formlayout std:sid="f-layout-f605e0cf" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
@@ -173,7 +194,7 @@
         <cl:output std:sid="output-520cd5b8" style="padding-left:10px;" value="설명">
           <cl:verticaldata std:sid="v-data-6e568300" width="100px" height="25px"/>
         </cl:output>
-        <cl:textarea std:sid="t-area-fa88e352" id="txa1">
+        <cl:textarea std:sid="t-area-fa88e352" id="explanation">
           <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
           <cl:verticaldata std:sid="v-data-344751c0" width="100px" height="176px"/>
         </cl:textarea>
@@ -185,7 +206,7 @@
           <cl:formdata std:sid="f-data-8de7bc90" row="0" col="0"/>
         </cl:output>
         <cl:grid std:sid="grid-8fe08b8b" id="grid_developer" datasetid="developerList">
-          <cl:formdata std:sid="f-data-b0e3dd6b" row="1" col="0" rowspan="1" colspan="2"/>
+          <cl:formdata std:sid="f-data-bb1b9600" row="1" col="0" rowspan="1" colspan="3"/>
           <cl:gridcolumn std:sid="g-column-afc997f4" width="33px"/>
           <cl:gridcolumn std:sid="g-column-bda716ee"/>
           <cl:gridcolumn std:sid="g-column-251015c6"/>
@@ -224,16 +245,23 @@
           </cl:griddetail>
         </cl:grid>
         <cl:button std:sid="button-b6d61eeb" style="background-color:#eaf0ea; border-bottom-color:#c2c2c2; border-left-color:#c2c2c2; border-top-color:#c2c2c2; border-right-color:#c2c2c2; background-image:none;" value="+">
+          <cl:listener std:sid="listener-e285dbcf" name="click" handler="onButtonClick"/>
           <cl:formdata std:sid="f-data-498b054f" row="0" col="1"/>
+        </cl:button>
+        <cl:button std:sid="button-34f8ac09" style="background-color:#eaf0ea; border-bottom-color:#c2c2c2; border-left-color:#c2c2c2; border-top-color:#c2c2c2; border-right-color:#c2c2c2; background-image:none;" value="-">
+          <cl:listener std:sid="listener-8d1fd52d" name="click" handler="onButtonClick2"/>
+          <cl:formdata std:sid="f-data-844839c5" row="0" col="2"/>
         </cl:button>
         <cl:formlayout std:sid="f-layout-c1d5f357" hspace="0px" vspace="8px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
           <cl:rows length="25" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
           <cl:rows length="1" unit="FRACTION"/>
           <cl:columns length="16" unit="FRACTION" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
           <cl:columns length="34" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+          <cl:columns length="34" unit="PIXEL" autoSizing="false" minlength="0"/>
         </cl:formlayout>
       </cl:group>
       <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
+        <cl:listener std:sid="listener-365a96a7" name="click" handler="onButtonClick3"/>
         <cl:xylayoutdata std:sid="xyl-data-707fed40" top="750px" left="637px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-d758294c"/>

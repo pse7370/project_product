@@ -57,6 +57,17 @@
           <cl:datacolumn std:sid="d-column-14ff71be" name="end_date"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-b798929a" id="deleteAuthenticationList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-41b38440" name="auth_type"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist/>
+      </cl:dataset>
+      <cl:dataset std:sid="d-set-ebc3496f" id="deleteDeveloperList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-53babbff" name="employees_number"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-3fa2152d" id="product_device">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-3bef5b45" name="width" datatype="number"/>
@@ -89,6 +100,8 @@
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-4bf79b57" id="modifyDevice" method="put" action="/productMangement/modifyDevice" mediatype="multipart/form-data">
+        <cl:listener std:sid="listener-e5eef0d7" name="submit-done" handler="onModifyDeviceSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
         <cl:requestdata dataid="product"/>
         <cl:requestdata dataid="authenticationList"/>
         <cl:requestdata dataid="product_device"/>
@@ -234,31 +247,33 @@
         <cl:output std:sid="output-dad19d87" style="border-right-style:solid; background-color:#eaf0ea; border-right-width:1px; border-left-style:solid; border-left-color:#b4b4b4; vertical-align:middle; border-right-color:#b4b4b4; background-image:none; border-left-width:1px; text-align:center;" value="Server">
           <cl:formdata std:sid="f-data-3cf36e00" row="1" col="0"/>
         </cl:output>
-        <cl:output std:sid="output-65a4d39a" id="input_server" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; vertical-align:middle; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;">
-          <cl:datamapbind property="value" datacontrolid="product_device" columnname="server"/>
-          <cl:formdata std:sid="f-data-8a5c4302" row="2" col="0"/>
-        </cl:output>
         <cl:output std:sid="output-37a1808c" style="background-color:#eaf0ea; vertical-align:middle; background-image:none; text-align:center;" value="Wireless LAN(Wi-Fi)">
           <cl:formdata std:sid="f-data-f530c60c" row="1" col="1"/>
         </cl:output>
         <cl:output std:sid="output-458a5b90" style="border-right-style:solid; background-color:#eaf0ea; border-right-width:1px; border-left-style:solid; border-left-color:#b4b4b4; vertical-align:middle; border-right-color:#b4b4b4; background-image:none; border-left-width:1px; text-align:center;" value="Other">
           <cl:formdata std:sid="f-data-0384b5f2" row="1" col="2"/>
         </cl:output>
-        <cl:output std:sid="output-fbcf667b" id="input_other" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; vertical-align:middle; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;">
-          <cl:datamapbind property="value" datacontrolid="product_device" columnname="other"/>
-          <cl:formdata std:sid="f-data-9aa8c0da" row="2" col="2"/>
-        </cl:output>
-        <cl:linkedcombobox std:sid="lc-box-a0552af6" id="selectWi_fi" style="border-bottom-color:#b4b4b4; border-bottom-width:1px; border-bottom-style:solid;" preventinput="true">
+        <cl:linkedcombobox std:sid="lc-box-a0552af6" id="selectWi_fi" preventinput="true">
+          <cl:listener std:sid="listener-8e3c9e98" name="selection-change" handler="onSelectWi_fiSelectionChange"/>
+          <cl:datamapbind property="value" datacontrolid="product_device" columnname="wi_fi"/>
           <cl:formdata std:sid="f-data-6988b6f6" row="2" col="1" rowspan="1" colspan="1"/>
           <cl:treeitem std:sid="t-item-41956569" label="O" value="O"/>
           <cl:treeitem std:sid="t-item-8aecddd4" label="X" value="X"/>
         </cl:linkedcombobox>
+        <cl:inputbox std:sid="i-box-fdf45e21" id="input_server">
+          <cl:datamapbind property="value" datacontrolid="product_device" columnname="server"/>
+          <cl:formdata std:sid="f-data-0e7b0d08" row="2" col="0"/>
+        </cl:inputbox>
+        <cl:inputbox std:sid="i-box-4a074b42" id="input_other">
+          <cl:datamapbind property="value" datacontrolid="product_device" columnname="other"/>
+          <cl:formdata std:sid="f-data-23017dcc" row="2" col="2"/>
+        </cl:inputbox>
         <cl:formlayout std:sid="f-layout-a886f5e1" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
           <cl:rows length="1" unit="FRACTION" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
           <cl:rows length="1" unit="FRACTION" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
           <cl:rows length="1" unit="FRACTION" shadetype="NONE" shadecolor="transparent"/>
           <cl:columns length="127" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
-          <cl:columns length="151" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+          <cl:columns length="150" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
           <cl:columns length="127" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
         </cl:formlayout>
       </cl:group>
@@ -292,12 +307,8 @@
         <cl:output std:sid="output-1091543d" style="padding-left:10px;" value="담당 개발자">
           <cl:formdata std:sid="f-data-8de7bc90" row="0" col="0"/>
         </cl:output>
-        <cl:button std:sid="button-b6d61eeb" style="background-color:#eaf0ea; border-bottom-color:#c2c2c2; border-left-color:#c2c2c2; border-top-color:#c2c2c2; border-right-color:#c2c2c2; background-image:none;" value="+">
-          <cl:listener std:sid="listener-8a71e998" name="click" handler="onButtonClick"/>
-          <cl:formdata std:sid="f-data-6de5c763" row="0" col="1" rowspan="1" colspan="1"/>
-        </cl:button>
         <cl:grid std:sid="grid-8fe08b8b" id="grid_developer" datasetid="developerList">
-          <cl:formdata std:sid="f-data-405c6ec8" row="1" col="0" rowspan="1" colspan="2"/>
+          <cl:formdata std:sid="f-data-405c6ec8" row="1" col="0" rowspan="1" colspan="3"/>
           <cl:gridcolumn std:sid="g-column-afc997f4" width="33px"/>
           <cl:gridcolumn std:sid="g-column-bda716ee"/>
           <cl:gridcolumn std:sid="g-column-251015c6"/>
@@ -335,10 +346,19 @@
             </cl:gridcell>
           </cl:griddetail>
         </cl:grid>
+        <cl:button std:sid="button-b6d61eeb" style="background-color:#eaf0ea; border-bottom-color:#c2c2c2; border-left-color:#c2c2c2; border-top-color:#c2c2c2; border-right-color:#c2c2c2; background-image:none;" value="+">
+          <cl:listener std:sid="listener-a59a735f" name="click" handler="onButtonClick"/>
+          <cl:formdata std:sid="f-data-93abbbae" row="0" col="1"/>
+        </cl:button>
+        <cl:button std:sid="button-34f8ac09" style="background-color:#eaf0ea; border-bottom-color:#c2c2c2; border-left-color:#c2c2c2; border-top-color:#c2c2c2; border-right-color:#c2c2c2; background-image:none;" value="-">
+          <cl:listener std:sid="listener-3cdd20fa" name="click" handler="onButtonClick3"/>
+          <cl:formdata std:sid="f-data-2db49fe7" row="0" col="2"/>
+        </cl:button>
         <cl:formlayout std:sid="f-layout-c1d5f357" hspace="0px" vspace="8px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
           <cl:rows length="25" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
           <cl:rows length="1" unit="FRACTION"/>
           <cl:columns length="16" unit="FRACTION" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+          <cl:columns length="34" unit="PIXEL" autoSizing="false" minlength="0"/>
           <cl:columns length="34" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
         </cl:formlayout>
       </cl:group>

@@ -37,6 +37,37 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	
 }
 
+/*
+ * 담당 개발자 "-" 버튼에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onButtonClick3(/* cpr.events.CMouseEvent */ e){
+	/** 
+	 * @type cpr.controls.Button
+	 */
+	var button = e.control;
+	
+	var gridDeveloper = app.lookup("grid_developer");
+	gridDeveloper.showDeletedRow = false;
+	
+	var endRowIndex = gridDeveloper.getViewingEndRowIndex();
+	gridDeveloper.deleteRow(endRowIndex);
+	// 제일 마지막 행 삭제
+		
+	var developerList = app.lookup("developerList");
+	
+	var endRowDeveloperNum = developerList.getValue(endRowIndex, "employees_number");
+	if(endRowDeveloperNum == 0 || endRowDeveloperNum == null) {
+		developerList.deleteRow(endRowIndex);
+	}
+	else {
+		var deleteDeveloperList = app.lookup("deleteDeveloperList");
+		console.log("endRowDeveloperNum : " + endRowDeveloperNum);
+		deleteDeveloperList.addRowData({"employees_number" : endRowDeveloperNum});
+		developerList.deleteRow(endRowIndex);
+	}
+}
+
 
 /*
  * getDeviceContent 서브미션에서 submit-done 이벤트 발생 시 호출.
@@ -57,6 +88,7 @@ function onGetDeviceContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	app.lookup("depth").redraw();
 	app.lookup("input_server").redraw();
 	app.lookup("selectWi_fi").value = app.lookup("product_device").getValue("wi_fi");
+	//app.lookup("selectWi_fi").selectItemByValue(app.lookup("product_device").getValue("wi_fi"));
 	app.lookup("input_other").redraw();
 	app.lookup("input_IpRatings").redraw();
 	app.lookup("explanation").redraw();		
@@ -116,7 +148,6 @@ function onGetDeviceContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 		} // end if			
 	} // end for	
 	
-	
 }
 
 
@@ -137,7 +168,62 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 		console.log("출입통제기 파일 타입" + product_image.file.type);
 	}
 	
+	var authenticationList = app.lookup("authenticationList");
+	var deleteAuthenticationList = app.lookup("deleteAuthenticationList");
+	
+	var i
+	var authentication = app.lookup("authentication");
+	for (i = 0; i < authentication.rowCount; i++) {
+		if(authentication.isCheckedRow(i) == false){
+			deleteAuthenticationList.addRowData({"auth_type" : authentication.getRow(i).getValue("auth_type")});
+			console.log("Delete " + authentication.getRow(i).getValue("auth_type"));
+			
+			//authentication.deleteRow(i);
+			//console.log("Delete " + i + " Row");
+				
+		}
+	}
+	
+	
+	
+	
+	
+	if(app.lookup("selectWi_fi").isSelected(0)) {
+		app.lookup("product_device").setValue("wi_fi", "O");
+	}
+	
+	 if(app.lookup("selectWi_fi").isSelected(1)) {
+		app.lookup("product_device").setValue("wi_fi", "X");
+	}
+	
+	
 	app.lookup("modifyDevice").send();
 	console.log("modifyDevice 서브미션 실행"); 
 	
 }
+
+
+/*
+ * modifyDevice 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onModifyDeviceSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var modifyDevice = e.control;
+	
+	var embeddedApp = app.getHost();
+	
+	cpr.core.App.load("deviceDetailView", function(loadedApp){
+		if(loadedApp){
+			
+    		embeddedApp.app = loadedApp;	    		
+  		}
+	});
+	
+	
+}
+
+
+

@@ -66,7 +66,7 @@ function onGetSWcontentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 			db = "MS-SQL"
 			break;
 		case 5 :
-			db = "MS-SQL / Oracle"
+			db = "Oracle / MS-SQL"
 			break;
 		case 6 :
 			db = "MySQL / MS-SQL"
@@ -90,7 +90,7 @@ function onGetSWcontentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 			db = "MS-SQL / MariaDB"
 			break;
 		case 13 :
-			db = "Oracle / MySQL / MariaDB"
+			db = "Oracle / MS-SQL / MariaDB"
 			break;
 		case 14 :
 			db = "MySQL / MS-SQL / MariaDB"
