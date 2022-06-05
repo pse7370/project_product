@@ -30,7 +30,7 @@ function onGetSWcontentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	 * @type cpr.protocols.Submission
 	 */
 	var getSWcontent = e.control;
-	app.lookup("productImage").value = app.lookup("product").getValue("save_image_name");
+	app.lookup("productImage").value = app.lookup("product").getValue("save_image_namee");
 	
 	app.lookup("input_productName").redraw();
 	app.lookup("input_productVersion").redraw();
@@ -199,7 +199,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	 */
 	var button = e.control;
 	var grid_developer = app.lookup("grid_developer");
-	var insertRow = grid_developer.insertRow(1, true);
+	var insertRow = grid_developer.insertRow(grid_developer.getViewingEndRowIndex(), true);
 	// + 버튼 클릭시 그리드 행 추가
 }
 

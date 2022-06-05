@@ -69,6 +69,8 @@
           <cl:datacolumn std:sid="d-column-9df4b354" name="product_type"/>
           <cl:datacolumn std:sid="d-column-32e50aa5" name="product_name"/>
           <cl:datacolumn std:sid="d-column-36ff3d32" name="product_version"/>
+          <cl:datacolumn std:sid="d-column-0f75d84e" name="save_image_name"/>
+          <cl:datacolumn std:sid="d-column-0bf38632" name="save_path"/>
           <cl:datacolumn std:sid="d-column-361511eb" name="explanation"/>
         </cl:datacolumnlist>
       </cl:datamap>

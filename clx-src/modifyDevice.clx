@@ -59,13 +59,13 @@
       </cl:dataset>
       <cl:dataset std:sid="d-set-b798929a" id="deleteAuthenticationList">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-41b38440" name="auth_type"/>
+          <cl:datacolumn std:sid="d-column-41b38440" name="delete_auth_type"/>
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
       <cl:dataset std:sid="d-set-ebc3496f" id="deleteDeveloperList">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-53babbff" name="employees_number"/>
+          <cl:datacolumn std:sid="d-column-53babbff" name="delete_employees_number"/>
         </cl:datacolumnlist>
       </cl:dataset>
       <cl:datamap std:sid="d-map-3fa2152d" id="product_device">
@@ -106,6 +106,8 @@
         <cl:requestdata dataid="authenticationList"/>
         <cl:requestdata dataid="product_device"/>
         <cl:requestdata dataid="developerList"/>
+        <cl:requestdata dataid="deleteAuthenticationList"/>
+        <cl:requestdata dataid="deleteDeveloperList"/>
         <cl:responsedata dataid="result"/>
       </cl:submission>
       <cl:submission std:sid="submission-2aa68b7a" id="getDeviceContent" action="/productMangement/deviceContent">

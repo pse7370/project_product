@@ -32,7 +32,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	 */
 	var button = e.control;
 	var grid_developer = app.lookup("grid_developer");
-	var insertRow = grid_developer.insertRow(1, true);
+	var insertRow = grid_developer.insertRow(grid_developer.getViewingEndRowIndex(), true);
 	// + 버튼 클릭시 그리드 행 추가
 	
 }
@@ -51,21 +51,27 @@ function onButtonClick3(/* cpr.events.CMouseEvent */ e){
 	gridDeveloper.showDeletedRow = false;
 	
 	var endRowIndex = gridDeveloper.getViewingEndRowIndex();
-	gridDeveloper.deleteRow(endRowIndex);
-	// 제일 마지막 행 삭제
+	
 		
 	var developerList = app.lookup("developerList");
+	var deleteDeveloperList = app.lookup("deleteDeveloperList");
+	console.log(developerList.getColumnData("employees_number"));
 	
 	var endRowDeveloperNum = developerList.getValue(endRowIndex, "employees_number");
 	if(endRowDeveloperNum == 0 || endRowDeveloperNum == null) {
 		developerList.deleteRow(endRowIndex);
 	}
-	else {
-		var deleteDeveloperList = app.lookup("deleteDeveloperList");
+	else {		
 		console.log("endRowDeveloperNum : " + endRowDeveloperNum);
-		deleteDeveloperList.addRowData({"employees_number" : endRowDeveloperNum});
-		developerList.deleteRow(endRowIndex);
+		deleteDeveloperList.addRowData({"delete_employees_number" : endRowDeveloperNum});
+		var result = developerList.deleteRow(endRowIndex);
+		console.log(result);
 	}
+	
+	gridDeveloper.deleteRow(endRowIndex);
+	// 제일 마지막 행 삭제
+	
+	console.log(developerList.getColumnData("employees_number"));
 }
 
 
@@ -175,18 +181,17 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	var authentication = app.lookup("authentication");
 	for (i = 0; i < authentication.rowCount; i++) {
 		if(authentication.isCheckedRow(i) == false){
-			deleteAuthenticationList.addRowData({"auth_type" : authentication.getRow(i).getValue("auth_type")});
+			deleteAuthenticationList.addRowData({"delete_auth_type" : authentication.getRow(i).getValue("auth_type")});
 			console.log("Delete " + authentication.getRow(i).getValue("auth_type"));
-			
+	
 			//authentication.deleteRow(i);
 			//console.log("Delete " + i + " Row");
 				
 		}
 	}
 	
-	
-	
-	
+	console.log(deleteAuthenticationList.getColumnData("auth_type"));
+		
 	
 	if(app.lookup("selectWi_fi").isSelected(0)) {
 		app.lookup("product_device").setValue("wi_fi", "O");
