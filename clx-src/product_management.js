@@ -162,6 +162,14 @@ function onSideTreeItemClick(/* cpr.events.CItemEvent */ e){
 				}
 			});
 	}
+	
+	if(clickLable == "산출물"){
+		cpr.core.App.load("output/outputManagement", function(loadedApp){
+			if(loadedApp){
+	    		embeddedApp.app = loadedApp;
+	  		}
+		});
+	}
 
 }	
 

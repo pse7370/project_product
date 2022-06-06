@@ -20,42 +20,24 @@
           <cl:datacolumn std:sid="d-column-d45d52c8" name="start_dates" datatype="string"/>
           <cl:datacolumn std:sid="d-column-888cf30a" name="end_date"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="customizing_version"><![CDATA[1.0.0.0]]></cl:datavalue>
-            <cl:datavalue columnname="customized_function"><![CDATA[기능1sdfsdfsadfasdfasdf111111]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[sw1]]></cl:datavalue>
-            <cl:datavalue columnname="employees_number">1</cl:datavalue>
-            <cl:datavalue columnname="employees_name"><![CDATA[dd]]></cl:datavalue>
-            <cl:datavalue columnname="start_dates"><![CDATA[2019-10-28]]></cl:datavalue>
-            <cl:datavalue columnname="end_date"><![CDATA[2020-01-22]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="customizing_version"><![CDATA[1.0.1.0]]></cl:datavalue>
-            <cl:datavalue columnname="customized_function"><![CDATA[기능2]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[sw2]]></cl:datavalue>
-            <cl:datavalue columnname="employees_number">2</cl:datavalue>
-            <cl:datavalue columnname="employees_name"><![CDATA[ff]]></cl:datavalue>
-            <cl:datavalue columnname="start_dates"><![CDATA[2020-05-30]]></cl:datavalue>
-            <cl:datavalue columnname="end_date"><![CDATA[2020-09-11]]></cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="customizing_version"><![CDATA[1.0.1.0]]></cl:datavalue>
-            <cl:datavalue columnname="customized_function"><![CDATA[기능3]]></cl:datavalue>
-            <cl:datavalue columnname="department"><![CDATA[sw2]]></cl:datavalue>
-            <cl:datavalue columnname="employees_number">3</cl:datavalue>
-            <cl:datavalue columnname="employees_name"><![CDATA[rr]]></cl:datavalue>
-            <cl:datavalue columnname="start_dates"><![CDATA[2020-05-22]]></cl:datavalue>
-            <cl:datavalue columnname="end_date"><![CDATA[2020-07-16]]></cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
       <cl:datamap std:sid="d-map-7960c62f" id="product">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-8357557e" name="product_id" datatype="number"/>
           <cl:datacolumn std:sid="d-column-84213e8f" name="product_name"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-b9f20244" id="product_id">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-2aa68b7a" id="getCustomizingList" action="/productMangement/getCustomizingList">
+        <cl:listener std:sid="listener-50790670" name="submit-done" handler="onGetCustomizingListSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:responsedata dataid="product"/>
+        <cl:responsedata dataid="product_customizing"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
@@ -63,7 +45,7 @@
     <cl:listener std:sid="listener-1e16f737" name="load" handler="onBodyLoad"/>
     <cl:listener std:sid="listener-e58f18e7" name="init" handler="onBodyInit"/>
     <cl:group std:sid="group-54f20096">
-      <cl:xylayoutdata std:sid="xyl-data-4de6514d" top="0px" left="0px" width="765px" height="700px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-4de6514d" top="0px" left="0px" width="760px" height="680px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:output std:sid="output-2d188e49" style="font-weight:bold; vertical-align:middle; font-size:14pt; text-align:left;" value="커스터마이징 이력">
         <cl:xylayoutdata std:sid="xyl-data-021187b7" top="30px" left="20px" width="201px" height="41px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
@@ -83,9 +65,9 @@
         </cl:formlayout>
       </cl:group>
       <cl:group std:sid="group-38e9dd05">
-        <cl:xylayoutdata std:sid="xyl-data-6781f4fc" top="141px" left="20px" width="735px" height="493px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-        <cl:grid std:sid="grid-f62518ff" id="grid_developer" readonly="true" datasetid="product_customizing" autorowheight="1, 2, 3, 4, 5, 6">
-          <cl:verticaldata std:sid="v-data-5970a20f" width="739px" height="488px" autosize="both"/>
+        <cl:xylayoutdata std:sid="xyl-data-6781f4fc" top="141px" left="20px" width="735px" height="481px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:grid std:sid="grid-f62518ff" id="grid_customizing" readonly="true" datasetid="product_customizing" autorowheight="1, 2, 3, 4, 5, 6" collapsible="true">
+          <cl:verticaldata std:sid="v-data-5970a20f" width="739px" height="475px" autosize="both"/>
           <cl:gridcolumn std:sid="g-column-5418e063" width="25px"/>
           <cl:gridcolumn std:sid="g-column-1c72e09f" width="31px"/>
           <cl:gridcolumn std:sid="g-column-1d90b3f8"/>
@@ -105,7 +87,7 @@
             <cl:gridcell std:sid="gh-cell-7493b9bf" rowindex="1" colindex="5" style="background-color:#eaf0ea;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
             <cl:gridcell std:sid="gh-cell-25f8c491" rowindex="1" colindex="6" style="background-color:#eaf0ea;" targetcolumnname="start_dates" sortable="true" filterable="false" text="시작일"/>
             <cl:gridcell std:sid="gh-cell-f65bb7d9" rowindex="1" colindex="7" style="background-color:#eaf0ea;" targetcolumnname="end_date" sortable="true" filterable="false" text="종료일"/>
-            <cl:gridcell rowindex="0" colindex="3" rowspan="1" colspan="5" style="background-color:#eaf0ea;" text="담당 개발자"/>
+            <cl:gridcell std:sid="gh-cell-465b785a" rowindex="0" colindex="3" rowspan="1" colspan="5" style="background-color:#eaf0ea;" text="담당 개발자"/>
           </cl:gridheader>
           <cl:griddetail std:sid="gd-band-556bbb1f">
             <cl:gridrow std:sid="g-row-85ab7e83" height="27px"/>
@@ -122,7 +104,7 @@
             <cl:gridrowgroup std:sid="gr-group-4ac7db15" groupcondition="customizing_version">
               <cl:gridgroupheader std:sid="grg-band-e9a12108">
                 <cl:gridrow std:sid="g-row-85f62b87" height="30px"/>
-                <cl:gridcell rowindex="0" colindex="0" rowspan="1" colspan="8" style="font-weight:bold;" expr="&quot;[버전]     &quot; + customizing_version"/>
+                <cl:gridcell std:sid="gf-cell-f79cb72f" rowindex="0" colindex="0" rowspan="1" colspan="8" style="font-weight:bold; padding-left:15px; text-align:left;" expr="&quot;[버전]     &quot; + customizing_version"/>
               </cl:gridgroupheader>
             </cl:gridrowgroup>
           </cl:gridrowgrouplist>
@@ -131,10 +113,10 @@
       </cl:group>
       <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="추가/수정">
         <cl:listener std:sid="listener-3ff96f02" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-8bb578c2" top="655px" left="526px" width="111px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-8bb578c2" top="640px" left="526px" width="111px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-df1ffb92" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
-        <cl:xylayoutdata std:sid="xyl-data-e329cb1e" top="655px" left="651px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-e329cb1e" top="640px" left="651px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-bc4a82bc"/>
     </cl:group>

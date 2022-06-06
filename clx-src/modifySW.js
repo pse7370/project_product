@@ -30,7 +30,7 @@ function onGetSWcontentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	 * @type cpr.protocols.Submission
 	 */
 	var getSWcontent = e.control;
-	app.lookup("productImage").value = app.lookup("product").getValue("save_image_namee");
+	app.lookup("productImage").value = app.lookup("product").getValue("save_image_name");
 	
 	app.lookup("input_productName").redraw();
 	app.lookup("input_productVersion").redraw();
@@ -217,8 +217,34 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	var gridDeveloper = app.lookup("grid_developer");
 	gridDeveloper.showDeletedRow = false;
 	
-	gridDeveloper.deleteRow(gridDeveloper.getViewingEndRowIndex());
+	var endRowIndex = gridDeveloper.getViewingEndRowIndex();
+	
+		
+	var developerList = app.lookup("developerList");
+	var deleteDeveloperList = app.lookup("deleteDeveloperList");
+	console.log(developerList.getColumnData("employees_number"));
+	
+	var endRowDeveloperNum = developerList.getValue(endRowIndex, "employees_number");
+	if(endRowDeveloperNum == 0 || endRowDeveloperNum == null) {
+		developerList.deleteRow(endRowIndex);
+	}
+	else {		
+		console.log("endRowDeveloperNum : " + endRowDeveloperNum);
+		deleteDeveloperList.addRowData(
+			{
+				"delete_employees_number" : endRowDeveloperNum,
+				"delete_start_date" : developerList.getValue(endRowIndex, "start_date"),
+				"delete_end_date" : developerList.getValue(endRowIndex, "end_date")
+			}
+		);
+		var result = developerList.deleteRow(endRowIndex);
+		console.log(result);
+	}
+	
+	gridDeveloper.deleteRow(endRowIndex);
 	// 제일 마지막 행 삭제
+	
+	console.log(developerList.getColumnData("employees_number"));
 }
 
 

@@ -63,7 +63,13 @@ function onButtonClick3(/* cpr.events.CMouseEvent */ e){
 	}
 	else {		
 		console.log("endRowDeveloperNum : " + endRowDeveloperNum);
-		deleteDeveloperList.addRowData({"delete_employees_number" : endRowDeveloperNum});
+		deleteDeveloperList.addRowData(
+			{
+				"delete_employees_number" : endRowDeveloperNum,
+				"delete_start_date" : developerList.getValue(endRowIndex, "start_date"),
+				"delete_end_date" : developerList.getValue(endRowIndex, "end_date")
+			}
+		);
 		var result = developerList.deleteRow(endRowIndex);
 		console.log(result);
 	}

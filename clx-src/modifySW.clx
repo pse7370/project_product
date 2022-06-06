@@ -64,6 +64,13 @@
           </cl:datarow>
         </cl:datarowlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-ebc3496f" id="deleteDeveloperList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-53babbff" name="delete_employees_number"/>
+          <cl:datacolumn std:sid="d-column-feefdf33" name="delete_start_date"/>
+          <cl:datacolumn std:sid="d-column-11de80d9" name="delete_end_date"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-e187d816" id="product">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-9df4b354" name="product_type"/>
@@ -104,6 +111,7 @@
         <cl:requestdata dataid="product"/>
         <cl:requestdata dataid="product_sw"/>
         <cl:requestdata dataid="developerList"/>
+        <cl:requestdata dataid="deleteDeveloperList"/>
         <cl:responsedata dataid="result"/>
       </cl:submission>
     </cl:model>
