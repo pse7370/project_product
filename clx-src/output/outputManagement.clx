@@ -8,121 +8,32 @@
     <screen std:sid="screen-d95fd9c4" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <link std:sid="link-a5a57662" href="../theme/css/addProduct_style.css" rel="stylesheet" type="text/css"/>
     <cl:model std:sid="model-d7dbb5bc">
-      <cl:dataset std:sid="d-set-2a88ed4b" id="outputList">
+      <cl:dataset std:sid="d-set-2a88ed4b" id="product_outputList">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-7a96733e" name="output_id" datatype="number"/>
           <cl:datacolumn std:sid="d-column-7c79c545" name="output_type" datatype="string"/>
           <cl:datacolumn std:sid="d-column-11543977" name="output_title"/>
           <cl:datacolumn std:sid="d-column-ba31dc26" name="write_date" datatype="string"/>
         </cl:datacolumnlist>
-        <cl:datarowlist>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">1</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type1</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title1</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date1</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">2</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type2</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title2</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date2</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">3</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type3</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title3</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date3</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">4</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type4</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title4</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date4</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">5</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type5</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title5</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date5</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">6</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type6</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title6</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date6</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">7</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type7</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title7</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date7</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">8</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type8</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title8</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date8</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">9</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type9</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title9</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date9</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">10</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type10</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title10</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date10</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">11</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type11</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title11</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date11</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">12</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type12</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title12</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date12</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">13</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type13</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title13</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date13</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">14</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type14</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title14</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date14</cl:datavalue>
-          </cl:datarow>
-          <cl:datarow>
-            <cl:datavalue columnname="output_id">15</cl:datavalue>
-            <cl:datavalue columnname="output_type">output_type15</cl:datavalue>
-            <cl:datavalue columnname="output_title">output_title15</cl:datavalue>
-            <cl:datavalue columnname="write_date">write_date15</cl:datavalue>
-          </cl:datarow>
-        </cl:datarowlist>
+        <cl:datarowlist/>
       </cl:dataset>
       <cl:datamap std:sid="d-map-b9f20244" id="product_id">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
-      <cl:datamap std:sid="d-map-7960c62f" id="product_name">
+      <cl:datamap std:sid="d-map-8ca8b2bc" id="result">
         <cl:datacolumnlist>
-          <cl:datacolumn std:sid="d-column-84213e8f" name="product_name"/>
+          <cl:datacolumn std:sid="d-column-26d216d7" name="resultCode" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
       <cl:submission std:sid="submission-2aa68b7a" id="getOutputList" action="/productMangement/getOutputList">
         <cl:listener std:sid="listener-3382df60" name="submit-done" handler="onGetOutputListSubmitDone"/>
         <cl:requestdata dataid="product_id"/>
-        <cl:responsedata dataid="product_name"/>
-        <cl:responsedata dataid="outputList"/>
+        <cl:responsedata dataid="product_outputList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-9dc34d5f" id="deleteOutput" method="delete" action="/productMangement/deleteOutput">
+        <cl:responsedata dataid="result"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -130,7 +41,7 @@
   <body std:sid="body-95d70832" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-c6639f11" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-c2ece7a7">
-      <cl:xylayoutdata std:sid="xyl-data-a3f7ffb1" top="0px" left="0px" width="739px" height="636px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-a3f7ffb1" top="0px" left="0px" width="739px" height="600px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-51e71479">
         <cl:xylayoutdata std:sid="xyl-data-d6751c84" top="30px" left="20px" width="461px" height="39px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:combobox std:sid="c-box-ac2f3388" id="cmb1">
@@ -150,15 +61,15 @@
         </cl:formlayout>
       </cl:group>
       <cl:group std:sid="group-24b4558c">
-        <cl:xylayoutdata std:sid="xyl-data-fc453d75" top="90px" left="20px" width="698px" height="462px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-        <cl:grid std:sid="grid-ad8facd5" id="grid_output" datasetid="outputList">
+        <cl:xylayoutdata std:sid="xyl-data-fc453d75" top="80px" left="20px" width="698px" height="460px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:grid std:sid="grid-ad8facd5" id="grid_output" datasetid="product_outputList">
           <cl:listener std:sid="listener-50cf8b5a" name="cell-click" handler="onGrid_outputCellClick"/>
           <cl:verticaldata std:sid="v-data-44ef034b" width="400px" height="450px" autosize="none"/>
           <cl:gridcolumn std:sid="g-column-09761b7e" width="25px"/>
           <cl:gridcolumn std:sid="g-column-841f9dbd" width="25px"/>
           <cl:gridcolumn std:sid="g-column-ae586b8b" width="104px"/>
-          <cl:gridcolumn std:sid="g-column-0f18419e" width="186px"/>
-          <cl:gridcolumn std:sid="g-column-bd498920" width="91px"/>
+          <cl:gridcolumn std:sid="g-column-0f18419e" width="213px"/>
+          <cl:gridcolumn std:sid="g-column-bd498920" width="67px"/>
           <cl:gridheader std:sid="gh-band-9a103b4c">
             <cl:gridrow std:sid="g-row-d1db9a7a" height="28px"/>
             <cl:gridcell std:sid="gh-cell-4323062a" rowindex="0" colindex="0" style="background-color:#eaf0ea;" sortable="false" filterable="false" columntype="checkbox"/>
@@ -173,19 +84,22 @@
             <cl:gridcell std:sid="gd-cell-df179928" rowindex="0" colindex="1" columntype="rowindex"/>
             <cl:gridcell std:sid="gd-cell-41d5fc2e" rowindex="0" colindex="2" columnname="output_type"/>
             <cl:gridcell std:sid="gd-cell-02ac844c" rowindex="0" colindex="3" columnname="output_title"/>
-            <cl:gridcell std:sid="gd-cell-f3f089a2" rowindex="0" colindex="4" columnname="write_date"/>
+            <cl:gridcell std:sid="gd-cell-f3f089a2" rowindex="0" colindex="4" columnname="write_date">
+              <cl:maskeditor std:sid="m-editor-7ae60d92" id="mse1" style="text-align:center;" readonly="true" mask="0000-00-00"/>
+            </cl:gridcell>
           </cl:griddetail>
         </cl:grid>
         <cl:verticallayout std:sid="v-layout-e425a682"/>
       </cl:group>
       <cl:pageindexer std:sid="p-indexer-04789a41">
-        <cl:xylayoutdata std:sid="xyl-data-301292ac" top="570px" left="200px" width="338px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-301292ac" top="545px" left="200px" width="338px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:pageindexer>
       <cl:button std:sid="button-998be026" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="산출물 등록">
         <cl:listener std:sid="listener-d0a27267" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-f48ecbf0" top="35px" left="507px" width="120px" height="26px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-f2fc20b1" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
+        <cl:listener std:sid="listener-d96b4b1b" name="click" handler="onButtonClick2"/>
         <cl:xylayoutdata std:sid="xyl-data-d0253fe8" top="35px" left="638px" width="80px" height="26px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-1aa06cfa"/>

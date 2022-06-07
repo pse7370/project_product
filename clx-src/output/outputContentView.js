@@ -12,6 +12,41 @@
  */
 function onBodyLoad(/* cpr.events.CEvent */ e){
 	
+	
+	app.lookup("output_id").setValue("output_id", app.getHost().initValue.output_id); 
+	console.log("output_id : " + app.lookup("output_id").getValue("output_id"));
+	
+	app.lookup("getOutputContent").send();
+	console.log("getOutputContent 서브미션 실행");
+	
+}
+
+
+/*
+ * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onGetOutputContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var getOutputContent = e.control;
+	
+	app.lookup("productName").redraw();
+	app.lookup("outputType").redraw();
+	app.lookup("writeDate").redraw();
+	app.lookup("outputTitle").redraw();
+	app.lookup("outputContent").redraw();
+	
+	var attachmentList = app.lookup("attachmentList");
+	var i
+	for(i = 0; i < attachmentList.getRowCount(); i++) {
+		var fileName = attachmentList.getValue(i, "real_file_name");
+		var fileSize = attachmentList.getValue(i, "file_size");
+		app.lookup("file_upload").addUploadedFile({name : fileName, size : fileSize});
+	}
+	
+	
 }
 
 
@@ -37,3 +72,45 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	});
 	
 }
+
+
+/*
+ * (다운로드)파일 업로드에서 sendbutton-click 이벤트 발생 시 호출.
+ * 파일을 전송하는 button을 클릭 시 발생하는 이벤트. 서브미션을 통해 전송 버튼에 대한 구현이 필요합니다.
+ */
+function onFile_uploadSendbuttonClick(/* cpr.events.CEvent */ e){
+	/** 
+	 * @type cpr.controls.FileUpload
+	 */
+	var file_upload = e.control;
+	console.log("download");
+	
+}
+
+/*
+ * 파일 업로드에서 download-click 이벤트 발생 시 호출.
+ * 파일을 다운받는 button을 클릭 시 발생하는 이벤트. 서브미션을 통해 다운로드 버튼에 대한 구현이 필요합니다.
+ */
+function onFile_uploadDownloadClick(/* cpr.events.CUploadedFileEvent */ e){
+	/** 
+	 * @type cpr.controls.FileUpload
+	 */
+	var file_upload = e.control;
+	
+}
+
+
+/*
+ * "삭제" 버튼에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onButtonClick2(/* cpr.events.CMouseEvent */ e){
+	/** 
+	 * @type cpr.controls.Button
+	 */
+	var button = e.control;
+	
+}
+
+
+

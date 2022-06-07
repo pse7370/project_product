@@ -34,6 +34,8 @@ function onGetOutputListSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	 */
 	var getOutputList = e.control;
 	
+	app.lookup("grid_output").redraw();
+	
 }
 
 
@@ -47,11 +49,19 @@ function onGrid_outputCellClick(/* cpr.events.CGridMouseEvent */ e){
 	 */
 	var grid_output = e.control;
 	
-	app.dialogManager.openDialog("output/outputContentView", "outputContentView", {width : 760, height : 700}, function(dialog){
+	var clickRowIndex = e.rowIndex
+	console.log("clickRowIndex : " + clickRowIndex);
+	var output_id = app.lookup("product_outputList").getValue(clickRowIndex, "output_id");
+	console.log(output_id);
+	
+	app.getRootAppInstance().dialogManager.openDialog("output/outputContentView", "outputContentView", {width : 760, height : 700}, function(dialog){
 		dialog.ready(function(dialogApp){
 			// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
-			dialog.headerTitle = "산출물 등록";
+			dialog.headerTitle = "산출물 조회";
 			console.log(dialog.app.id);
+			dialogApp.initValue = {
+				"output_id" : output_id
+			};
 			/*
 			dialog.style.css("border","solid 1px #555555");
 			dialog.style.css("border-radius","10px");
@@ -60,10 +70,6 @@ function onGrid_outputCellClick(/* cpr.events.CGridMouseEvent */ e){
 			dialog.style.header.css("color", "white");
 			dialog.style.header.css("font-size", "12pt");			
 			*/
-			dialog.addEventListener("close", function(e){
-				// 이곳에서 원하는 동작 처리
-				//window.location.reload();
-			});
 		});
 	}).then(function(returnValue){
 			if (returnValue == 1){
@@ -72,6 +78,10 @@ function onGrid_outputCellClick(/* cpr.events.CGridMouseEvent */ e){
 			}
 		});
 	
+}
+
+function sendGetOutputListSubmit(){
+	app.lookup("getOutputList").send();
 }
 
 
@@ -85,7 +95,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	 */
 	var button = e.control;
 	
-	app.dialogManager.openDialog("output/wirteOutput", "wirteOutput", {width : 760, height : 700}, function(dialog){
+	app.getRootAppInstance().dialogManager.openDialog("output/wirteOutput", "wirteOutput", {width : 760, height : 700}, function(dialog){
 		dialog.ready(function(dialogApp){
 			// 필요한 경우, 다이얼로그의 앱이 초기화 된 후, 앱 속성을 전달하십시오.
 			dialog.headerTitle = "산출물 등록";
@@ -98,19 +108,39 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 			dialog.style.header.css("color", "white");
 			dialog.style.header.css("font-size", "12pt");			
 			*/
-			dialog.addEventListener("close", function(e){
-				// 이곳에서 원하는 동작 처리
-				//window.location.reload();
-			});
 		});
 	}).then(function(returnValue){
 			if (returnValue == 1){
 				//window.location.reload();
-				
+				app.getHost().callAppMethod(sendGetOutputListSubmit());
 			}
 		});
 	
 }
 
 
+/*
+ * "삭제" 버튼에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onButtonClick2(/* cpr.events.CMouseEvent */ e){
+	/** 
+	 * @type cpr.controls.Button
+	 */
+	var button = e.control;
+	
+	var checkIndeices = app.lookup("grid_output").getCheckRowIndices();
+	var i
+	var baseURL = "/productMangement/deleteOutput";
+	for(i = 0; i < checkIndeices.length; i++) {
+		var deleteOutputId = "?" + app.lookup("product_outputList").getValue(i, "output_id");
+		baseURL += deleteOutputId;
+	}
+	
+	app.lookup("deleteOutput").action = baseURL
+	console.log(baseURL);
 
+	app.lookup("deleteOutput").send();
+	console.log("deleteOutput 서브미션 실행");
+	
+}

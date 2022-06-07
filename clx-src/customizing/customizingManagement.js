@@ -34,6 +34,7 @@ function onGetCustomizingListSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	var getCustomizingList = e.control;
 	
 	app.lookup("productName").redraw();
+	
 	app.lookup("grid_customizing").redraw();
 	
 }

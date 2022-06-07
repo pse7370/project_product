@@ -7,6 +7,14 @@
     <screen std:sid="screen-562bbb81" id="tablet" name="tablet" minwidth="500px" maxwidth="744px" width="500px" height="667px"/>
     <screen std:sid="screen-c4653047" id="mobile" name="mobile" maxwidth="499px" width="350px" height="525px"/>
     <cl:model std:sid="model-17d8b16e">
+      <cl:dataset std:sid="d-set-ff25b3b1" id="attachmentList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-b0ee1a5c" name="real_file_name"/>
+          <cl:datacolumn std:sid="d-column-10d2313d" name="save_file_name"/>
+          <cl:datacolumn std:sid="d-column-d1e67c7e" name="save_path"/>
+          <cl:datacolumn std:sid="d-column-c6f9c89d" name="file_size" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-922d6e5e" id="product">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-91fc44a9" name="product_name"/>
@@ -21,13 +29,30 @@
           <cl:datacolumn std:sid="d-column-2e397d96" name="write_date" datatype="string"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-b9f20244" id="product_id">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-da62a453" id="output_id">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-ca40a2cc" name="output_id" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-2aa68b7a" id="getOutputContent" action="/productMangement/getOutputContent">
+        <cl:listener std:sid="listener-ffd0b0fd" name="submit-done" handler="onGetOutputContentSubmitDone"/>
+        <cl:requestdata dataid="output_id"/>
+        <cl:responsedata dataid="product"/>
+        <cl:responsedata dataid="product_output"/>
+        <cl:responsedata dataid="attachmentList"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-8fdaf22d" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-052e8023" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-adba05d1">
-      <cl:xylayoutdata std:sid="xyl-data-aaecfe64" top="0px" left="0px" width="745px" height="700px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-aaecfe64" top="0px" left="0px" width="725px" height="700px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-f0d76a57">
         <cl:xylayoutdata std:sid="xyl-data-2512267e" top="30px" left="20px" width="297px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:output std:sid="output-0a261340" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="제품명">
@@ -48,7 +73,7 @@
         <cl:output std:sid="output-e2ed18e5" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="산출물 종류">
           <cl:formdata std:sid="f-data-a0c3744a" row="0" col="0"/>
         </cl:output>
-        <cl:output std:sid="output-79a1cf15" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; border-right-color:#b4b4b4; border-top-style:solid; text-align:center;">
+        <cl:output std:sid="output-79a1cf15" id="outputType" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; border-right-color:#b4b4b4; border-top-style:solid; text-align:center;">
           <cl:datamapbind property="value" category="PROPERTY" datacontrolid="product_output" columnname="output_type"/>
           <cl:formdata std:sid="f-data-51018f6b" row="0" col="1" rowspan="1" colspan="1"/>
         </cl:output>
@@ -63,7 +88,7 @@
         <cl:output std:sid="output-91283c06" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="제목">
           <cl:formdata std:sid="f-data-ebcd8e43" row="0" col="0"/>
         </cl:output>
-        <cl:output std:sid="output-74866173" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; border-right-color:#b4b4b4; border-top-style:solid; text-align:center;">
+        <cl:output std:sid="output-74866173" id="outputTitle" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; border-right-color:#b4b4b4; border-top-style:solid; text-align:center;">
           <cl:datamapbind property="value" category="PROPERTY" datacontrolid="product_output" columnname="output_title"/>
           <cl:formdata std:sid="f-data-2c2eddd4" row="0" col="1" rowspan="1" colspan="1"/>
         </cl:output>
@@ -78,17 +103,19 @@
         <cl:output std:sid="output-d3d2d2ae" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="작성일">
           <cl:formdata std:sid="f-data-2a7e4a90" row="0" col="0"/>
         </cl:output>
-        <cl:output std:sid="output-29a103d9" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; border-right-color:#b4b4b4; border-top-style:solid; text-align:center;">
-          <cl:datamapbind property="value" category="PROPERTY" datacontrolid="product_output" columnname="write_date"/>
-          <cl:formdata std:sid="f-data-03c90a2c" row="0" col="1"/>
-        </cl:output>
+        <cl:maskeditor std:sid="m-editor-a6df5c00" id="writeDate" style="text-align:center;" readonly="true" mask="0000-00-00">
+          <cl:datamapbind property="value" datacontrolid="product_output" columnname="write_date"/>
+          <cl:formdata std:sid="f-data-ff15324c" row="0" col="1"/>
+        </cl:maskeditor>
         <cl:formlayout std:sid="f-layout-086e8c59" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
           <cl:rows length="30" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
           <cl:columns length="100" unit="PIXEL"/>
           <cl:columns length="195" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
         </cl:formlayout>
       </cl:group>
-      <cl:fileupload std:sid="f-upload-c0211a3a" id="file_upload" buttons="send" sendlabel="다운로드" maxfilecount="5">
+      <cl:fileupload std:sid="f-upload-c0211a3a" id="file_upload" buttons="send" readonly="true" sendlabel="다운로드" maxfilecount="5">
+        <cl:listener std:sid="listener-532bd3a5" name="sendbutton-click" handler="onFile_uploadSendbuttonClick"/>
+        <cl:listener std:sid="listener-27280ee5" name="download-click" handler="onFile_uploadDownloadClick"/>
         <cl:xylayoutdata std:sid="xyl-data-f1c3bc4e" top="174px" left="19px" width="695px" height="202px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:buttonstyle style="background-color:#daf2da; border-right-style:none; border-left-style:none; font-size:10pt; border-bottom-style:none; background-image:none; border-top-style:none;"/>
         <cl:headerstyle style="background-color:#eaf0ea; background-image:none;"/>
@@ -98,7 +125,7 @@
         <cl:output std:sid="output-a517c94d" style="padding-left:10px;" value="내용">
           <cl:verticaldata std:sid="v-data-25de14ee" width="100px" height="27px"/>
         </cl:output>
-        <cl:textarea std:sid="t-area-c5ae413e" id="txa1" style="padding-top:5px; padding-left:10px; padding-bottom:5px; padding-right:10px;" readonly="true">
+        <cl:textarea std:sid="t-area-c5ae413e" id="outputContent" style="padding-top:5px; padding-left:10px; padding-bottom:5px; padding-right:10px;" readonly="true">
           <cl:datamapbind property="value" datacontrolid="product_output" columnname="output_content"/>
           <cl:verticaldata std:sid="v-data-85d6dc92" width="100px" height="225px"/>
         </cl:textarea>
@@ -106,7 +133,11 @@
       </cl:group>
       <cl:button std:sid="button-f2fc20b1" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
         <cl:listener std:sid="listener-6c1d8d5a" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-30883ce8" top="660px" left="633px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-30883ce8" top="660px" left="540px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      </cl:button>
+      <cl:button std:sid="button-4d09ff7d" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
+        <cl:listener std:sid="listener-109ad160" name="click" handler="onButtonClick2"/>
+        <cl:xylayoutdata std:sid="xyl-data-7d4f0dca" top="660px" left="633px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-7172aa6e"/>
     </cl:group>

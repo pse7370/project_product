@@ -22,12 +22,23 @@
           <cl:datacolumn std:sid="d-column-2e397d96" name="write_date" datatype="string"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-29cd1e61" id="resultCode">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-3c2239ce" name="resultCode" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:submission std:sid="submission-d54eca84" id="addOutput" action="/productMangement/addOutput" mediatype="multipart/form-data">
+        <cl:listener std:sid="listener-8e045320" name="submit-done" handler="onAddOutputSubmitDone"/>
+        <cl:requestdata dataid="product_output"/>
+        <cl:responsedata dataid="resultCode"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-93e6e54b" style="top:0px; left:0px; width:800px; height:600px;">
+    <cl:listener std:sid="listener-f8453541" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-2f9ab3c9">
-      <cl:xylayoutdata std:sid="xyl-data-ae0191c8" top="0px" left="0px" width="745px" height="700px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-ae0191c8" top="0px" left="0px" width="725px" height="690px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-f0d76a57">
         <cl:xylayoutdata std:sid="xyl-data-02339a6b" top="30px" left="20px" width="297px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:output std:sid="output-0a261340" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="제품명">
@@ -90,6 +101,7 @@
         <cl:verticallayout std:sid="v-layout-77ed5f12"/>
       </cl:group>
       <cl:button std:sid="button-f2fc20b1" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="등록">
+        <cl:listener std:sid="listener-44c0beb8" name="click" handler="onButtonClick"/>
         <cl:xylayoutdata std:sid="xyl-data-fe33e767" top="651px" left="635px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-8e0ed2e1"/>
