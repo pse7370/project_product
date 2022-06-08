@@ -17,6 +17,22 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-38b72cc0" id="search_condition">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-de8875c0" name="search_condition"/>
+        </cl:datacolumnlist>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="search_condition"><![CDATA[산출물 종류]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="search_condition"><![CDATA[제목]]></cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="search_condition"><![CDATA[내용]]></cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-b9f20244" id="product_id">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
@@ -27,13 +43,39 @@
           <cl:datacolumn std:sid="d-column-26d216d7" name="resultCode" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-3d409641" id="totalOutputCount">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-914eb5cd" name="totalOutputCount" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-4b0f5609" id="pageNum">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-040f19a7" name="pageNum" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-5029bc3f" id="search">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-8b9d7fbd" name="searchCondition"/>
+          <cl:datacolumn std:sid="d-column-ba73da9c" name="searchText"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-2aa68b7a" id="getOutputList" action="/productMangement/getOutputList">
         <cl:listener std:sid="listener-3382df60" name="submit-done" handler="onGetOutputListSubmitDone"/>
         <cl:requestdata dataid="product_id"/>
+        <cl:requestdata dataid="pageNum"/>
         <cl:responsedata dataid="product_outputList"/>
+        <cl:responsedata dataid="totalOutputCount"/>
       </cl:submission>
       <cl:submission std:sid="submission-9dc34d5f" id="deleteOutput" method="delete" action="/productMangement/deleteOutput">
+        <cl:listener std:sid="listener-d2f6f01c" name="submit-done" handler="onDeleteOutputSubmitDone"/>
         <cl:responsedata dataid="result"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-7dcea016" id="getSearchOutputList" action="/productMangement/getSearchOutputList">
+        <cl:listener std:sid="listener-cd0d43e8" name="submit-done" handler="onGetSearchOutputListSubmitDone"/>
+        <cl:requestdata dataid="product_id"/>
+        <cl:requestdata dataid="search"/>
+        <cl:responsedata dataid="totalOutputCount"/>
+        <cl:responsedata dataid="product_outputList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -41,16 +83,19 @@
   <body std:sid="body-95d70832" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-c6639f11" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-c2ece7a7">
-      <cl:xylayoutdata std:sid="xyl-data-a3f7ffb1" top="0px" left="0px" width="739px" height="600px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-a3f7ffb1" top="0px" left="0px" width="739px" height="595px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-51e71479">
-        <cl:xylayoutdata std:sid="xyl-data-d6751c84" top="30px" left="20px" width="461px" height="39px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
-        <cl:combobox std:sid="c-box-ac2f3388" id="cmb1">
+        <cl:xylayoutdata std:sid="xyl-data-d6751c84" top="25px" left="20px" width="461px" height="39px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:combobox std:sid="c-box-ac2f3388" id="searchCondition" style="text-align:center;" placeholder="검색 조건" preventinput="true">
+          <cl:listener std:sid="listener-d9f7d34e" name="selection-change" handler="onSearchConditionSelectionChange"/>
           <cl:formdata std:sid="f-data-8dccdde1" row="0" col="0"/>
+          <cl:itemset datasetid="search_condition" label="search_condition" value="search_condition"/>
         </cl:combobox>
-        <cl:inputbox std:sid="i-box-472d7b19" id="ipb1">
+        <cl:inputbox std:sid="i-box-472d7b19" id="input_searchWord">
           <cl:formdata std:sid="f-data-ea02caa0" row="0" col="1"/>
         </cl:inputbox>
-        <cl:img std:sid="image-eb32fe16" id="search" style="border-right-style:solid; padding-top:4px; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:5px; border-left-color:#b4b4b4; padding-bottom:4px; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; background-image:none; padding-right:5px;">
+        <cl:img std:sid="image-eb32fe16" id="searchIcon" style="border-right-style:solid; padding-top:4px; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:5px; border-left-color:#b4b4b4; padding-bottom:4px; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; background-image:none; padding-right:5px;" src="../image/search.png">
+          <cl:listener std:sid="listener-c4718a2b" name="click" handler="onSearchIconClick"/>
           <cl:formdata std:sid="f-data-c6a2360e" row="0" col="2"/>
         </cl:img>
         <cl:formlayout std:sid="f-layout-5f4a9dca" hspace="0px" vspace="0px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
@@ -61,7 +106,7 @@
         </cl:formlayout>
       </cl:group>
       <cl:group std:sid="group-24b4558c">
-        <cl:xylayoutdata std:sid="xyl-data-fc453d75" top="80px" left="20px" width="698px" height="460px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-fc453d75" top="75px" left="20px" width="698px" height="460px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:grid std:sid="grid-ad8facd5" id="grid_output" datasetid="product_outputList">
           <cl:listener std:sid="listener-50cf8b5a" name="cell-click" handler="onGrid_outputCellClick"/>
           <cl:verticaldata std:sid="v-data-44ef034b" width="400px" height="450px" autosize="none"/>
@@ -91,16 +136,18 @@
         </cl:grid>
         <cl:verticallayout std:sid="v-layout-e425a682"/>
       </cl:group>
-      <cl:pageindexer std:sid="p-indexer-04789a41">
-        <cl:xylayoutdata std:sid="xyl-data-301292ac" top="545px" left="200px" width="338px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:pageindexer std:sid="p-indexer-04789a41" id="pageIndexer" pagerowcount="15" viewpagecount="1">
+        <cl:listener std:sid="listener-c150e987" name="selection-change" handler="onPageIndexerSelectionChange"/>
+        <cl:datamapbind property="totalRowCount" category="PROPERTY" datacontrolid="totalOutputCount" columnname="totalOutputCount"/>
+        <cl:xylayoutdata std:sid="xyl-data-301292ac" top="540px" left="200px" width="338px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:pageindexer>
       <cl:button std:sid="button-998be026" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="산출물 등록">
         <cl:listener std:sid="listener-d0a27267" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-f48ecbf0" top="35px" left="507px" width="120px" height="26px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-f48ecbf0" top="30px" left="507px" width="120px" height="26px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-f2fc20b1" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
         <cl:listener std:sid="listener-d96b4b1b" name="click" handler="onButtonClick2"/>
-        <cl:xylayoutdata std:sid="xyl-data-d0253fe8" top="35px" left="638px" width="80px" height="26px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-d0253fe8" top="30px" left="638px" width="80px" height="26px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-1aa06cfa"/>
     </cl:group>

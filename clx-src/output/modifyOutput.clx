@@ -25,6 +25,7 @@
     <cl:appspec/>
   </head>
   <body std:sid="body-38194255" style="top:0px; left:0px; width:800px; height:600px;">
+    <cl:listener std:sid="listener-de345cb9" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-724e5332">
       <cl:xylayoutdata std:sid="xyl-data-2e055942" top="0px" left="0px" width="745px" height="700px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-15d24aff">

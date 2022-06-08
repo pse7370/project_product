@@ -43,7 +43,14 @@ function onGetOutputContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	for(i = 0; i < attachmentList.getRowCount(); i++) {
 		var fileName = attachmentList.getValue(i, "real_file_name");
 		var fileSize = attachmentList.getValue(i, "file_size");
-		app.lookup("file_upload").addUploadedFile({name : fileName, size : fileSize});
+		var save_path = attachmentList.getValue(i, "save_path")
+		app.lookup("file_upload").addUploadedFile(
+			{
+				name : fileName, 
+				size : fileSize, 
+				properties : {svaePath : save_path}
+			}
+		);
 	}
 	
 	
@@ -65,7 +72,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	cpr.core.App.load("output/modifyOutput", function(loadedApp){
 		if(loadedApp){
 			embeddedApp.initValue = {
-				
+				output_id : app.lookup("output_id").getValue("output_id")
 			}
     		embeddedApp.app = loadedApp;	    		
   		}
@@ -97,6 +104,29 @@ function onFile_uploadDownloadClick(/* cpr.events.CUploadedFileEvent */ e){
 	 */
 	var file_upload = e.control;
 	
+	var clickFile = e.uploadedFile;
+	var clickFileName = clickFile.name;
+	//console.log("clickFileName : " + clickFileName);
+	var savePath = clickFile.getProperty("savePath");
+	app.lookup("file").setValue("file_name", clickFileName);
+	app.lookup("file").setValue("save_path", savePath);
+	
+	app.lookup("downloadAttachment").send();
+	
+}
+
+/*
+ * downloadAttachment 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onDownloadAttachmentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var downloadAttachment = e.control;
+	
+	blod
+	
 }
 
 
@@ -109,6 +139,26 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	 * @type cpr.controls.Button
 	 */
 	var button = e.control;
+	var output_id = app.lookup("output_id").getValue("output_id");
+	
+	app.lookup("deleteOutput").action = "/productMangement/deleteOutput?" + output_id;
+
+	app.lookup("deleteOutput").send();
+	console.log("deleteOutput 서브미션 실행");
+	
+}
+
+/*
+ * deleteOutput 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onDeleteOutputSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var deleteOutput = e.control;
+	
+	app.getRootAppInstance().dialogManager.getDialogByName("outputContentView").close(1);
 	
 }
 

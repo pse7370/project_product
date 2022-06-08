@@ -39,12 +39,31 @@
           <cl:datacolumn std:sid="d-column-ca40a2cc" name="output_id" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-8ca8b2bc" id="result">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-26d216d7" name="resultCode" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
+      <cl:datamap std:sid="d-map-9fd7f8ba" id="file">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-d4613fab" name="file_name"/>
+          <cl:datacolumn std:sid="d-column-a2678358" name="save_path"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-2aa68b7a" id="getOutputContent" action="/productMangement/getOutputContent">
         <cl:listener std:sid="listener-ffd0b0fd" name="submit-done" handler="onGetOutputContentSubmitDone"/>
         <cl:requestdata dataid="output_id"/>
         <cl:responsedata dataid="product"/>
         <cl:responsedata dataid="product_output"/>
         <cl:responsedata dataid="attachmentList"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-9dc34d5f" id="deleteOutput" method="delete" action="/productMangement/deleteOutput">
+        <cl:listener std:sid="listener-82852a16" name="submit-done" handler="onDeleteOutputSubmitDone"/>
+        <cl:responsedata dataid="result"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-13b787a5" id="downloadAttachment" action="/productMangement/downloadAttachment" responsetype="filedownload">
+        <cl:listener std:sid="listener-e3b1ec33" name="submit-done" handler="onDownloadAttachmentSubmitDone"/>
+        <cl:requestdata dataid="file"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
