@@ -71,47 +71,46 @@
           <cl:verticaldata std:sid="v-data-5970a20f" width="739px" height="475px" autosize="both"/>
           <cl:gridcolumn std:sid="g-column-5418e063" width="25px"/>
           <cl:gridcolumn std:sid="g-column-1c72e09f" width="31px"/>
-          <cl:gridcolumn std:sid="g-column-1d90b3f8" width="153px"/>
           <cl:gridcolumn std:sid="g-column-77b931ba" width="108px"/>
           <cl:gridcolumn std:sid="g-column-1a55147f" width="93px"/>
           <cl:gridcolumn std:sid="g-column-8ff929fb" width="104px"/>
-          <cl:gridcolumn std:sid="g-column-d5fa6f96"/>
-          <cl:gridcolumn std:sid="g-column-a2dc8f1a"/>
+          <cl:gridcolumn std:sid="g-column-d5fa6f96" width="84px"/>
+          <cl:gridcolumn std:sid="g-column-a2dc8f1a" width="87px"/>
           <cl:gridheader std:sid="gh-band-74ecc53b">
             <cl:gridrow std:sid="g-row-7672af27" height="27px"/>
             <cl:gridrow std:sid="g-row-d898261a" height="27px"/>
             <cl:gridcell std:sid="gh-cell-edf0f692" rowindex="0" colindex="0" rowspan="2" colspan="1" style="background-color:#eaf0ea;" sortable="false" filterable="false" columntype="checkbox"/>
             <cl:gridcell std:sid="gh-cell-8fa10f23" rowindex="0" colindex="1" rowspan="2" colspan="1" style="background-color:#eaf0ea;" sortable="false" filterable="false" text="번호"/>
-            <cl:gridcell std:sid="gh-cell-7b5db5d3" rowindex="0" colindex="2" rowspan="2" colspan="1" style="background-color:#eaf0ea;" targetcolumnname="customized_function" sortable="false" filterable="false" text="기능"/>
-            <cl:gridcell std:sid="gh-cell-4a4df428" rowindex="1" colindex="3" style="background-color:#eaf0ea;" targetcolumnname="department" sortable="false" filterable="false" text="부서명"/>
-            <cl:gridcell std:sid="gh-cell-421663b9" rowindex="1" colindex="4" style="background-color:#eaf0ea;" targetcolumnname="employees_number" sortable="false" filterable="false" text="사원번호"/>
-            <cl:gridcell std:sid="gh-cell-7493b9bf" rowindex="1" colindex="5" style="background-color:#eaf0ea;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
-            <cl:gridcell std:sid="gh-cell-25f8c491" rowindex="1" colindex="6" style="background-color:#eaf0ea;" targetcolumnname="start_date" sortable="true" filterable="false" text="시작일"/>
-            <cl:gridcell std:sid="gh-cell-f65bb7d9" rowindex="1" colindex="7" style="background-color:#eaf0ea;" targetcolumnname="end_date" sortable="true" filterable="false" text="종료일"/>
-            <cl:gridcell std:sid="gh-cell-465b785a" rowindex="0" colindex="3" rowspan="1" colspan="5" style="background-color:#eaf0ea;" text="담당 개발자"/>
+            <cl:gridcell std:sid="gh-cell-4a4df428" rowindex="1" colindex="2" style="background-color:#eaf0ea;" targetcolumnname="department" sortable="false" filterable="false" text="부서명"/>
+            <cl:gridcell std:sid="gh-cell-421663b9" rowindex="1" colindex="3" style="background-color:#eaf0ea;" targetcolumnname="employees_number" sortable="false" filterable="false" text="사원번호"/>
+            <cl:gridcell std:sid="gh-cell-7493b9bf" rowindex="1" colindex="4" style="background-color:#eaf0ea;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
+            <cl:gridcell std:sid="gh-cell-25f8c491" rowindex="1" colindex="5" style="background-color:#eaf0ea;" targetcolumnname="start_date" sortable="true" filterable="false" text="시작일"/>
+            <cl:gridcell std:sid="gh-cell-f65bb7d9" rowindex="1" colindex="6" style="background-color:#eaf0ea;" targetcolumnname="end_date" sortable="true" filterable="false" text="종료일"/>
+            <cl:gridcell std:sid="gh-cell-465b785a" rowindex="0" colindex="2" rowspan="1" colspan="5" style="background-color:#eaf0ea;" text="기능별 담당 개발자"/>
           </cl:gridheader>
           <cl:griddetail std:sid="gd-band-556bbb1f">
             <cl:gridrow std:sid="g-row-85ab7e83" height="27px"/>
-            <cl:gridcell std:sid="gd-cell-25a3cd60" rowindex="0" colindex="0" columntype="checkbox"/>
-            <cl:gridcell std:sid="gd-cell-1032d9f9" rowindex="0" colindex="1" columntype="rowindex"/>
-            <cl:gridcell std:sid="gd-cell-cb9c036d" rowindex="0" colindex="2" columnname="customized_function">
-              <cl:textarea std:sid="t-area-19a09b93" id="txa1" style="padding-top:3px; padding-left:3px; padding-bottom:3px; padding-right:3px;" readonly="true"/>
-            </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-cc7c6653" rowindex="0" colindex="3" columnname="department"/>
-            <cl:gridcell std:sid="gd-cell-2d1c8d57" rowindex="0" colindex="4" columnname="employees_number"/>
-            <cl:gridcell std:sid="gd-cell-d5d53481" rowindex="0" colindex="5" columnname="employees_name"/>
-            <cl:gridcell std:sid="gd-cell-ec7fa806" rowindex="0" colindex="6" columnname="start_date">
+            <cl:gridrow std:sid="g-row-34c69fcc" height="60px"/>
+            <cl:gridcell std:sid="gd-cell-25a3cd60" rowindex="0" colindex="0" rowspan="2" colspan="1" columntype="checkbox"/>
+            <cl:gridcell std:sid="gd-cell-1032d9f9" rowindex="0" colindex="1" rowspan="2" colspan="1" columntype="rowindex"/>
+            <cl:gridcell std:sid="gd-cell-cc7c6653" rowindex="0" colindex="2" columnname="department"/>
+            <cl:gridcell std:sid="gd-cell-2d1c8d57" rowindex="0" colindex="3" columnname="employees_number"/>
+            <cl:gridcell std:sid="gd-cell-d5d53481" rowindex="0" colindex="4" columnname="employees_name"/>
+            <cl:gridcell std:sid="gd-cell-ec7fa806" rowindex="0" colindex="5" columnname="start_date">
               <cl:maskeditor std:sid="m-editor-c958dbc8" id="mse1" style="text-align:center;" readonly="true" mask="0000-00-00"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-c02065ee" rowindex="0" colindex="7" columnname="end_date">
+            <cl:gridcell std:sid="gd-cell-c02065ee" rowindex="0" colindex="6" columnname="end_date">
               <cl:maskeditor std:sid="m-editor-2830fe60" id="mse2" style="text-align:center;" readonly="true" mask="0000-00-00"/>
+            </cl:gridcell>
+            <cl:gridcell rowindex="1" colindex="2" rowspan="1" colspan="5" columnname="customized_function">
+              <cl:textarea std:sid="t-area-4b7f277f" id="txa1" style="padding-top:5px; padding-left:8px; padding-bottom:5px; padding-right:8px;"/>
             </cl:gridcell>
           </cl:griddetail>
           <cl:gridrowgrouplist std:sid="grg-list-4a5e28eb">
             <cl:gridrowgroup std:sid="gr-group-4ac7db15" groupcondition="customizing_version">
               <cl:gridgroupheader std:sid="grg-band-e9a12108">
                 <cl:gridrow std:sid="g-row-85f62b87" height="30px"/>
-                <cl:gridcell std:sid="gf-cell-f79cb72f" rowindex="0" colindex="0" rowspan="1" colspan="8" style="font-weight:bold; padding-left:15px; text-align:left;" expr="&quot;[버전]     &quot; + customizing_version"/>
+                <cl:gridcell std:sid="gf-cell-f79cb72f" rowindex="0" colindex="0" rowspan="1" colspan="7" style="font-weight:bold; padding-left:15px; text-align:left;" expr="&quot;[버전]     &quot; + customizing_version"/>
               </cl:gridgroupheader>
             </cl:gridrowgroup>
           </cl:gridrowgrouplist>

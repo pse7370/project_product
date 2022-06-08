@@ -125,7 +125,7 @@ function onDownloadAttachmentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	 */
 	var downloadAttachment = e.control;
 	
-	blod
+	
 	
 }
 

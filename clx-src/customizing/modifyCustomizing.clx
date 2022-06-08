@@ -19,7 +19,38 @@
           <cl:datacolumn std:sid="d-column-d45d52c8" name="start_dates" datatype="string"/>
           <cl:datacolumn std:sid="d-column-888cf30a" name="end_date"/>
         </cl:datacolumnlist>
-        <cl:datarowlist/>
+        <cl:datarowlist>
+          <cl:datarow>
+            <cl:datavalue columnname="customizing_id">customizing_id1</cl:datavalue>
+            <cl:datavalue columnname="customizing_version"><![CDATA[1]]></cl:datavalue>
+            <cl:datavalue columnname="customized_function">customized_function1</cl:datavalue>
+            <cl:datavalue columnname="department">department1</cl:datavalue>
+            <cl:datavalue columnname="employees_number">1</cl:datavalue>
+            <cl:datavalue columnname="employees_name">employees_name1</cl:datavalue>
+            <cl:datavalue columnname="start_dates">start_dates1</cl:datavalue>
+            <cl:datavalue columnname="end_date">end_date1</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="customizing_id">customizing_id2</cl:datavalue>
+            <cl:datavalue columnname="customizing_version"><![CDATA[1]]></cl:datavalue>
+            <cl:datavalue columnname="customized_function">customized_function2</cl:datavalue>
+            <cl:datavalue columnname="department">department2</cl:datavalue>
+            <cl:datavalue columnname="employees_number">2</cl:datavalue>
+            <cl:datavalue columnname="employees_name">employees_name2</cl:datavalue>
+            <cl:datavalue columnname="start_dates">start_dates2</cl:datavalue>
+            <cl:datavalue columnname="end_date">end_date2</cl:datavalue>
+          </cl:datarow>
+          <cl:datarow>
+            <cl:datavalue columnname="customizing_id">customizing_id3</cl:datavalue>
+            <cl:datavalue columnname="customizing_version"><![CDATA[2]]></cl:datavalue>
+            <cl:datavalue columnname="customized_function">customized_function3</cl:datavalue>
+            <cl:datavalue columnname="department">department3</cl:datavalue>
+            <cl:datavalue columnname="employees_number">3</cl:datavalue>
+            <cl:datavalue columnname="employees_name">employees_name3</cl:datavalue>
+            <cl:datavalue columnname="start_dates">start_dates3</cl:datavalue>
+            <cl:datavalue columnname="end_date">end_date3</cl:datavalue>
+          </cl:datarow>
+        </cl:datarowlist>
       </cl:dataset>
       <cl:datamap std:sid="d-map-7960c62f" id="product">
         <cl:datacolumnlist>
@@ -69,7 +100,6 @@
           <cl:verticaldata std:sid="v-data-59b3e20b" width="720px" height="458px" autosize="none"/>
           <cl:gridcolumn std:sid="g-column-cc2319df" width="25px"/>
           <cl:gridcolumn std:sid="g-column-7f1e0271" width="91px"/>
-          <cl:gridcolumn std:sid="g-column-e4fb6195" width="162px"/>
           <cl:gridcolumn std:sid="g-column-7068e785" width="115px"/>
           <cl:gridcolumn std:sid="g-column-73a8eead" width="84px"/>
           <cl:gridcolumn std:sid="g-column-e4d6d22a" width="103px"/>
@@ -82,44 +112,44 @@
             <cl:gridcell std:sid="gh-cell-7ee67c26" rowindex="0" colindex="1" rowspan="2" colspan="1" style="background-color:#eaf0ea;" targetcolumnname="customizing_version" sortable="false" filterable="false" text="커스터마이징 버전">
               <cl:output std:sid="output-6d190659" style="text-align:center;"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gh-cell-61a2d60b" rowindex="0" colindex="2" rowspan="2" colspan="1" style="background-color:#eaf0ea;" targetcolumnname="customized_function" sortable="false" filterable="false" text="기능"/>
-            <cl:gridcell std:sid="gh-cell-dbdda695" rowindex="1" colindex="3" style="background-color:#eaf0ea;" targetcolumnname="department" sortable="false" filterable="false" text="부서명"/>
-            <cl:gridcell std:sid="gh-cell-5e44e5a3" rowindex="1" colindex="4" style="background-color:#eaf0ea;" targetcolumnname="employees_number" sortable="false" filterable="false" text="사원번호"/>
-            <cl:gridcell std:sid="gh-cell-13f6bc06" rowindex="1" colindex="5" style="background-color:#eaf0ea;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
-            <cl:gridcell std:sid="gh-cell-88f1edf1" rowindex="1" colindex="6" style="background-color:#eaf0ea;" targetcolumnname="start_dates" sortable="false" filterable="false" text="시작일"/>
-            <cl:gridcell std:sid="gh-cell-ea4d4119" rowindex="1" colindex="7" style="background-color:#eaf0ea;" targetcolumnname="end_date" sortable="false" filterable="false" text="종료일"/>
-            <cl:gridcell std:sid="gh-cell-dd08450f" rowindex="0" colindex="3" rowspan="1" colspan="5" style="background-color:#eaf0ea;" text="담당 개발자"/>
+            <cl:gridcell std:sid="gh-cell-dbdda695" rowindex="1" colindex="2" style="background-color:#eaf0ea;" targetcolumnname="department" sortable="false" filterable="false" text="부서명"/>
+            <cl:gridcell std:sid="gh-cell-5e44e5a3" rowindex="1" colindex="3" style="background-color:#eaf0ea;" targetcolumnname="employees_number" sortable="false" filterable="false" text="사원번호"/>
+            <cl:gridcell std:sid="gh-cell-13f6bc06" rowindex="1" colindex="4" style="background-color:#eaf0ea;" targetcolumnname="employees_name" sortable="false" filterable="false" text="성명"/>
+            <cl:gridcell std:sid="gh-cell-88f1edf1" rowindex="1" colindex="5" style="background-color:#eaf0ea;" targetcolumnname="start_dates" sortable="false" filterable="false" text="시작일"/>
+            <cl:gridcell std:sid="gh-cell-ea4d4119" rowindex="1" colindex="6" style="background-color:#eaf0ea;" targetcolumnname="end_date" sortable="false" filterable="false" text="종료일"/>
+            <cl:gridcell std:sid="gh-cell-dd08450f" rowindex="0" colindex="2" rowspan="1" colspan="5" style="background-color:#eaf0ea;" text="담당 개발자"/>
           </cl:gridheader>
           <cl:griddetail std:sid="gd-band-1903d687">
             <cl:gridrow std:sid="g-row-5360c89a" height="60px"/>
-            <cl:gridcell std:sid="gd-cell-e967781d" rowindex="0" colindex="0" columntype="checkbox"/>
+            <cl:gridrow std:sid="g-row-dce322a4" height="60px"/>
+            <cl:gridcell std:sid="gd-cell-e967781d" rowindex="0" colindex="0" rowspan="2" colspan="1" columntype="checkbox"/>
             <cl:gridcell std:sid="gd-cell-1836a7e0" rowindex="0" colindex="1" columnname="customizing_version">
               <cl:inputbox std:sid="i-box-64faafb4" id="ipb2"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-0335a218" rowindex="0" colindex="2" columnname="customized_function">
-              <cl:textarea std:sid="t-area-efcfba02" id="txa1"/>
-            </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-889d9b6f" rowindex="0" colindex="3" columnname="department">
+            <cl:gridcell std:sid="gd-cell-889d9b6f" rowindex="0" colindex="2" columnname="department">
               <cl:inputbox std:sid="i-box-5438f92e" id="ipb4"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-76318a00" rowindex="0" colindex="4" columnname="employees_number">
+            <cl:gridcell std:sid="gd-cell-76318a00" rowindex="0" colindex="3" columnname="employees_number">
               <cl:maskeditor std:sid="m-editor-7866a51c" id="mse1"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-ae0a59b8" rowindex="0" colindex="5" columnname="employees_name">
+            <cl:gridcell std:sid="gd-cell-ae0a59b8" rowindex="0" colindex="4" columnname="employees_name">
               <cl:inputbox std:sid="i-box-360d5c49" id="ipb5"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-c47e7899" rowindex="0" colindex="6" columnname="start_dates">
+            <cl:gridcell std:sid="gd-cell-c47e7899" rowindex="0" colindex="5" columnname="start_dates">
               <cl:dateinput std:sid="d-input-74e36772" id="dti1"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-5e31178d" rowindex="0" colindex="7" columnname="end_date">
+            <cl:gridcell std:sid="gd-cell-5e31178d" rowindex="0" colindex="6" columnname="end_date">
               <cl:dateinput std:sid="d-input-c4312940" id="dti2"/>
+            </cl:gridcell>
+            <cl:gridcell rowindex="1" colindex="1" rowspan="1" colspan="6" columnname="customized_function">
+              <cl:textarea std:sid="t-area-d82d2e85" id="txa1"/>
             </cl:gridcell>
           </cl:griddetail>
           <cl:gridrowgrouplist std:sid="grg-list-3b762198">
             <cl:gridrowgroup std:sid="gr-group-451df44a" groupcondition="customizing_version">
               <cl:gridgroupheader std:sid="grg-band-b9ebaf17">
                 <cl:gridrow std:sid="g-row-35570f94" height="30px"/>
-                <cl:gridcell std:sid="gf-cell-4ab00946" rowindex="0" colindex="0" rowspan="1" colspan="8" expr="&quot;[버전]    &quot; + customizing_version"/>
+                <cl:gridcell std:sid="gf-cell-4ab00946" rowindex="0" colindex="0" rowspan="1" colspan="7" expr="&quot;[버전]    &quot; + customizing_version"/>
               </cl:gridgroupheader>
             </cl:gridrowgroup>
           </cl:gridrowgrouplist>
