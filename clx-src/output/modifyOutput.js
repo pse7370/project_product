@@ -35,12 +35,22 @@ function onGetOutputContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	app.lookup("input_outputTitle").redraw();
 	app.lookup("outputContent").redraw();
 	
+	
+	
 	var attachmentList = app.lookup("attachmentList");
 	var i
 	for(i = 0; i < attachmentList.getRowCount(); i++) {
 		var fileName = attachmentList.getValue(i, "real_file_name");
 		var fileSize = attachmentList.getValue(i, "file_size");
 		var save_path = attachmentList.getValue(i, "save_path")
+		
+		app.lookup("file_upload").addFile({
+				name : fileName, 
+				size : fileSize, 
+				properties : {svaePath : save_path}
+			}, false);
+		
+		/*
 		app.lookup("file_upload").addUploadedFile(
 			{
 				name : fileName, 
@@ -48,6 +58,7 @@ function onGetOutputContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 				properties : {svaePath : save_path}
 			}
 		);
+		*/ 
 	}
 	
 }
@@ -66,20 +77,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	var attachmentList = app.lookup("attachmentList");
 	var files = app.lookup("file_upload").getFiles();
 	
-	if(files.length > 0){
-		var i
-		var j
-		for(i = 0; i < files.length; i++){
-			for(j = 0; j < attachmentList.getRowCount(); j++){
-				if(files[i].name != attachmentList.getValue(j, "real_file_name")){
-					app.lookup("modifyOutput").addFileParameter("file" + i, files[i]);
-					console.log("file" + i + " : " + files[i]);
-				}
-			}
-			
-		}
-		
-	}
+
 	
 	app.lookup("modifyOutput").send();
 	console.log("modifyOutput 서브미션 실행");
@@ -96,5 +94,65 @@ function onModifyOutputSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	 * @type cpr.protocols.Submission
 	 */
 	var modifyOutput = e.control;
+	
+	cpr.core.App.load("output/outputContentView", function(loadedApp){
+			if(loadedApp){
+	    		app.getHost().app = loadedApp;
+	  		}
+		});
+	//app.close();
+	
+}
+
+
+/*
+ * 파일 업로드에서 add-file 이벤트 발생 시 호출.
+ * 파일 추가 후 발생하는 이벤트입니다.
+ */
+function onFile_uploadAddFile(/* cpr.events.CFileUploadEvent */ e){
+	/** 
+	 * @type cpr.controls.FileUpload
+	 */
+	var file_upload = e.control;
+	
+	console.log("추가된 파일들 : " + e.files);
+	
+	var files = e.files;
+	var i;
+	for(i = 0; i < files.length; i++){
+		app.lookup("modifyOutput").addFileParameter("file" + i, files[i]);
+	}
+	
+}
+
+
+/*
+ * 파일 업로드에서 remove-before-file 이벤트 발생 시 호출.
+ * 파일을 삭제 하기 전에 발생하는 이벤트 입니다. event.preventDefault()를 하면 파일을 삭제하지 않습니다.
+ */
+function onFile_uploadRemoveBeforeFile(/* cpr.events.CFileUploadEvent */ e){
+	/** 
+	 * @type cpr.controls.FileUpload
+	 */
+	var file_upload = e.control;
+	console.log("삭제될 파일들 : " + e.files);
+	
+	var files = e.files;
+	var i;
+	for(i = 0; i < files.length; i++){
+		if(files[i].type != File){
+			app.lookup("deleteFileList").addRowData(
+				{
+					"delete_file_name" : files[i].name
+				}
+			);
+		}else{
+			app.lookup("modifyOutput").removeFileParameters(files[i].name);
+		}
+		
+	}
+	
+
+	
 	
 }

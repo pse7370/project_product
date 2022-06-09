@@ -56,7 +56,7 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	cpr.core.App.load("customizing/modifyCustomizing", function(loadedApp){
 		if(loadedApp){
 			embeddedApp.initValue = {
-				
+				"product_id" : app.lookup("product_id").getValue("product_id")
 			}
     		embeddedApp.app = loadedApp;	    		
   		}
@@ -65,4 +65,51 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 }
 
 
+/*
+ * "삭제" 버튼에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onButtonClick2(/* cpr.events.CMouseEvent */ e){
+	/** 
+	 * @type cpr.controls.Button
+	 */
+	var button = e.control;
+	
+	var customizingList = app.lookup("grid_customizing");
+	customizingList.showDeletedRow = false;
+	var checkedRow = customizingList.getCheckRowIndices();
+	
+	console.log("checkedRow : " + checkedRow);
+	
+	var data_customizingList = app.lookup("product_customizingList");
+	
+	var i
+	var actionURL = "/productMangement/deleteCustomizing";
+	for(i = 0; i < checkedRow.length; i++){
+		
+		actionURL += "?" + app.lookup("product_customizingList").getValue(checkedRow[i], "customizing_id");		
+		
+		data_customizingList.deleteRow(checkedRow[i]);
+	}
+	
+	console.log(actionURL);
+	app.lookup("deleteCustomizing").action = actionURL;
+	
+	app.lookup("deleteCustomizing").send();
+	console.log("deleteCustomizing 서브미션 실행");
+}
 
+
+/*
+ * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onDeleteCustomizingSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var deleteCustomizing = e.control;
+	
+	app.lookup("getCustomizingList").send();
+	
+}

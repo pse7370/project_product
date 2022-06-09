@@ -33,20 +33,28 @@
           <cl:datacolumn std:sid="d-column-36c39941" name="product_id" datatype="number"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-8ca8b2bc" id="result">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-26d216d7" name="resultCode" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-2aa68b7a" id="getCustomizingList" action="/productMangement/getCustomizingList">
         <cl:listener std:sid="listener-50790670" name="submit-done" handler="onGetCustomizingListSubmitDone"/>
         <cl:requestdata dataid="product_id"/>
         <cl:responsedata dataid="product"/>
         <cl:responsedata dataid="product_customizingList"/>
       </cl:submission>
+      <cl:submission std:sid="submission-e7fb35a6" id="deleteCustomizing" method="delete" action="/productMangement/deleteCustomizing">
+        <cl:listener std:sid="listener-f5bfc136" name="submit-done" handler="onDeleteCustomizingSubmitDone"/>
+        <cl:responsedata dataid="result"/>
+      </cl:submission>
     </cl:model>
     <cl:appspec/>
   </head>
   <body std:sid="body-a4e9df57" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-1e16f737" name="load" handler="onBodyLoad"/>
-    <cl:listener std:sid="listener-e58f18e7" name="init" handler="onBodyInit"/>
     <cl:group std:sid="group-54f20096">
-      <cl:xylayoutdata std:sid="xyl-data-4de6514d" top="0px" left="0px" width="828px" height="649px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-4de6514d" top="0px" left="0px" width="828px" height="700px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:output std:sid="output-2d188e49" style="font-weight:bold; vertical-align:middle; font-size:14pt; text-align:left;" value="커스터마이징 이력">
         <cl:xylayoutdata std:sid="xyl-data-021187b7" top="15px" left="20px" width="201px" height="41px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:output>
@@ -66,14 +74,14 @@
         </cl:formlayout>
       </cl:group>
       <cl:group std:sid="group-38e9dd05">
-        <cl:xylayoutdata std:sid="xyl-data-6781f4fc" top="115px" left="20px" width="795px" height="481px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-6781f4fc" top="115px" left="20px" width="795px" height="530px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:grid std:sid="grid-f62518ff" id="grid_customizing" readonly="true" datasetid="product_customizingList" autorowheight="1, 2, 3, 4, 5, 6" collapsible="true">
-          <cl:verticaldata std:sid="v-data-5970a20f" width="739px" height="475px" autosize="both"/>
+          <cl:verticaldata std:sid="v-data-5970a20f" width="739px" height="527px" autosize="both"/>
           <cl:gridcolumn std:sid="g-column-5418e063" width="25px"/>
           <cl:gridcolumn std:sid="g-column-1c72e09f" width="31px"/>
-          <cl:gridcolumn std:sid="g-column-77b931ba" width="108px"/>
+          <cl:gridcolumn std:sid="g-column-77b931ba" width="117px"/>
           <cl:gridcolumn std:sid="g-column-1a55147f" width="93px"/>
-          <cl:gridcolumn std:sid="g-column-8ff929fb" width="104px"/>
+          <cl:gridcolumn std:sid="g-column-8ff929fb" width="109px"/>
           <cl:gridcolumn std:sid="g-column-d5fa6f96" width="84px"/>
           <cl:gridcolumn std:sid="g-column-a2dc8f1a" width="87px"/>
           <cl:gridheader std:sid="gh-band-74ecc53b">
@@ -89,21 +97,21 @@
             <cl:gridcell std:sid="gh-cell-465b785a" rowindex="0" colindex="2" rowspan="1" colspan="5" style="background-color:#eaf0ea;" text="기능별 담당 개발자"/>
           </cl:gridheader>
           <cl:griddetail std:sid="gd-band-556bbb1f">
+            <cl:gridrow std:sid="g-row-41fd464d" height="60px"/>
             <cl:gridrow std:sid="g-row-85ab7e83" height="27px"/>
-            <cl:gridrow std:sid="g-row-34c69fcc" height="60px"/>
             <cl:gridcell std:sid="gd-cell-25a3cd60" rowindex="0" colindex="0" rowspan="2" colspan="1" columntype="checkbox"/>
             <cl:gridcell std:sid="gd-cell-1032d9f9" rowindex="0" colindex="1" rowspan="2" colspan="1" columntype="rowindex"/>
-            <cl:gridcell std:sid="gd-cell-cc7c6653" rowindex="0" colindex="2" columnname="department"/>
-            <cl:gridcell std:sid="gd-cell-2d1c8d57" rowindex="0" colindex="3" columnname="employees_number"/>
-            <cl:gridcell std:sid="gd-cell-d5d53481" rowindex="0" colindex="4" columnname="employees_name"/>
-            <cl:gridcell std:sid="gd-cell-ec7fa806" rowindex="0" colindex="5" columnname="start_date">
+            <cl:gridcell std:sid="gd-cell-cc7c6653" rowindex="1" colindex="2" columnname="department"/>
+            <cl:gridcell std:sid="gd-cell-2d1c8d57" rowindex="1" colindex="3" columnname="employees_number"/>
+            <cl:gridcell std:sid="gd-cell-d5d53481" rowindex="1" colindex="4" columnname="employees_name"/>
+            <cl:gridcell std:sid="gd-cell-ec7fa806" rowindex="1" colindex="5" columnname="start_date">
               <cl:maskeditor std:sid="m-editor-c958dbc8" id="mse1" style="text-align:center;" readonly="true" mask="0000-00-00"/>
             </cl:gridcell>
-            <cl:gridcell std:sid="gd-cell-c02065ee" rowindex="0" colindex="6" columnname="end_date">
+            <cl:gridcell std:sid="gd-cell-c02065ee" rowindex="1" colindex="6" columnname="end_date">
               <cl:maskeditor std:sid="m-editor-2830fe60" id="mse2" style="text-align:center;" readonly="true" mask="0000-00-00"/>
             </cl:gridcell>
-            <cl:gridcell rowindex="1" colindex="2" rowspan="1" colspan="5" columnname="customized_function">
-              <cl:textarea std:sid="t-area-4b7f277f" id="txa1" style="padding-top:5px; padding-left:8px; padding-bottom:5px; padding-right:8px;"/>
+            <cl:gridcell rowindex="0" colindex="2" rowspan="1" colspan="5" columnname="customized_function">
+              <cl:textarea std:sid="t-area-33df7655" id="txa2" style="padding-top:5px; padding-left:8px; padding-bottom:5px; padding-right:8px;"/>
             </cl:gridcell>
           </cl:griddetail>
           <cl:gridrowgrouplist std:sid="grg-list-4a5e28eb">
@@ -119,10 +127,11 @@
       </cl:group>
       <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="추가/수정">
         <cl:listener std:sid="listener-3ff96f02" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-8bb578c2" top="606px" left="603px" width="111px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-8bb578c2" top="660px" left="603px" width="111px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-df1ffb92" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
-        <cl:xylayoutdata std:sid="xyl-data-e329cb1e" top="606px" left="728px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:listener std:sid="listener-e44cdf63" name="click" handler="onButtonClick2"/>
+        <cl:xylayoutdata std:sid="xyl-data-e329cb1e" top="660px" left="728px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-bc4a82bc"/>
     </cl:group>

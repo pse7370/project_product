@@ -48,7 +48,7 @@ function onGetOutputContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 			{
 				name : fileName, 
 				size : fileSize, 
-				properties : {svaePath : save_path}
+				properties : {rowIndex : i}
 			}
 		);
 	}
@@ -91,6 +91,45 @@ function onFile_uploadSendbuttonClick(/* cpr.events.CEvent */ e){
 	 */
 	var file_upload = e.control;
 	console.log("download");
+
+	var checkedFiles = file_upload.getSelection();
+	var downloadFileList = app.lookup("downloadFileList");
+	var attachmentList = app.lookup("attachmentList");
+	var file = app.lookup("file");
+	
+	var i;
+	var fileIndex;
+	var fileName;
+	var savePath;
+	
+	for(i = 0; i < checkedFiles.length; i++){
+		fileIndex = file_upload.getIndex(checkedFiles[i]);
+		fileName = attachmentList.getValue(fileIndex, "real_file_name");
+		savePath = attachmentList.getValue(fileIndex, "save_path");
+		
+		downloadFileList.addRowData(
+			{
+				"file_name" : fileName,
+				"save_path" : savePath
+			}
+		);
+		
+	} // end for
+	
+	 app.lookup("downloadAttachmentList").send();
+	 
+	 /*
+	for(i = 0; i < checkedFiles.length; i++){
+		fileIndex = file_upload.getIndex(checkedFiles[i]);
+		fileName = attachmentList.getValue(fileIndex, "real_file_name");
+		savePath = attachmentList.getValue(fileIndex, "save_path");
+		
+		file.setValue("file_name", fileName);
+		file.setValue("save_path", savePath);
+		
+		app.lookup("downloadAttachment").send();
+	}
+	*/
 	
 }
 
@@ -106,28 +145,22 @@ function onFile_uploadDownloadClick(/* cpr.events.CUploadedFileEvent */ e){
 	
 	var clickFile = e.uploadedFile;
 	var clickFileName = clickFile.name;
-	//console.log("clickFileName : " + clickFileName);
-	var savePath = clickFile.getProperty("savePath");
+	console.log("clickFileName : " + clickFileName);
 	app.lookup("file").setValue("file_name", clickFileName);
-	app.lookup("file").setValue("save_path", savePath);
 	
+	var savePath = app.lookup("attachmentList").getValue(clickFile.getProperty("rowIndex"), "save_path");
+	
+	app.lookup("file").setValue("save_path", savePath);
+	/*
+	var savePath = clickFile.getProperty("savePath");	
+	app.lookup("file").setValue("save_path", savePath);
+	*/
+	
+	//app.lookup("downloadAttachment").action = "/productMangement/downloadAttachment?" + clickFileName;
 	app.lookup("downloadAttachment").send();
 	
 }
 
-/*
- * downloadAttachment 서브미션에서 submit-done 이벤트 발생 시 호출.
- * 응답처리가 모두 종료되면 발생합니다.
- */
-function onDownloadAttachmentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
-	/** 
-	 * @type cpr.protocols.Submission
-	 */
-	var downloadAttachment = e.control;
-	
-	
-	
-}
 
 
 /*

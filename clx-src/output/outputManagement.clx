@@ -83,7 +83,7 @@
   <body std:sid="body-95d70832" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-c6639f11" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-c2ece7a7">
-      <cl:xylayoutdata std:sid="xyl-data-a3f7ffb1" top="0px" left="0px" width="739px" height="595px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-a3f7ffb1" top="0px" left="10px" width="739px" height="595px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-51e71479">
         <cl:xylayoutdata std:sid="xyl-data-d6751c84" top="25px" left="20px" width="461px" height="39px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:combobox std:sid="c-box-ac2f3388" id="searchCondition" style="text-align:center;" placeholder="검색 조건" preventinput="true">

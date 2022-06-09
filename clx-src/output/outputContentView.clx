@@ -15,6 +15,12 @@
           <cl:datacolumn std:sid="d-column-c6f9c89d" name="file_size" datatype="number"/>
         </cl:datacolumnlist>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-5b91fa5c" id="downloadFileList">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-74830def" name="file_name"/>
+          <cl:datacolumn std:sid="d-column-aca574fc" name="save_path"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-922d6e5e" id="product">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-91fc44a9" name="product_name"/>
@@ -64,6 +70,9 @@
       <cl:submission std:sid="submission-13b787a5" id="downloadAttachment" action="/productMangement/downloadAttachment" responsetype="filedownload">
         <cl:listener std:sid="listener-e3b1ec33" name="submit-done" handler="onDownloadAttachmentSubmitDone"/>
         <cl:requestdata dataid="file"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-9571450a" id="downloadAttachmentList" action="/productMangement/downloadAttachmentList" responsetype="filedownload">
+        <cl:requestdata dataid="downloadFileList"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
