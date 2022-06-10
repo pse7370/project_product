@@ -31,7 +31,11 @@ function onGetSWcontentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	 * @type cpr.protocols.Submission
 	 */
 	var getSWcontent = e.control;
-	app.lookup("productImage").src = app.lookup("product").getValue("save_path");
+	
+	var product = app.lookup("product");
+	
+
+	app.lookup("productImage").src = "/static/SWimage/" + product.getValue("save_image_name");
 	app.lookup("productName").redraw();
 	app.lookup("productVersion").redraw();
 	app.lookup("simultaneous").redraw();

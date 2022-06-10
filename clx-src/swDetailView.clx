@@ -23,6 +23,7 @@
           <cl:datacolumn std:sid="d-column-9df4b354" name="product_type"/>
           <cl:datacolumn std:sid="d-column-32e50aa5" name="product_name"/>
           <cl:datacolumn std:sid="d-column-36ff3d32" name="product_version"/>
+          <cl:datacolumn std:sid="d-column-06964100" name="save_image_name"/>
           <cl:datacolumn std:sid="d-column-824f11b9" name="save_path"/>
           <cl:datacolumn std:sid="d-column-361511eb" name="explanation"/>
         </cl:datacolumnlist>
@@ -65,7 +66,7 @@
       <cl:xylayoutdata std:sid="xyl-data-a958175f" top="669px" left="510px" width="201px" height="49px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:xylayout std:sid="xylayout-6763584e"/>
     </cl:group>
-    <cl:img std:sid="image-ae054298" id="productImage" alt="&quot;제품 이미지&quot;">
+    <cl:img std:sid="image-ae054298" id="productImage" alt="&quot;제품 이미지&quot;" areacoordinate="image-size">
       <cl:xylayoutdata std:sid="xyl-data-e349acd2" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>
     <cl:group std:sid="group-701f2f65">
@@ -118,7 +119,7 @@
       <cl:output std:sid="output-325b626b" style="padding-left:10px;" value="설명">
         <cl:verticaldata std:sid="v-data-9ce4e239" width="100px" height="25px"/>
       </cl:output>
-      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" style="padding-top:5px; padding-left:10px; padding-bottom:5px; padding-right:10px;" readonly="true">
+      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" style="padding-top:5px; padding-left:10px; padding-bottom:5px;" readonly="true">
         <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
         <cl:verticaldata std:sid="v-data-fa59da00" width="100px" height="182px" autosize="none"/>
       </cl:textarea>

@@ -42,6 +42,13 @@ function onGetOutputListSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	app.lookup("pageIndexer").init(totalRowCount);
 	app.lookup("pageIndexer").pageRowCount = 15;
 	app.lookup("pageIndexer").viewPageCount = 5;
+	if(totalRowCount > 15) {
+		app.lookup("pageIndexer").visibleFirstButton = true;
+		app.lookup("pageIndexer").visibleLastButton = true;
+	}else if(totalRowCount > 75){
+		app.lookup("pageIndexer").visibleNextButton = true;
+		app.lookup("pageIndexer").visibleNextButton = true;
+	}
 	
 
 	app.lookup("pageIndexer").redraw();

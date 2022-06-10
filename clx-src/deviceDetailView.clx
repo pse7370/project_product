@@ -81,7 +81,7 @@
       <cl:xylayoutdata std:sid="xyl-data-9a508173" top="920px" left="516px" width="200px" height="49px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:xylayout std:sid="xylayout-6763584e"/>
     </cl:group>
-    <cl:img std:sid="image-ae054298" id="productImage" alt="&quot;제품 이미지&quot;">
+    <cl:img std:sid="image-ae054298" id="productImage" alt="&quot;제품 이미지&quot;" areacoordinate="image-size">
       <cl:xylayoutdata std:sid="xyl-data-24cebc89" top="20px" left="20px" width="180px" height="180px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:img>
     <cl:group std:sid="group-a6db7d0e">
@@ -193,7 +193,7 @@
       <cl:output std:sid="output-325b626b" style="padding-left:10px;" value="설명">
         <cl:verticaldata std:sid="v-data-9ce4e239" width="100px" height="25px"/>
       </cl:output>
-      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" style="padding-top:5px; padding-left:10px; padding-bottom:5px; padding-right:10px;" readonly="true">
+      <cl:textarea std:sid="t-area-f4d72d50" id="explanation" style="padding-top:5px; padding-left:10px; padding-bottom:5px;" readonly="true">
         <cl:datamapbind property="value" datacontrolid="product" columnname="explanation"/>
         <cl:verticaldata std:sid="v-data-fa59da00" width="100px" height="143px" autosize="none"/>
       </cl:textarea>

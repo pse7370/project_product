@@ -91,8 +91,10 @@
 
 		/* 트리 아이템 - selected */
 		&.cl-selected {
-			background-color: @selection-background;
-			color: @selection-foreground;
+			background-color: #DAF2DA;
+			color: @default-text-color;
+			margin-right: 10px;
+			border-radius: 10px;
 
 			&.cl-folder {
 				/* 트리 아이템 폴더 펼쳐짐 아이콘 - selected */
@@ -111,7 +113,7 @@
 
 	/* 트리 - focus */
 	&.cl-focus {
-		border-color: @focus-border-color;
+		border-color: #10451D;
 	}
 
 	/* 트리 다중 선택 */
@@ -120,8 +122,8 @@
 			&.cl-checked{
 				
 				&.cl-selected.cl-hover{
-					background-color: @selection-background;
-					color: @selection-foreground;
+					background-color: #DAF2DA;
+					color: @default-text-color;
 				}
 			}
 		}
@@ -182,6 +184,8 @@
 		&:not(.cl-selected).cl-hover, &:not(.cl-selected):hover {
 			background-color: @hover-background;
 			color: @hover-foreground;
+			margin-right: 10px;
+			border-radius: 10px;
 		}
 
 		/* 드래그 아이템 위치에 따른 표시 */

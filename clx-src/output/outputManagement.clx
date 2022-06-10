@@ -136,7 +136,7 @@
         </cl:grid>
         <cl:verticallayout std:sid="v-layout-e425a682"/>
       </cl:group>
-      <cl:pageindexer std:sid="p-indexer-04789a41" id="pageIndexer" pagerowcount="15" viewpagecount="1">
+      <cl:pageindexer std:sid="p-indexer-04789a41" id="pageIndexer" pagerowcount="15" viewpagecount="1" visiblefirstbutton="false" visiblelastbutton="false" visibleprevbutton="false" visiblenextbutton="false">
         <cl:listener std:sid="listener-c150e987" name="selection-change" handler="onPageIndexerSelectionChange"/>
         <cl:datamapbind property="totalRowCount" category="PROPERTY" datacontrolid="totalOutputCount" columnname="totalOutputCount"/>
         <cl:xylayoutdata std:sid="xyl-data-301292ac" top="540px" left="200px" width="338px" height="40px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>

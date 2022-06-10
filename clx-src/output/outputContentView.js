@@ -53,6 +53,8 @@ function onGetOutputContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 		);
 	}
 	
+	app.lookup("title_name").setValue("product_name", app.lookup("product").getValue("product_name"));
+	app.lookup("title_name").setValue("output_title", app.lookup("product_output").getValue("output_title"));
 	
 }
 
@@ -91,6 +93,7 @@ function onFile_uploadSendbuttonClick(/* cpr.events.CEvent */ e){
 	 */
 	var file_upload = e.control;
 	console.log("download");
+	
 
 	var checkedFiles = file_upload.getSelection();
 	var downloadFileList = app.lookup("downloadFileList");

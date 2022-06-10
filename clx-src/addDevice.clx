@@ -270,7 +270,7 @@
         </cl:inputbox>
         <cl:xylayout std:sid="xylayout-bc9a42c8"/>
       </cl:group>
-      <cl:output std:sid="output-7b440d4e" style="color:#dd4545; padding-left:10px; vertical-align:middle; font-size:9pt; text-align:left;" value="방수/방진 등급을 작성해 주세요.&#xD;&#xA;해당되지 않을 경우 공란으로 유지">
+      <cl:output std:sid="output-7b440d4e" style="color:#dd4545; padding-left:10px; vertical-align:middle; font-size:9pt; text-align:left;" value="방수/방진 등급을 작성해 주세요.&#xD;&#xA;해당되지 않을 경우 X를 입력해 주세요.">
         <cl:xylayoutdata std:sid="xyl-data-f06064b0" top="265px" left="429px" width="275px" height="38px"/>
       </cl:output>
       <cl:group std:sid="group-19d013fc">

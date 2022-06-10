@@ -25,17 +25,17 @@ font-family: 'IBMPlexSansKR-Regular';
 }
 
 /* 트리에서 선택된 아이템의 배경색 */
-.cl-tree .cl-tree-item.cl-selected {
+.cl-tree .cl-tree-item .cl-selected {
 	background-color: none;
 }
 
 /* 트리에서 마우스 호버 배경색 */
-.cl-tree .cl-tree-item.cl-hover {
+.cl-tree .cl-tree-item .cl-hover {
 	background-color: none;
 }
 
 /* 트리에서 마우스 호버 배경색 */
-.cl-tree .cl-tree-item.cl-hover :hover {
+.cl-tree .cl-tree-item .cl-hover :hover {
 	background-color: none;
 }
 
@@ -65,3 +65,4 @@ font-family: 'IBMPlexSansKR-Regular';
 		}
 	}
 }
+

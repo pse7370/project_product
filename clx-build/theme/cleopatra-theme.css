@@ -777,7 +777,7 @@ body.cl-has-modal {
   /* preventInput속성일때 스타일*/
 }
 .cl-combobox.cl-focus {
-  border-color: #1369C5;
+  border-color: #bbb;
 }
 .cl-combobox.cl-disabled {
   border-color: #ddd;
@@ -787,7 +787,7 @@ body.cl-has-modal {
 /* 콤보 박스 리스트 박스 */
 .cl-combobox-list {
   font: 11pt "맑은 고딕", "Malgun Gothic", sans-serif;
-  border: 1px solid #1369C5;
+  border: 1px solid #bbb;
   color: #333;
   /*리스트박스의 쉐도우*/
   /* 리스박스의 최대 높이*/
@@ -808,8 +808,8 @@ body.cl-has-modal {
   /* disabled 상태 콤보 박스 리스트 아이템 */
 }
 .cl-combobox-list .cl-combobox-item.cl-selected {
-  background-color: #208AED;
-  color: #FFFFFF;
+  background-color: #DAF2DA;
+  color: #333;
 }
 .cl-combobox-list .cl-combobox-item.cl-disabled {
   color: #666;
@@ -832,8 +832,8 @@ body.cl-has-modal {
   background-color: #DAEFFC;
 }
 .cl-combobox-list.cl-multi-select .cl-combobox-item:not(.cl-disabled).cl-hover.cl-selected {
-  background-color: #208AED;
-  color: #FFFFFF;
+  background-color: #DAF2DA;
+  color: #333;
 }
 /* 링크드 콤보 박스 루트 */
 .cl-linkedcombobox {
@@ -910,11 +910,11 @@ body.cl-has-modal {
 }
 /* 다이얼로그 루트 */
 .cl-dialog {
-  border: solid 1px #1369C5;
+  border: solid 1px #555555;
   /* 다이얼로그 헤더 */
 }
 .cl-dialog .cl-dialog-header {
-  background-color: #1D7FDC;
+  background-color: #008000;
   color: white;
   border-bottom: 1px solid #e5e5e5;
   /* 다이얼로그 헤더 텍스트 */
@@ -970,19 +970,21 @@ body.cl-has-modal {
   background-color: #ccc;
 }
 .cl-tree .cl-tree-item.cl-selected {
-  background-color: #208AED;
-  color: #FFFFFF;
+  background-color: #DAF2DA;
+  color: #333;
+  margin-right: 10px;
+  border-radius: 10px;
 }
 .cl-tree .cl-tree-item.cl-selected.cl-folder {
   /* 트리 아이템 폴더 펼쳐짐 아이콘 - selected */
   /* 트리 아이템 폴더 점힘 아이콘 - selected */
 }
 .cl-tree.cl-focus {
-  border-color: #1369C5;
+  border-color: #10451D;
 }
 .cl-tree.cl-multi-select .cl-tree-item.cl-checked.cl-selected.cl-hover {
-  background-color: #208AED;
-  color: #FFFFFF;
+  background-color: #DAF2DA;
+  color: #333;
 }
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled) {
   /* 트리 아이템 - hover */
@@ -994,6 +996,8 @@ body.cl-has-modal {
 .cl-tree:not(.cl-disabled) .cl-tree-item:not(.cl-disabled):not(.cl-selected):hover {
   background-color: #DAEFFC;
   color: #333435;
+  margin-right: 10px;
+  border-radius: 10px;
 }
 /* 트리 - disabled */
 .cl-tree.cl-disabled {
@@ -1358,9 +1362,9 @@ body.cl-has-modal {
   /* 페이지 인덱서 선택된 페이지 */
 }
 .cl-pageindexer .cl-pageindexer-index.cl-selected {
-  background-color: #208AED;
-  color: #FFFFFF;
-  border-color: #1369C5;
+  background-color: #DAF2DA;
+  color: #333;
+  border-color: #155D27;
 }
 .cl-pageindexer.cl-disabled {
   color: #666;

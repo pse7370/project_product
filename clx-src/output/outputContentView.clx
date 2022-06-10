@@ -56,6 +56,12 @@
           <cl:datacolumn std:sid="d-column-a2678358" name="save_path"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-3765f170" id="title_name">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-04931dd4" name="product_name"/>
+          <cl:datacolumn std:sid="d-column-3343dfe9" name="output_title"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-2aa68b7a" id="getOutputContent" action="/productMangement/getOutputContent">
         <cl:listener std:sid="listener-ffd0b0fd" name="submit-done" handler="onGetOutputContentSubmitDone"/>
         <cl:requestdata dataid="output_id"/>
@@ -73,6 +79,7 @@
       </cl:submission>
       <cl:submission std:sid="submission-9571450a" id="downloadAttachmentList" action="/productMangement/downloadAttachmentList" responsetype="filedownload">
         <cl:requestdata dataid="downloadFileList"/>
+        <cl:requestdata dataid="title_name"/>
       </cl:submission>
     </cl:model>
     <cl:appspec/>
@@ -80,9 +87,9 @@
   <body std:sid="body-8fdaf22d" style="top:0px; left:0px; width:800px; height:600px;">
     <cl:listener std:sid="listener-052e8023" name="load" handler="onBodyLoad"/>
     <cl:group std:sid="group-adba05d1">
-      <cl:xylayoutdata std:sid="xyl-data-aaecfe64" top="0px" left="0px" width="725px" height="700px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-aaecfe64" top="0px" left="0px" width="725px" height="690px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:group std:sid="group-f0d76a57">
-        <cl:xylayoutdata std:sid="xyl-data-2512267e" top="30px" left="20px" width="297px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-2512267e" top="20px" left="20px" width="297px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:output std:sid="output-0a261340" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="제품명">
           <cl:formdata std:sid="f-data-02f3f647" row="0" col="0"/>
         </cl:output>
@@ -97,7 +104,7 @@
         </cl:formlayout>
       </cl:group>
       <cl:group std:sid="group-c3c76c9c">
-        <cl:xylayoutdata std:sid="xyl-data-8bd74347" top="78px" left="20px" width="367px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-8bd74347" top="68px" left="20px" width="367px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:output std:sid="output-e2ed18e5" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="산출물 종류">
           <cl:formdata std:sid="f-data-a0c3744a" row="0" col="0"/>
         </cl:output>
@@ -112,7 +119,7 @@
         </cl:formlayout>
       </cl:group>
       <cl:group std:sid="group-e2df104b">
-        <cl:xylayoutdata std:sid="xyl-data-1b82d5cd" top="126px" left="20px" width="693px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-1b82d5cd" top="116px" left="20px" width="693px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:output std:sid="output-91283c06" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="제목">
           <cl:formdata std:sid="f-data-ebcd8e43" row="0" col="0"/>
         </cl:output>
@@ -127,7 +134,7 @@
         </cl:formlayout>
       </cl:group>
       <cl:group std:sid="group-f3e95fa4">
-        <cl:xylayoutdata std:sid="xyl-data-735b7e9e" top="78px" left="416px" width="297px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-735b7e9e" top="68px" left="416px" width="297px" height="38px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:output std:sid="output-d3d2d2ae" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; border-left-color:#b4b4b4; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; text-align:center;" value="작성일">
           <cl:formdata std:sid="f-data-2a7e4a90" row="0" col="0"/>
         </cl:output>
@@ -144,12 +151,12 @@
       <cl:fileupload std:sid="f-upload-c0211a3a" id="file_upload" buttons="send" readonly="true" sendlabel="다운로드" maxfilecount="5">
         <cl:listener std:sid="listener-532bd3a5" name="sendbutton-click" handler="onFile_uploadSendbuttonClick"/>
         <cl:listener std:sid="listener-27280ee5" name="download-click" handler="onFile_uploadDownloadClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-f1c3bc4e" top="174px" left="19px" width="695px" height="202px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-f1c3bc4e" top="164px" left="19px" width="695px" height="202px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:buttonstyle style="background-color:#daf2da; border-right-style:none; border-left-style:none; font-size:10pt; border-bottom-style:none; background-image:none; border-top-style:none;"/>
         <cl:headerstyle style="background-color:#eaf0ea; background-image:none;"/>
       </cl:fileupload>
       <cl:group std:sid="group-9ed1aa00">
-        <cl:xylayoutdata std:sid="xyl-data-adf95fa3" top="386px" left="19px" width="695px" height="264px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-adf95fa3" top="376px" left="19px" width="695px" height="264px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:output std:sid="output-a517c94d" style="padding-left:10px;" value="내용">
           <cl:verticaldata std:sid="v-data-25de14ee" width="100px" height="27px"/>
         </cl:output>
@@ -161,11 +168,11 @@
       </cl:group>
       <cl:button std:sid="button-f2fc20b1" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="수정">
         <cl:listener std:sid="listener-6c1d8d5a" name="click" handler="onButtonClick"/>
-        <cl:xylayoutdata std:sid="xyl-data-30883ce8" top="660px" left="540px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-30883ce8" top="650px" left="540px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:button std:sid="button-4d09ff7d" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="삭제">
         <cl:listener std:sid="listener-109ad160" name="click" handler="onButtonClick2"/>
-        <cl:xylayoutdata std:sid="xyl-data-7d4f0dca" top="660px" left="633px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+        <cl:xylayoutdata std:sid="xyl-data-7d4f0dca" top="650px" left="633px" width="80px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       </cl:button>
       <cl:xylayout std:sid="xylayout-7172aa6e"/>
     </cl:group>
