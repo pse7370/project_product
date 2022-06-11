@@ -6,6 +6,14 @@
  ************************************************/
 
 /*
+ * 루트 컨테이너에서 load 이벤트 발생 시 호출.
+ * 앱이 최초 구성된후 최초 랜더링 직후에 발생하는 이벤트 입니다.
+ */
+function onBodyLoad(/* cpr.events.CEvent */ e){
+	app.lookup("input_productName").focus();
+}
+
+/*
  * 담당 개발자 "+" 버튼에서 click 이벤트 발생 시 호출.
  * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
  */
@@ -15,8 +23,36 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	 */
 	var button = e.control;
 	var grid_developer = app.lookup("grid_developer");
-	var insertRow = grid_developer.insertRow(1, true);
+	var insertRow = grid_developer.insertRow(grid_developer.getViewingEndRowIndex(), true);
 	// + 버튼 클릭시 그리드 행 추가
+}
+
+
+/*
+ * "-" 버튼에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onButtonClick3(/* cpr.events.CMouseEvent */ e){
+	/** 
+	 * @type cpr.controls.Button
+	 */
+	var button = e.control;
+	
+	var gridDeveloper = app.lookup("grid_developer");
+	gridDeveloper.showDeletedRow = false;
+	
+	var endRowIndex = gridDeveloper.getViewingEndRowIndex();
+	
+		
+	var developerList = app.lookup("developerList");
+	console.log(developerList.getColumnData("employees_number"));
+
+	var result = developerList.deleteRow(endRowIndex);
+	console.log(result);
+		
+	gridDeveloper.deleteRow(endRowIndex);
+	// 제일 마지막 행 삭제
+	
 }
 
 
@@ -114,3 +150,9 @@ function onAddSWSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	//app.getRootAppInstance()는 최상위 앱 호출
 	
 }
+
+
+
+
+
+

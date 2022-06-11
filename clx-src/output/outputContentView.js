@@ -23,7 +23,7 @@ function onBodyLoad(/* cpr.events.CEvent */ e){
 
 
 /*
- * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * getOutputContent 서브미션에서 submit-done 이벤트 발생 시 호출.
  * 응답처리가 모두 종료되면 발생합니다.
  */
 function onGetOutputContentSubmitDone(/* cpr.events.CSubmissionEvent */ e){
@@ -120,21 +120,25 @@ function onFile_uploadSendbuttonClick(/* cpr.events.CEvent */ e){
 	} // end for
 	
 	 app.lookup("downloadAttachmentList").send();
-	 
-	 /*
-	for(i = 0; i < checkedFiles.length; i++){
-		fileIndex = file_upload.getIndex(checkedFiles[i]);
-		fileName = attachmentList.getValue(fileIndex, "real_file_name");
-		savePath = attachmentList.getValue(fileIndex, "save_path");
-		
-		file.setValue("file_name", fileName);
-		file.setValue("save_path", savePath);
-		
-		app.lookup("downloadAttachment").send();
-	}
-	*/
+	
 	
 }
+
+
+/*
+ * downloadAttachmentList 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onDownloadAttachmentListSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var downloadAttachmentList = e.control;
+	console.log("압축 파일 삭제");
+	app.lookup("deleteZipFile").send();
+	
+}
+
 
 /*
  * 파일 업로드에서 download-click 이벤트 발생 시 호출.
@@ -197,6 +201,9 @@ function onDeleteOutputSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	app.getRootAppInstance().dialogManager.getDialogByName("outputContentView").close(1);
 	
 }
+
+
+
 
 
 

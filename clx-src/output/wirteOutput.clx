@@ -84,7 +84,7 @@
           <cl:columns length="630" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
         </cl:formlayout>
       </cl:group>
-      <cl:fileupload std:sid="f-upload-c0211a3a" id="file_upload" buttons="add remove" maxfilecount="5">
+      <cl:fileupload std:sid="f-upload-c0211a3a" id="file_upload" buttons="add remove">
         <cl:xylayoutdata std:sid="xyl-data-dbd2427c" top="144px" left="20px" width="695px" height="202px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         <cl:buttonstyle style="background-color:#daf2da; border-right-style:none; border-left-style:none; font-size:10pt; border-bottom-style:none; background-image:none; border-top-style:none;"/>
         <cl:headerstyle style="background-color:#eaf0ea; background-image:none;"/>

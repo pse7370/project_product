@@ -153,8 +153,12 @@
           <cl:gridcell std:sid="gd-cell-ea621f82" rowindex="0" colindex="1" columnname="department"/>
           <cl:gridcell std:sid="gd-cell-43419539" rowindex="0" colindex="2" columnname="employees_number"/>
           <cl:gridcell std:sid="gd-cell-6c71b635" rowindex="0" colindex="3" columnname="employees_name"/>
-          <cl:gridcell std:sid="gd-cell-fc34f900" rowindex="0" colindex="4" columnname="start_date"/>
-          <cl:gridcell std:sid="gd-cell-1f056f07" rowindex="0" colindex="5" columnname="end_date"/>
+          <cl:gridcell std:sid="gd-cell-fc34f900" rowindex="0" colindex="4" columnname="start_date">
+            <cl:maskeditor std:sid="m-editor-1973d8b9" id="mse1" style="text-align:center;" readonly="true" mask="0000-00-00"/>
+          </cl:gridcell>
+          <cl:gridcell std:sid="gd-cell-1f056f07" rowindex="0" colindex="5" columnname="end_date">
+            <cl:maskeditor std:sid="m-editor-dbaf5a5e" id="mse2" style="text-align:center;" readonly="true" mask="0000-00-00"/>
+          </cl:gridcell>
         </cl:griddetail>
       </cl:grid>
       <cl:verticallayout std:sid="v-layout-d4ecb437"/>

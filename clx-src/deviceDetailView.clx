@@ -145,10 +145,18 @@
         <cl:griddetail std:sid="gd-band-c08943f2">
           <cl:gridrow std:sid="g-row-18abbd0b" height="27px"/>
           <cl:gridcell std:sid="gd-cell-7e3c1ace" rowindex="0" colindex="0" style="vertical-align:middle; text-align:center;" columnname="auth_type"/>
-          <cl:gridcell std:sid="gd-cell-89bde237" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;" columnname="one_to_one_max_user"/>
-          <cl:gridcell std:sid="gd-cell-9055cd44" rowindex="0" colindex="2" style="vertical-align:middle; text-align:center;" columnname="one_to_many_max_user"/>
-          <cl:gridcell std:sid="gd-cell-548e8a5f" rowindex="0" colindex="3" style="vertical-align:middle; text-align:center;" columnname="one_to_one_max_template"/>
-          <cl:gridcell std:sid="gd-cell-37ff5daf" rowindex="0" colindex="4" style="vertical-align:middle; text-align:center;" columnname="one_to_many_max_template"/>
+          <cl:gridcell std:sid="gd-cell-89bde237" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;" columnname="one_to_one_max_user">
+            <cl:numbereditor std:sid="n-editor-faf73fb7" id="nbe1" style="text-align:center;" readonly="true" spinbutton="false"/>
+          </cl:gridcell>
+          <cl:gridcell std:sid="gd-cell-9055cd44" rowindex="0" colindex="2" style="vertical-align:middle; text-align:center;" columnname="one_to_many_max_user">
+            <cl:numbereditor std:sid="n-editor-5716fc0e" id="nbe2" style="text-align:center;" readonly="true" spinbutton="false"/>
+          </cl:gridcell>
+          <cl:gridcell std:sid="gd-cell-548e8a5f" rowindex="0" colindex="3" style="vertical-align:middle; text-align:center;" columnname="one_to_one_max_template">
+            <cl:numbereditor std:sid="n-editor-9198461b" id="nbe3" style="text-align:center;" readonly="true" spinbutton="false"/>
+          </cl:gridcell>
+          <cl:gridcell std:sid="gd-cell-37ff5daf" rowindex="0" colindex="4" style="vertical-align:middle; text-align:center;" columnname="one_to_many_max_template">
+            <cl:numbereditor std:sid="n-editor-5ce127a9" id="nbe4" style="text-align:center;" readonly="true" spinbutton="false"/>
+          </cl:gridcell>
         </cl:griddetail>
       </cl:grid>
       <cl:verticallayout std:sid="v-layout-3834af36"/>
@@ -227,8 +235,12 @@
           <cl:gridcell std:sid="gd-cell-54d4bd7d" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;" columnname="department"/>
           <cl:gridcell std:sid="gd-cell-4ad1d30f" rowindex="0" colindex="2" style="vertical-align:middle; text-align:center;" columnname="employees_number"/>
           <cl:gridcell std:sid="gd-cell-77629e6a" rowindex="0" colindex="3" style="vertical-align:middle; text-align:center;" columnname="employees_name"/>
-          <cl:gridcell std:sid="gd-cell-6a24b431" rowindex="0" colindex="4" style="vertical-align:middle; text-align:center;" columnname="start_date"/>
-          <cl:gridcell std:sid="gd-cell-ba9f88ce" rowindex="0" colindex="5" style="vertical-align:middle; text-align:center;" columnname="end_date"/>
+          <cl:gridcell std:sid="gd-cell-6a24b431" rowindex="0" colindex="4" style="vertical-align:middle; text-align:center;" columnname="start_date">
+            <cl:maskeditor std:sid="m-editor-1b1f51e9" id="mse1" style="text-align:center;" readonly="true" mask="0000-00-00"/>
+          </cl:gridcell>
+          <cl:gridcell std:sid="gd-cell-ba9f88ce" rowindex="0" colindex="5" style="vertical-align:middle; text-align:center;" columnname="end_date">
+            <cl:maskeditor std:sid="m-editor-a548722f" id="mse2" style="text-align:center;" readonly="true" mask="0000-00-00"/>
+          </cl:gridcell>
         </cl:griddetail>
       </cl:grid>
       <cl:verticallayout std:sid="v-layout-d4ecb437"/>

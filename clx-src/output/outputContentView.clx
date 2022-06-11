@@ -74,11 +74,14 @@
         <cl:responsedata dataid="result"/>
       </cl:submission>
       <cl:submission std:sid="submission-13b787a5" id="downloadAttachment" action="/productMangement/downloadAttachment" responsetype="filedownload">
-        <cl:listener std:sid="listener-e3b1ec33" name="submit-done" handler="onDownloadAttachmentSubmitDone"/>
         <cl:requestdata dataid="file"/>
       </cl:submission>
-      <cl:submission std:sid="submission-9571450a" id="downloadAttachmentList" action="/productMangement/downloadAttachmentList" responsetype="filedownload">
+      <cl:submission std:sid="submission-9571450a" id="downloadAttachmentList" async="true" action="/productMangement/downloadAttachmentList" responsetype="filedownload">
+        <cl:listener std:sid="listener-51f4e501" name="submit-done" handler="onDownloadAttachmentListSubmitDone"/>
         <cl:requestdata dataid="downloadFileList"/>
+        <cl:requestdata dataid="title_name"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-ce5b1029" id="deleteZipFile" async="true" action="/productMangement/deleteZipFile">
         <cl:requestdata dataid="title_name"/>
       </cl:submission>
     </cl:model>

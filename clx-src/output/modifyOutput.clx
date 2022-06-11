@@ -74,7 +74,7 @@
           <cl:columns length="240" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
         </cl:formlayout>
       </cl:group>
-      <cl:fileupload std:sid="f-upload-c0211a3a" id="file_upload" buttons="add remove" maxfilecount="5">
+      <cl:fileupload std:sid="f-upload-c0211a3a" id="file_upload" buttons="add remove">
         <cl:listener std:sid="listener-85052f1a" name="add-file" handler="onFile_uploadAddFile"/>
         <cl:listener std:sid="listener-d592f517" name="remove-file" handler="onFile_uploadRemoveFile"/>
         <cl:listener std:sid="listener-8ef2d766" name="remove-before-file" handler="onFile_uploadRemoveBeforeFile"/>

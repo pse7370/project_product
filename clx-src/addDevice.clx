@@ -233,7 +233,7 @@
               </cl:inputbox>
             </cl:gridcell>
             <cl:gridcell std:sid="gd-cell-a87f4a48" rowindex="0" colindex="1" style="vertical-align:middle; text-align:center;">
-              <cl:combobox std:sid="c-box-f5d1d136" id="cmb1" tabindex="0" preventinput="true">
+              <cl:combobox std:sid="c-box-f5d1d136" id="select_wi_fi" tabindex="0" preventinput="true">
                 <cl:datamapbind property="value" datacontrolid="product_device" columnname="wi_fi"/>
                 <cl:item std:sid="item-68e07d82" label="O" value="O"/>
                 <cl:item std:sid="item-ff976484" label="X" value="X"/>
@@ -260,18 +260,18 @@
         <cl:verticallayout std:sid="v-layout-89215b4f"/>
       </cl:group>
       <cl:group std:sid="group-1ea6efb1">
-        <cl:xylayoutdata std:sid="xyl-data-8bc92292" top="265px" left="414px" width="290px" height="73px"/>
+        <cl:xylayoutdata std:sid="xyl-data-8bc92292" top="262px" left="404px" width="300px" height="77px"/>
         <cl:output std:sid="output-f1812801" style="vertical-align:middle; text-align:center;" value="방수/방진">
-          <cl:xylayoutdata std:sid="xyl-data-aab58e6e" top="41px" left="6px" width="96px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+          <cl:xylayoutdata std:sid="xyl-data-aab58e6e" top="48px" left="6px" width="96px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         </cl:output>
-        <cl:inputbox std:sid="i-box-11f58a82" id="ipb8">
+        <cl:inputbox std:sid="i-box-11f58a82" id="input_ipRatings">
           <cl:datamapbind property="value" datacontrolid="product_device" columnname="ip_ratings"/>
-          <cl:xylayoutdata std:sid="xyl-data-2bdb9a16" top="41px" left="101px" width="150px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+          <cl:xylayoutdata std:sid="xyl-data-2bdb9a16" top="48px" left="101px" width="179px" height="25px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
         </cl:inputbox>
         <cl:xylayout std:sid="xylayout-bc9a42c8"/>
       </cl:group>
-      <cl:output std:sid="output-7b440d4e" style="color:#dd4545; padding-left:10px; vertical-align:middle; font-size:9pt; text-align:left;" value="방수/방진 등급을 작성해 주세요.&#xD;&#xA;해당되지 않을 경우 X를 입력해 주세요.">
-        <cl:xylayoutdata std:sid="xyl-data-f06064b0" top="265px" left="429px" width="275px" height="38px"/>
+      <cl:output std:sid="output-7b440d4e" style="color:#dd4545; padding-left:10px; vertical-align:middle; font-size:9pt; text-align:left;" value="방수/방진 등급을 작성해 주세요.&#xD;&#xA;없을 경우 공란으로 두거나 X를 입력해 주세요.">
+        <cl:xylayoutdata std:sid="xyl-data-f06064b0" top="267px" left="414px" width="284px" height="40px"/>
       </cl:output>
       <cl:group std:sid="group-19d013fc">
         <cl:xylayoutdata std:sid="xyl-data-f28f7cfa" top="535px" left="0px" width="704px" height="225px"/>
@@ -283,7 +283,7 @@
           <cl:formdata std:sid="f-data-6de5c763" row="0" col="1" rowspan="1" colspan="1"/>
         </cl:button>
         <cl:grid std:sid="grid-8fe08b8b" id="grid_developer" datasetid="developerList">
-          <cl:formdata std:sid="f-data-405c6ec8" row="1" col="0" rowspan="1" colspan="2"/>
+          <cl:formdata std:sid="f-data-695b3908" row="1" col="0" rowspan="1" colspan="3"/>
           <cl:gridcolumn std:sid="g-column-afc997f4" width="33px"/>
           <cl:gridcolumn std:sid="g-column-bda716ee"/>
           <cl:gridcolumn std:sid="g-column-251015c6"/>
@@ -321,11 +321,16 @@
             </cl:gridcell>
           </cl:griddetail>
         </cl:grid>
+        <cl:button std:sid="button-8c1691af" style="background-color:#eaf0ea; border-bottom-color:#c2c2c2; border-left-color:#c2c2c2; border-top-color:#c2c2c2; border-right-color:#c2c2c2; background-image:none;" value="-">
+          <cl:listener std:sid="listener-da63c774" name="click" handler="onButtonClick3"/>
+          <cl:formdata std:sid="f-data-f207c821" row="0" col="2"/>
+        </cl:button>
         <cl:formlayout std:sid="f-layout-c1d5f357" hspace="0px" vspace="8px" top-margin="0px" right-margin="0px" bottom-margin="0px" left-margin="0px">
           <cl:rows length="25" unit="PIXEL" shadetype="NONE" shadecolor="transparent"/>
           <cl:rows length="1" unit="FRACTION"/>
           <cl:columns length="16" unit="FRACTION" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
           <cl:columns length="34" unit="PIXEL" autoSizing="false" shadetype="NONE" shadecolor="#000000" minlength="0"/>
+          <cl:columns length="34" unit="PIXEL" autoSizing="false" minlength="0"/>
         </cl:formlayout>
       </cl:group>
       <cl:button std:sid="button-ef4ef762" style="background-color:#DAF2DA; border-right-style:none; border-radius:10px; border-left-style:none; border-bottom-style:none; background-image:none; border-top-style:none;" value="등록">

@@ -16,6 +16,8 @@ function onBodyLoad(/* cpr.events.CEvent */ e){
 	// 통신 방식 그리드 1행 추가
 	app.lookup("communication").insertRow(1, true);
 	
+	app.lookup("select_wi_fi").selectItem(1);
+	
 }
 
 
@@ -29,9 +31,39 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	 */
 	var button = e.control;
 	var grid_developer = app.lookup("grid_developer");
-	var insertRow = grid_developer.insertRow(1, true);
+	var insertRow = grid_developer.insertRow(grid_developer.getViewingEndRowIndex(), true);
 	// + 버튼 클릭시 그리드 행 추가
 }
+
+
+/*
+ * "-" 버튼에서 click 이벤트 발생 시 호출.
+ * 사용자가 컨트롤을 클릭할 때 발생하는 이벤트.
+ */
+function onButtonClick3(/* cpr.events.CMouseEvent */ e){
+	/** 
+	 * @type cpr.controls.Button
+	 */
+	var button = e.control;
+	
+	var gridDeveloper = app.lookup("grid_developer");
+	gridDeveloper.showDeletedRow = false;
+	
+	var endRowIndex = gridDeveloper.getViewingEndRowIndex();
+	
+		
+	var developerList = app.lookup("developerList");
+	console.log(developerList.getColumnData("employees_number"));
+
+	var result = developerList.deleteRow(endRowIndex);
+	console.log(result);
+		
+	gridDeveloper.deleteRow(endRowIndex);
+	// 제일 마지막 행 삭제
+	
+}
+
+
 
 /*
  * "등록" 버튼에서 click 이벤트 발생 시 호출.
@@ -64,6 +96,35 @@ function onButtonClick(/* cpr.events.CMouseEvent */ e){
 	console.log("checkedRow : " + authenGrid.getCheckRowIndices());
 	
 	var checkedRow = authenGrid.getCheckRowIndices();
+	
+	var i;
+	for(i = 0; i < 4; i++){
+		if(authenGrid.isCheckedRow(i) == false){
+			authenticationList.deleteRow(i);
+		}
+	}
+	
+	var ip_ratings = app.lookup("product_device").getValue("ip_ratings");
+	if(ip_ratings == null || ip_ratings == "") {
+		app.lookup("product_device").setValue("ip_ratings", "X");
+	}
+	
+	var width = app.lookup("product_device").getValue("width");
+	if(width == null || width == 0){
+		app.lookup("product_device").setValue("width", 0);
+	}
+	
+	var height = app.lookup("product_device").getValue("height");
+	if(height == null || height == 0){
+		app.lookup("product_device").setValue("height", 0);
+	}
+	
+	var depth = app.lookup("product_device").getValue("depth");
+	if(depth == null || depth == 0){
+		app.lookup("product_device").setValue("depth", 0);
+	}
+	
+	
 	
 	addDevice.send();
 }
@@ -98,3 +159,6 @@ function onAddDeviceSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	//app.getRootAppInstance()는 최상위 앱 호출
 	
 }
+
+
+
