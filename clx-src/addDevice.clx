@@ -79,12 +79,22 @@
           <cl:datacolumn std:sid="d-column-a4631325" name="resultCode"/>
         </cl:datacolumnlist>
       </cl:datamap>
+      <cl:datamap std:sid="d-map-5a6e8b99" id="product_name">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-13db9cf7" name="product_name"/>
+        </cl:datacolumnlist>
+      </cl:datamap>
       <cl:submission std:sid="submission-3c37e95f" id="addDevice" action="/productMangement/addDevice" mediatype="multipart/form-data">
         <cl:listener std:sid="listener-f3bf878f" name="submit-done" handler="onAddDeviceSubmitDone"/>
         <cl:requestdata dataid="product"/>
         <cl:requestdata dataid="product_device"/>
         <cl:requestdata dataid="developerList"/>
         <cl:requestdata dataid="authenticationList"/>
+        <cl:responsedata dataid="result"/>
+      </cl:submission>
+      <cl:submission std:sid="submission-311de094" id="checkProductName" action="/productMangement/checkProductName">
+        <cl:listener std:sid="listener-0d4ec246" name="submit-done" handler="onCheckProductNameSubmitDone"/>
+        <cl:requestdata dataid="product_name"/>
         <cl:responsedata dataid="result"/>
       </cl:submission>
     </cl:model>
@@ -102,6 +112,7 @@
             <cl:xylayoutdata std:sid="xyl-data-1d02d5d7" top="0px" left="7px" width="73px" height="25px"/>
           </cl:output>
           <cl:inputbox std:sid="i-box-87074147" id="input_productName">
+            <cl:listener std:sid="listener-6f23b49f" name="value-change" handler="onInput_productNameValueChange"/>
             <cl:datamapbind property="value" datacontrolid="product" columnname="product_name"/>
             <cl:xylayoutdata std:sid="xyl-data-6a56b9a3" top="0px" left="79px" width="159px" height="25px"/>
           </cl:inputbox>

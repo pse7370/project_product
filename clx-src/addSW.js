@@ -152,7 +152,40 @@ function onAddSWSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 }
 
 
+/*
+ * 인풋 박스에서 value-change 이벤트 발생 시 호출.
+ * 변경된 value가 저장된 후에 발생하는 이벤트.
+ */
+function onInput_productNameValueChange(/* cpr.events.CValueChangeEvent */ e){
+	/** 
+	 * @type cpr.controls.InputBox
+	 */
+	var input_productName = e.control;
+	
+	app.lookup("product_name").setValue("product_name", app.lookup("input_productName").value);
+	
+	app.lookup("checkProductName").send();
+	
+}
 
 
-
-
+/*
+ * 서브미션에서 submit-done 이벤트 발생 시 호출.
+ * 응답처리가 모두 종료되면 발생합니다.
+ */
+function onCheckProductNameSubmitDone(/* cpr.events.CSubmissionEvent */ e){
+	/** 
+	 * @type cpr.protocols.Submission
+	 */
+	var checkProductName = e.control;
+	
+	var resultCode = app.lookup("result").getValue("resultCode");
+	console.log("resultCode : " + resultCode);
+	
+	if(resultCode != 1){
+		alert("동일한 제품명은 사용할 수 없습니다. 다시 작성해 주세요.");
+		app.lookup("input_productName").clear();
+		app.lookup("input_productName").focus();
+	}
+	
+}

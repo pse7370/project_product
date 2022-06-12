@@ -30,7 +30,7 @@
     <cl:listener std:sid="listener-66dc716a" name="screen-change" handler="onBodyScreenChange"/>
     <cl:listener std:sid="listener-a8b71957" name="property-change" handler="onBodyPropertyChange"/>
     <cl:group std:sid="group-09f68200">
-      <cl:xylayoutdata std:sid="xyl-data-69e6bd09" top="20px" left="19px" width="216px" height="727px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-69e6bd09" top="18px" left="19px" width="216px" height="727px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:tree std:sid="tree-7201149e" id="sideTree" style="border-radius:15px;" indent="20">
         <cl:listener std:sid="listener-09b48ca9" name="selection-change" handler="onTre1SelectionChange"/>
         <cl:listener std:sid="listener-8d86f378" name="selection-change" handler="onSideTreeSelectionChange"/>
@@ -41,7 +41,7 @@
       <cl:xylayout std:sid="xylayout-983cf732"/>
     </cl:group>
     <cl:group std:sid="group-baead445" style="border-right-style:solid; border-top-width:1px; border-bottom-color:#8d8d8d; border-right-width:1px; border-left-color:#8d8d8d; border-right-color:#8d8d8d; border-left-width:1px; border-top-style:solid; border-radius:15px; border-left-style:solid; border-bottom-width:1px; border-top-color:#8d8d8d; font-family:'\B9D1\C740  \ACE0\B515' , 'Malgun Gothic' , sans-serif; border-bottom-style:solid;">
-      <cl:xylayoutdata std:sid="xyl-data-66519a11" top="144px" left="245px" width="760px" height="598px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-66519a11" top="140px" left="245px" width="760px" height="598px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
       <cl:embeddedapp std:sid="e-app-e6a30ea3" id="content_view" style="border-radius:10px; padding-bottom:0px;">
         <cl:verticaldata std:sid="v-data-a6962dd3" width="753px" height="596px"/>
       </cl:embeddedapp>
@@ -49,10 +49,10 @@
     </cl:group>
     <cl:button std:sid="button-a513aef2" style="border-right-style:none; background-color:#DAF2DA; border-radius:10px; color:black; border-left-style:none; font-size:11pt; border-bottom-style:none; background-image:none; border-top-style:none;" value="제품 등록">
       <cl:listener std:sid="listener-2cef1417" name="click" handler="onButtonClick"/>
-      <cl:xylayoutdata std:sid="xyl-data-4b186e5f" top="104px" left="893px" width="95px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-4b186e5f" top="97px" left="893px" width="95px" height="30px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:button>
     <cl:output std:sid="output-93b94d21" style="font-size:30pt;" value="제품관리">
-      <cl:xylayoutdata std:sid="xyl-data-6a907c3d" top="33px" left="546px" width="176px" height="58px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
+      <cl:xylayoutdata std:sid="xyl-data-6a907c3d" top="30px" left="546px" width="176px" height="58px" horizontalAnchor="LEFT" verticalAnchor="TOP"/>
     </cl:output>
     <cl:xylayout std:sid="xylayout-d127694f"/>
   </body>

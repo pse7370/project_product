@@ -156,7 +156,7 @@
         <cl:output std:sid="output-1d7df186" style="text-align:center;" value="동시 접속 단말기 수">
           <cl:formdata std:sid="f-data-f53f1c16" row="0" col="0"/>
         </cl:output>
-        <cl:numbereditor std:sid="n-editor-72ba2133" id="input_simultaneous" style="text-align:right; padding-right:5px;">
+        <cl:numbereditor std:sid="n-editor-72ba2133" id="input_simultaneous" style="text-align:right; padding-right:5px;" min="0.0">
           <cl:datamapbind property="value" datacontrolid="product_sw" columnname="simultaneous"/>
           <cl:formdata std:sid="f-data-80525775" row="0" col="1"/>
         </cl:numbereditor>
