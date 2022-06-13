@@ -153,16 +153,16 @@
             <cl:inputbox std:sid="i-box-94b2b793" id="ipb1" readonly="true"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-88923672" rowindex="0" colindex="3" columnname="one_to_one_max_user">
-            <cl:numbereditor std:sid="n-editor-64588cb1" id="nbe1" style="text-align:right; padding-right:5px;"/>
+            <cl:numbereditor std:sid="n-editor-64588cb1" id="nbe1" style="text-align:right; padding-right:5px;" min="0.0"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-15a6c24d" rowindex="0" colindex="4" columnname="one_to_many_max_user">
-            <cl:numbereditor std:sid="n-editor-44148479" id="nbe2" style="text-align:right; padding-right:5px;"/>
+            <cl:numbereditor std:sid="n-editor-44148479" id="nbe2" style="text-align:right; padding-right:5px;" min="0.0"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-b6811e16" rowindex="0" colindex="5" columnname="one_to_one_max_template">
-            <cl:numbereditor std:sid="n-editor-66aee899" id="nbe3" style="text-align:right; padding-right:5px;"/>
+            <cl:numbereditor std:sid="n-editor-66aee899" id="nbe3" style="text-align:right; padding-right:5px;" min="0.0"/>
           </cl:gridcell>
           <cl:gridcell std:sid="gd-cell-c1e3e1ed" rowindex="0" colindex="6" columnname="one_to_many_max_template">
-            <cl:numbereditor std:sid="n-editor-1c5fab94" id="nbe4" style="text-align:right; padding-right:5px;"/>
+            <cl:numbereditor std:sid="n-editor-1c5fab94" id="nbe4" style="text-align:right; padding-right:5px;" min="0.0"/>
           </cl:gridcell>
         </cl:griddetail>
       </cl:grid>

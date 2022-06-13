@@ -92,6 +92,7 @@
           <cl:itemset datasetid="search_condition" label="search_condition" value="search_condition"/>
         </cl:combobox>
         <cl:inputbox std:sid="i-box-472d7b19" id="input_searchWord">
+          <cl:listener std:sid="listener-ea6ad99d" name="select" handler="onInput_searchWordSelect"/>
           <cl:formdata std:sid="f-data-ea02caa0" row="0" col="1"/>
         </cl:inputbox>
         <cl:img std:sid="image-eb32fe16" id="searchIcon" style="border-right-style:solid; padding-top:4px; border-top-width:1px; border-bottom-color:#b4b4b4; border-right-width:1px; padding-left:5px; border-left-color:#b4b4b4; padding-bottom:4px; border-right-color:#b4b4b4; border-left-width:1px; border-top-style:solid; border-left-style:solid; border-bottom-width:1px; border-top-color:#b4b4b4; border-bottom-style:solid; background-image:none; padding-right:5px;" src="../image/search.png">

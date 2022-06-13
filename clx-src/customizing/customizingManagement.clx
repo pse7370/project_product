@@ -23,6 +23,11 @@
         </cl:datacolumnlist>
         <cl:datarowlist/>
       </cl:dataset>
+      <cl:dataset std:sid="d-set-77d7233a" id="customizing_id">
+        <cl:datacolumnlist>
+          <cl:datacolumn std:sid="d-column-b50dbdbb" name="customizing_id" datatype="number"/>
+        </cl:datacolumnlist>
+      </cl:dataset>
       <cl:datamap std:sid="d-map-7960c62f" id="product">
         <cl:datacolumnlist>
           <cl:datacolumn std:sid="d-column-84213e8f" name="product_name"/>
@@ -46,6 +51,7 @@
       </cl:submission>
       <cl:submission std:sid="submission-e7fb35a6" id="deleteCustomizing" method="delete" action="/productMangement/deleteCustomizing">
         <cl:listener std:sid="listener-f5bfc136" name="submit-done" handler="onDeleteCustomizingSubmitDone"/>
+        <cl:requestdata dataid="customizing_id"/>
         <cl:responsedata dataid="result"/>
       </cl:submission>
     </cl:model>
@@ -110,7 +116,7 @@
             <cl:gridcell std:sid="gd-cell-c02065ee" rowindex="1" colindex="6" columnname="end_date">
               <cl:maskeditor std:sid="m-editor-2830fe60" id="mse2" style="text-align:center;" readonly="true" mask="0000-00-00"/>
             </cl:gridcell>
-            <cl:gridcell rowindex="0" colindex="2" rowspan="1" colspan="5" columnname="customized_function">
+            <cl:gridcell std:sid="gd-cell-9fd63918" rowindex="0" colindex="2" rowspan="1" colspan="5" columnname="customized_function">
               <cl:textarea std:sid="t-area-33df7655" id="txa2" style="padding-top:5px; padding-left:8px; padding-bottom:5px; padding-right:8px;"/>
             </cl:gridcell>
           </cl:griddetail>

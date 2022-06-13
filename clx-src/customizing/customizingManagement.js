@@ -87,13 +87,19 @@ function onButtonClick2(/* cpr.events.CMouseEvent */ e){
 	var actionURL = "/productMangement/deleteCustomizing";
 	for(i = 0; i < checkedRow.length; i++){
 		
-		actionURL += "?" + app.lookup("product_customizingList").getValue(checkedRow[i], "customizing_id");		
+		//actionURL += "?" + app.lookup("product_customizingList").getValue(checkedRow[i], "customizing_id");		
+		var customizing_id = app.lookup("product_customizingList").getValue(checkedRow[i], "customizing_id");
+		console.log(customizing_id);
+		app.lookup("customizing_id").addRowData({"customizing_id" : app.lookup("product_customizingList").getValue(checkedRow[i], "customizing_id")});
+		console.log("customizing_id : " + app.lookup("customizing_id").getValue(i, "customizing_id"));
 		
 		data_customizingList.deleteRow(checkedRow[i]);
 	}
 	
+	/*
 	console.log(actionURL);
 	app.lookup("deleteCustomizing").action = actionURL;
+	*/
 	
 	app.lookup("deleteCustomizing").send();
 	console.log("deleteCustomizing 서브미션 실행");

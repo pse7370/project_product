@@ -245,4 +245,3 @@ function onGetSearchOutputListSubmitDone(/* cpr.events.CSubmissionEvent */ e){
 	
 }
 
-
